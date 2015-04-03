@@ -1,15 +1,13 @@
 package com.example.citacup.bakul;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 
 
-public class MainActivity extends ActionBarActivity {
+public class UbahSemester2 extends ActionBarActivity {
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
     @Override
@@ -18,15 +16,23 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.logo_kecil);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.ubahsemester2);
     }
 
     public void mainMenu(View v) {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
-        if (v.getId()==R.id.labellogin) {
-            //untuk berpindah ke halaman login
-            startActivity(new Intent(getBaseContext(), LoginActivity.class));
+        switch(v.getId()) {
+        case R.id.s1 :
+            //semester
+            startActivity(new Intent(getBaseContext(), UbahIsian2.class));
+            this.finish();
+            break;
+        case R.id.lihat :
+            //lihat
+            startActivity(new Intent(getBaseContext(), LihatRancangan.class));
+            this.finish();
+            break;
         }
     }
 }

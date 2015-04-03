@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class LoginActivity extends ActionBarActivity {
+public class Login extends ActionBarActivity {
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
     @Override
@@ -52,6 +52,7 @@ public class LoginActivity extends ActionBarActivity {
         v.startAnimation(buttonClick);
         if (v.getId()==R.id.email_sign_in_button) {
             startActivity(new Intent(getBaseContext(), PilihJurusan.class));
+            this.finish();
         }
     }
 }

@@ -10,9 +10,9 @@ import android.view.WindowManager;
 /**
  * Created by CITACUP on 3/31/2015.
  */
-public class SplashScreen extends Activity {
+public class ActivityLogout extends Activity {
 
-    //Set waktu lama splashscreen
+    //Set waktu lama splash logout
     private static int splashInterval = 3000;
 
     @Override
@@ -22,7 +22,7 @@ public class SplashScreen extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.splashscreen);
+        setContentView(R.layout.activity_logout);
 
         new Handler().postDelayed(new Runnable() {
 
@@ -30,7 +30,7 @@ public class SplashScreen extends Activity {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(SplashScreen.this, ActivityMain.class);
+                Intent i = new Intent(ActivityLogout.this, ActivityMain.class);
                 startActivity(i);
                 //jeda selesai Splashscreen
                 this.finish();

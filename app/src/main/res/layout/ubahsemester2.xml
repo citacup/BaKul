@@ -78,7 +78,9 @@
                     android:layout_margin="5sp"
                     android:textColor="@color/biru"
                     android:textStyle="italic"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    android:clickable="true"
+                    android:onClick="mainMenu" />
 
                 <Button
                     android:layout_width="0dp"
@@ -90,7 +92,9 @@
                     android:layout_margin="5sp"
                     android:textColor="@color/biru"
                     android:textStyle="italic"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    android:clickable="true"
+                    android:onClick="mainMenu" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -107,7 +111,9 @@
                     android:layout_margin="5sp"
                     android:textColor="@color/biru"
                     android:textStyle="italic"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    android:clickable="true"
+                    android:onClick="mainMenu" />
 
                 <Button
                     android:layout_width="0dp"
@@ -119,7 +125,9 @@
                     android:layout_margin="5sp"
                     android:textColor="@color/biru"
                     android:textStyle="italic"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    android:clickable="true"
+                    android:onClick="mainMenu" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -136,7 +144,9 @@
                     android:layout_margin="5sp"
                     android:textColor="@color/biru"
                     android:textStyle="italic"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    android:clickable="true"
+                    android:onClick="mainMenu" />
 
                 <Button
                     android:layout_width="0dp"
@@ -148,7 +158,9 @@
                     android:layout_margin="5sp"
                     android:textColor="@color/biru"
                     android:textStyle="italic"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    android:clickable="true"
+                    android:onClick="mainMenu" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -165,7 +177,9 @@
                     android:layout_margin="5sp"
                     android:textColor="@color/biru"
                     android:textStyle="italic"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="mainMenu" />
 
                 <Button
                     android:layout_width="0dp"
@@ -176,7 +190,9 @@
                     android:background="@drawable/abc_ab_share_pack_holo_light"
                     android:layout_margin="5sp"
                     android:textColor="@color/biru"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    android:clickable="true"
+                    android:onClick="mainMenu" />
             </LinearLayout>
 
         </LinearLayout>

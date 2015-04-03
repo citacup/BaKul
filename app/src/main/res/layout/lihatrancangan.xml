@@ -125,7 +125,7 @@
                 android:layout_marginRight="20sp"
                 android:layout_marginTop="5sp" />
 
-            <Button android:id="@+id/rantai"
+            <Button android:id="@+id/ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15sp"

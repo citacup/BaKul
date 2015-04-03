@@ -25,16 +25,20 @@ public class MainMenu extends ActionBarActivity {
         switch(v.getId()) {
         case R.id.satulayout :
             //fitur 1
-            startActivity(new Intent(getBaseContext(), MainMenu.class));
+            startActivity(new Intent(getBaseContext(), InformasiKuliah.class));
             break;
         case R.id.dualayout :
             //fitur 2
-            startActivity(new Intent(getBaseContext(), MainMenu.class));
+            startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
             break;
         case R.id.tigalayout :
             //fitur 3
-            startActivity(new Intent(getBaseContext(), MainMenu.class));
+            startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
             break;
         }
+    }
+
+    public void onBackPressed(){
+        this.finish();
     }
 }
