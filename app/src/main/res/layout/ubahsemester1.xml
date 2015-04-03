@@ -1,0 +1,206 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="@android:color/white"
+    android:id="@+id/relativeLayout">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#ff0272bc"
+            android:id="@+id/labellayout"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perancangan Kuliah"
+                android:id="@+id/labeltext"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                android:textStyle="italic"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/labelimg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"
+            android:src="@drawable/ubah" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ubah data untuk semester yang telah lulus"
+            android:id="@+id/label"
+            style="@style/sectionHeader"
+            android:layout_marginTop="30sp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.8"
+            android:layout_marginTop="15sp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 1"
+                    android:id="@+id/s1"
+                    android:layout_weight="1"
+                    android:background="@drawable/abc_ab_share_pack_holo_light"
+                    android:layout_margin="5sp"
+                    android:textColor="@color/biru"
+                    android:textStyle="italic"
+                    android:visibility="visible" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 2"
+                    android:id="@+id/s2"
+                    android:layout_weight="1"
+                    android:background="@drawable/abc_ab_share_pack_holo_light"
+                    android:layout_margin="5sp"
+                    android:textColor="@color/biru"
+                    android:textStyle="italic"
+                    android:visibility="visible" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 3"
+                    android:id="@+id/s3"
+                    android:layout_weight="1"
+                    android:background="@drawable/abc_ab_share_pack_holo_light"
+                    android:layout_margin="5sp"
+                    android:textColor="@color/biru"
+                    android:textStyle="italic"
+                    android:visibility="visible" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 4"
+                    android:id="@+id/s4"
+                    android:layout_weight="1"
+                    android:background="@drawable/abc_ab_share_pack_holo_light"
+                    android:layout_margin="5sp"
+                    android:textColor="@color/biru"
+                    android:textStyle="italic"
+                    android:visibility="visible" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 5"
+                    android:id="@+id/s5"
+                    android:layout_weight="1"
+                    android:background="@drawable/abc_ab_share_pack_holo_light"
+                    android:layout_margin="5sp"
+                    android:textColor="@color/biru"
+                    android:textStyle="italic"
+                    android:visibility="visible" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 6"
+                    android:id="@+id/s6"
+                    android:layout_weight="1"
+                    android:background="@drawable/abc_ab_share_pack_holo_light"
+                    android:layout_margin="5sp"
+                    android:textColor="@color/biru"
+                    android:textStyle="italic"
+                    android:visibility="visible" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 7"
+                    android:id="@+id/s7"
+                    android:layout_weight="1"
+                    android:background="@drawable/abc_ab_share_pack_holo_light"
+                    android:layout_margin="5sp"
+                    android:textColor="@color/biru"
+                    android:textStyle="italic"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah..."
+                    android:id="@+id/tambah"
+                    android:layout_weight="1"
+                    android:background="@drawable/abc_ab_share_pack_holo_light"
+                    android:layout_margin="5sp"
+                    android:textColor="@color/biru"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.2"
+            android:gravity="right">
+
+            <Button android:id="@+id/lanjut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:text="Lanjut"
+                android:textStyle="italic"
+                android:background="@color/biru"
+                android:textColor="@android:color/white"
+                android:onClick="mainMenu"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

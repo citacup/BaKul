@@ -1,0 +1,122 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="@android:color/white"
+    android:id="@+id/relativeLayout">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#ff0272bc"
+            android:id="@+id/labellayout"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perancangan Kuliah"
+                android:id="@+id/labeltext"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/white"
+                android:textSize="32sp"
+                android:textStyle="italic"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester Y akan diambil"
+            android:id="@+id/label"
+            style="@style/sectionHeader"
+            android:layout_marginTop="30sp" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:id="@+id/diambil"
+            android:background="@drawable/abc_ab_share_pack_holo_light"
+            android:layout_marginTop="5sp"
+            android:layout_weight="0.4">
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/listdiambil" />
+        </ScrollView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:layout_marginTop="10sp"
+            android:layout_weight="0.12"
+            android:gravity="center_horizontal|bottom">
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner"
+                android:layout_weight="1" />
+
+            <SearchView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchView"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:id="@+id/matkul"
+            android:background="@drawable/abc_ab_share_pack_holo_light"
+            android:layout_marginTop="5sp"
+            android:layout_weight="0.38">
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/listmatkul" />
+        </ScrollView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.1"
+            android:gravity="right">
+
+            <Button android:id="@+id/simpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:text="Simpan"
+                android:textStyle="italic"
+                android:background="@color/biru"
+                android:textColor="@android:color/white"
+                android:onClick="mainMenu"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
