@@ -6,11 +6,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
         <!-- Splash screen -->
         <activity
             android:name=".SplashScreen"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:noHistory="true" >
             <intent-filter>
@@ -22,6 +23,7 @@
         <!-- Main activity -->
         <activity
             android:name=".ActivityMain"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah" >
             <!--intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +33,7 @@
         <!-- Pilih Jurusan -->
         <activity
             android:name=".Login"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
             android:parentActivityName=".ActivityMain">
             <meta-data
@@ -41,12 +44,14 @@
         <!-- Pilih Jurusan -->
         <activity
             android:name=".PilihJurusan"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah" >
         </activity>
 
         <!-- Menu Utama -->
         <activity
             android:name=".MainMenu"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,6 +61,7 @@
         <!-- Informasi Kuliah -->
         <activity
             android:name=".InformasiKuliah"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Informasi Kuliah"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -66,6 +72,7 @@
         <!-- Informasi Dosen -->
         <activity
             android:name=".InformasiDosen"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Informasi Dosen"
             android:parentActivityName=".InformasiKuliah">
             <meta-data
@@ -76,6 +83,7 @@
         <!-- Pencarian -->
         <activity
             android:name=".Pencarian"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Informasi Mata Kuliah"
             android:parentActivityName=".InformasiKuliah">
             <meta-data
@@ -86,6 +94,7 @@
         <!-- Pencarian Berdasarkan Nama -->
         <activity
             android:name=".PencarianNama"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Informasi Mata Kuliah"
             android:parentActivityName=".Pencarian">
             <meta-data
@@ -96,6 +105,7 @@
         <!-- Pencarian Berdasarkan Kategori -->
         <activity
             android:name=".PencarianKategori"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Informasi Mata Kuliah"
             android:parentActivityName=".Pencarian">
             <meta-data
@@ -106,6 +116,7 @@
         <!-- Informasi Mata Kuliah -->
         <activity
             android:name=".InformasiMatkul"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Informasi Mata Kuliah"
             android:parentActivityName=".Pencarian">
             <meta-data
@@ -116,6 +127,7 @@
         <!-- Lihat Rantai -->
         <activity
             android:name=".LihatRantai"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Informasi Mata Kuliah"
             android:parentActivityName=".InformasiMatkul">
             <meta-data
@@ -126,6 +138,7 @@
         <!-- Kalkulator Nilai -->
         <activity
             android:name=".KalkulatorNilai"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Kalkulator Nilai"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -136,6 +149,7 @@
         <!-- Kalkulator Hasil -->
         <activity
             android:name=".KalkulatorHasil"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Kalkulator Nilai"
             android:parentActivityName=".KalkulatorNilai">
             <meta-data
@@ -146,6 +160,7 @@
         <!-- Perancangan Kuliah Awal -->
         <activity
             android:name=".PerancanganKuliah1"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Perancangan Kuliah"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -156,6 +171,7 @@
         <!-- Perancangan Kuliah -->
         <activity
             android:name=".PerancanganKuliah"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Perancangan Kuliah"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -166,6 +182,7 @@
         <!-- Lihat Perancangan Kuliah -->
         <activity
             android:name=".LihatRancangan"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Perancangan Kuliah"
             android:parentActivityName=".PerancanganKuliah">
             <meta-data
@@ -176,6 +193,7 @@
         <!-- Ubah Semester lulus -->
         <activity
             android:name=".UbahSemester1"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Perancangan Kuliah"
             android:parentActivityName=".PerancanganKuliah">
             <meta-data
@@ -186,6 +204,7 @@
         <!-- Ubah isian semester lulus -->
         <activity
             android:name=".UbahIsian1"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Perancangan Kuliah"
             android:parentActivityName=".UbahSemester1">
             <meta-data
@@ -196,6 +215,7 @@
         <!-- Ubah Semester akan diambil-->
         <activity
             android:name=".UbahSemester2"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Perancangan Kuliah"
             android:parentActivityName=".UbahSemester1">
             <meta-data
@@ -206,6 +226,7 @@
         <!-- Ubah isian semester akan diambil -->
         <activity
             android:name=".UbahIsian2"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah : Fitur Perancangan Kuliah"
             android:parentActivityName=".UbahSemester2">
             <meta-data
@@ -216,6 +237,7 @@
         <!-- Perbarui Aplikasi -->
         <activity
             android:name=".Perbarui"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -226,6 +248,7 @@
         <!-- Kirim Pesan ke Admin -->
         <activity
             android:name=".KirimPesan"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -236,6 +259,7 @@
         <!-- Tutorial Penggunaan Aplikasi -->
         <activity
             android:name=".Tutorial"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -246,6 +270,7 @@
         <!-- Frequently Ask Question -->
         <activity
             android:name=".Faq"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -256,16 +281,7 @@
         <!-- Menu Pengguna -->
         <activity
             android:name=".MenuPengguna"
-            android:label="Bantu Kuliah"
-            android:parentActivityName=".MainMenu">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainMenu" />
-        </activity>
-
-        <!-- Logout -->
-        <activity
-            android:name=".Logout"
+            android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -275,8 +291,9 @@
 
         <!-- Splash screen Logout-->
         <activity
-            android:name=".ActivityLogout"
-            android:label="@string/app_name"
+            android:name=".Logout"
+            android:screenOrientation="portrait"
+            android:label="Bantu Kuliah"
             android:noHistory="true" >
         </activity>
 

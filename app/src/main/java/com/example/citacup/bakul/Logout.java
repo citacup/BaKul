@@ -1,38 +1,46 @@
 package com.example.citacup.bakul;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.os.Handler;
+import android.view.Window;
+import android.view.WindowManager;
 
+/**
+ * Created by CITACUP on 3/31/2015.
+ */
+public class Logout extends Activity {
 
-public class Logout extends ActionBarActivity {
+    //Set waktu lama splash logout
+    private static int splashInterval = 3000;
 
-    private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.logo_kecil);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        setContentView(R.layout.logout);
-    }
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-    public void mainMenu(View v) {
-        //aktifkan efek klik dari button login
-        v.startAnimation(buttonClick);
-        switch(v.getId()) {
-            case R.id.yes :
-                //konfirmasi yes
-                startActivity(new Intent(getBaseContext(), ActivityLogout.class));
+        setContentView(R.layout.logout);
+
+        new Handler().postDelayed(new Runnable() {
+
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(Logout.this, ActivityMain.class);
+                startActivity(i);
+                //jeda selesai Splashscreen
                 this.finish();
-                break;
-            case R.id.no :
-                //konfirmasi tidak
-                startActivity(new Intent(getBaseContext(), MainMenu.class));
-                this.finish();
-                break;
-        }
-    }
+            }
+
+            private void finish() {
+                // TODO Auto-generated method stub
+            }
+        }, splashInterval);
+
+    };
+
 }
