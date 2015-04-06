@@ -59,19 +59,6 @@
             android:clickable="true"
             android:onClick="mainMenu">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Informasi Mata Kuliah"
-                android:id="@+id/matkultext"
-                android:textColor="@color/biru"
-                android:textSize="28sp"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:clickable="true"
-                android:paddingRight="20sp" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,6 +66,21 @@
                 android:src="@drawable/matkul"
                 android:paddingTop="5sp"
                 android:paddingBottom="5sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informasi Mata Kuliah"
+                android:id="@+id/matkultext"
+                android:textColor="@color/biru"
+                android:textSize="@dimen/textpilihan"
+                android:textStyle="italic"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:clickable="true"
+                android:paddingLeft="20sp"
+                android:gravity="center_vertical|center_horizontal" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -92,19 +94,6 @@
             android:clickable="true"
             android:onClick="mainMenu">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Informasi Dosen"
-                android:id="@+id/dosentext"
-                android:textColor="@color/biru"
-                android:textSize="28sp"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:clickable="true"
-                android:paddingRight="50sp" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -112,6 +101,21 @@
                 android:src="@drawable/dosen"
                 android:paddingTop="5sp"
                 android:paddingBottom="5sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informasi Dosen"
+                android:id="@+id/dosentext"
+                android:textColor="@color/biru"
+                android:textSize="@dimen/textpilihan"
+                android:textStyle="italic"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:clickable="true"
+                android:paddingLeft="20sp"
+                android:gravity="center_vertical|center_horizontal" />
+
         </LinearLayout>
     </LinearLayout>
 

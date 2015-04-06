@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:id="@+id/relativeLayout"
@@ -25,19 +26,8 @@
             android:clickable="true"
             android:onClick="mainMenu"
             android:weightSum="1"
-            android:layout_weight="0.33">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Informasi Kuliah"
-                android:id="@+id/satutext"
-                android:textColor="@color/biru"
-                android:textSize="28sp"
-                android:textStyle="italic"
-                android:clickable="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_marginRight="10dp" />
+            android:layout_weight="0.33"
+            android:padding="5sp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -45,6 +35,19 @@
                 android:id="@+id/satuimage"
                 android:src="@drawable/satu"
                 android:clickable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informasi Kuliah"
+                android:id="@+id/satutext"
+                android:textColor="@color/biru"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic"
+                android:clickable="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="10sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -57,19 +60,8 @@
             android:clickable="true"
             android:onClick="mainMenu"
             android:weightSum="1"
-            android:layout_weight="0.33">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Perancangan Kuliah"
-                android:id="@+id/duatext"
-                android:textColor="@color/biru"
-                android:textSize="28sp"
-                android:textStyle="italic"
-                android:clickable="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_marginRight="10dp" />
+            android:layout_weight="0.33"
+            android:padding="5sp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -77,6 +69,19 @@
                 android:id="@+id/duaimage"
                 android:src="@drawable/dua"
                 android:clickable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perancangan Kuliah"
+                android:id="@+id/duatext"
+                android:textColor="@color/biru"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic"
+                android:clickable="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="10sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -89,19 +94,8 @@
             android:clickable="true"
             android:onClick="mainMenu"
             android:weightSum="1"
-            android:layout_weight="0.33">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kalkulator Nilai"
-                android:id="@+id/tigatext"
-                android:textColor="@color/biru"
-                android:textSize="28sp"
-                android:textStyle="italic"
-                android:clickable="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_marginRight="10sp" />
+            android:layout_weight="0.33"
+            android:padding="5sp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -109,6 +103,19 @@
                 android:id="@+id/tigaimage"
                 android:src="@drawable/tiga"
                 android:clickable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kalkulator Nilai"
+                android:id="@+id/tigatext"
+                android:textColor="@color/biru"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic"
+                android:clickable="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="10sp" />
+
         </LinearLayout>
     </LinearLayout>
 

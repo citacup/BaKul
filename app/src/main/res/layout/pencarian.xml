@@ -65,10 +65,10 @@
                 android:text="Cari Berdasar Nama"
                 android:id="@+id/namatext"
                 android:textColor="@color/biru"
-                android:textSize="28sp"
+                android:textSize="@dimen/textpilihan"
                 android:textStyle="italic"
-                android:paddingTop="20sp"
-                android:paddingBottom="20sp"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
                 android:clickable="true"/>
         </LinearLayout>
 
@@ -89,7 +89,7 @@
                 android:text="Cari Berdasar Kategori"
                 android:id="@+id/kategoritext"
                 android:textColor="@color/biru"
-                android:textSize="28sp"
+                android:textSize="@dimen/textpilihan"
                 android:textStyle="italic"
                 android:paddingTop="20sp"
                 android:paddingBottom="20sp"

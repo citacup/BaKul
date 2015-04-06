@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Semester berapa Kamu?"
                     android:id="@+id/label"
                     android:layout_weight="0.6"

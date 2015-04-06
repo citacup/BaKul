@@ -25,12 +25,12 @@ public class PilihJurusan extends ActionBarActivity {
         switch(v.getId()) {
         case R.id.ilkomlayout :
             //pilih jurusan ilkom
-            startActivity(new Intent(getBaseContext(), MainMenu.class));
+            startActivity(new Intent(getBaseContext(), MyActivity.class));
             this.finish();
             break;
         case R.id.silayout :
             //pilih jurusan si
-            startActivity(new Intent(getBaseContext(), MainMenu.class));
+            startActivity(new Intent(getBaseContext(), MyActivity.class));
             this.finish();
             break;
         }

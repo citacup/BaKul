@@ -60,19 +60,6 @@
             android:clickable="true"
             android:onClick="mainMenu">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lihat Rancangan"
-                android:id="@+id/lihatext"
-                android:textColor="@color/biru"
-                android:textSize="28sp"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:clickable="true"
-                android:paddingRight="20sp" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,6 +67,20 @@
                 android:src="@drawable/lihat"
                 android:paddingTop="5sp"
                 android:paddingBottom="5sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lihat Rancangan"
+                android:id="@+id/lihatext"
+                android:textColor="@color/biru"
+                android:textSize="@dimen/textpilihan"
+                android:textStyle="italic"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:clickable="true"
+                android:paddingLeft="20sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -93,19 +94,6 @@
             android:clickable="true"
             android:onClick="mainMenu">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ubah Rancangan"
-                android:id="@+id/ubahtext"
-                android:textColor="@color/biru"
-                android:textSize="28sp"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:clickable="true"
-                android:paddingRight="20sp" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,6 +101,20 @@
                 android:src="@drawable/ubah"
                 android:paddingTop="5sp"
                 android:paddingBottom="5sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubah Rancangan"
+                android:id="@+id/ubahtext"
+                android:textColor="@color/biru"
+                android:textSize="@dimen/textpilihan"
+                android:textStyle="italic"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:clickable="true"
+                android:paddingLeft="20sp" />
+
         </LinearLayout>
     </LinearLayout>
 

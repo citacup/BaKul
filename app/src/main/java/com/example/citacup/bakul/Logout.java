@@ -30,7 +30,7 @@ public class Logout extends Activity {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(Logout.this, ActivityMain.class);
+                Intent i = new Intent(Logout.this, Login.class);
                 startActivity(i);
                 //jeda selesai Splashscreen
                 this.finish();
