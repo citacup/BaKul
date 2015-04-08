@@ -57,7 +57,7 @@
             android:layout_marginTop="30sp"
             android:gravity="center_vertical|center_horizontal"
             android:clickable="true"
-            android:onClick="mainMenu">
+            android:onClick="informasiKuliahListener">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -65,7 +65,9 @@
                 android:id="@+id/matkulimage"
                 android:src="@drawable/matkul"
                 android:paddingTop="5sp"
-                android:paddingBottom="5sp" />
+                android:paddingBottom="5sp"
+                android:clickable="true"
+                android:onClick="informasiKuliahListener"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,9 +79,10 @@
                 android:textStyle="italic"
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
-                android:clickable="true"
                 android:paddingLeft="20sp"
-                android:gravity="center_vertical|center_horizontal" />
+                android:gravity="center_vertical|center_horizontal"
+                android:clickable="true"
+                android:onClick="informasiKuliahListener"/>
 
         </LinearLayout>
 
@@ -92,7 +95,7 @@
             android:layout_marginTop="30sp"
             android:gravity="center_vertical|center_horizontal"
             android:clickable="true"
-            android:onClick="mainMenu">
+            android:onClick="informasiKuliahListener">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -100,7 +103,9 @@
                 android:id="@+id/dosenimage"
                 android:src="@drawable/dosen"
                 android:paddingTop="5sp"
-                android:paddingBottom="5sp" />
+                android:paddingBottom="5sp"
+                android:clickable="true"
+                android:onClick="informasiKuliahListener"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -112,9 +117,10 @@
                 android:textStyle="italic"
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
-                android:clickable="true"
                 android:paddingLeft="20sp"
-                android:gravity="center_vertical|center_horizontal" />
+                android:gravity="center_vertical|center_horizontal"
+                android:clickable="true"
+                android:onClick="informasiKuliahListener"/>
 
         </LinearLayout>
     </LinearLayout>

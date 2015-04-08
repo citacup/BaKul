@@ -22,8 +22,4 @@ public class Perbarui extends Fragment {
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
 
-    public void mainMenu(View v) {
-        //aktifkan efek klik dari button login
-        v.startAnimation(buttonClick);
-    }
 }

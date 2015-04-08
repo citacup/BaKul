@@ -22,20 +22,5 @@ public class PerancanganKuliah extends Fragment {
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
 
-    public void mainMenu(View v) {
-        //aktifkan efek klik dari button login
-        v.startAnimation(buttonClick);
-        switch(v.getId()) {
-        case R.id.lihatlayout :
-            //lihat rancangan
-            //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
-            //this.finish();
-            break;
-        case R.id.ubahlayout :
-            //ubah rancangan
-            //startActivity(new Intent(getBaseContext(), UbahSemester1.class));
-            //this.finish();
-            break;
-        }
-    }
+
 }

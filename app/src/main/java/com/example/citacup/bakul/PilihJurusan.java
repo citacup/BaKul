@@ -23,16 +23,36 @@ public class PilihJurusan extends ActionBarActivity {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
         switch(v.getId()) {
-        case R.id.ilkomlayout :
-            //pilih jurusan ilkom
-            startActivity(new Intent(getBaseContext(), MyActivity.class));
-            this.finish();
-            break;
-        case R.id.silayout :
-            //pilih jurusan si
-            startActivity(new Intent(getBaseContext(), MyActivity.class));
-            this.finish();
-            break;
+            case (R.id.ilkomlayout) :
+                //pilih jurusan ilkom
+                startActivity(new Intent(getBaseContext(), MyActivity.class));
+                this.finish();
+                break;
+            case (R.id.ilkomimage) :
+                //pilih jurusan ilkom
+                startActivity(new Intent(getBaseContext(), MyActivity.class));
+                this.finish();
+                break;
+            case (R.id.ilkomtext) :
+                //pilih jurusan ilkom
+                startActivity(new Intent(getBaseContext(), MyActivity.class));
+                this.finish();
+                break;
+            case (R.id.silayout) :
+                //pilih jurusan si
+                startActivity(new Intent(getBaseContext(), MyActivity.class));
+                this.finish();
+                break;
+            case (R.id.siimage) :
+                //pilih jurusan si
+                startActivity(new Intent(getBaseContext(), MyActivity.class));
+                this.finish();
+                break;
+            case (R.id.sitext) :
+                //pilih jurusan si
+                startActivity(new Intent(getBaseContext(), MyActivity.class));
+                this.finish();
+                break;
         }
     }
 }

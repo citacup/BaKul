@@ -92,7 +92,7 @@
                             android:textStyle="italic"
                             android:visibility="visible"
                             android:clickable="true"
-                            android:onClick="mainMenu" />
+                            android:onClick="ubahSemester2Listener" />
 
                         <Button
                             android:layout_width="0dp"
@@ -106,7 +106,7 @@
                             android:textStyle="italic"
                             android:visibility="visible"
                             android:clickable="true"
-                            android:onClick="mainMenu" />
+                            android:onClick="ubahSemester2Listener" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -126,7 +126,7 @@
                             android:textStyle="italic"
                             android:visibility="visible"
                             android:clickable="true"
-                            android:onClick="mainMenu" />
+                            android:onClick="ubahSemester2Listener" />
 
                         <Button
                             android:layout_width="0dp"
@@ -140,7 +140,7 @@
                             android:textStyle="italic"
                             android:visibility="visible"
                             android:clickable="true"
-                            android:onClick="mainMenu" />
+                            android:onClick="ubahSemester2Listener" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -160,7 +160,7 @@
                             android:textStyle="italic"
                             android:visibility="visible"
                             android:clickable="true"
-                            android:onClick="mainMenu" />
+                            android:onClick="ubahSemester2Listener" />
 
                         <Button
                             android:layout_width="0dp"
@@ -174,7 +174,7 @@
                             android:textStyle="italic"
                             android:visibility="visible"
                             android:clickable="true"
-                            android:onClick="mainMenu" />
+                            android:onClick="ubahSemester2Listener" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -194,7 +194,7 @@
                             android:textStyle="italic"
                             android:visibility="invisible"
                             android:clickable="true"
-                            android:onClick="mainMenu" />
+                            android:onClick="ubahSemester2Listener" />
 
                         <Button
                             android:layout_width="0dp"
@@ -207,7 +207,7 @@
                             android:textColor="@color/biru"
                             android:textStyle="italic"
                             android:clickable="true"
-                            android:onClick="mainMenu" />
+                            android:onClick="ubahSemester2Listener" />
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
@@ -227,7 +227,8 @@
                 android:textStyle="italic"
                 android:background="@color/biru"
                 android:textColor="@android:color/white"
-                android:onClick="mainMenu"
+                android:clickable="true"
+                android:onClick="ubahSemester2Listener"
                 android:paddingLeft="10sp"
                 android:paddingRight="10sp" />
         </LinearLayout>

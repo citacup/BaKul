@@ -2,8 +2,10 @@ package com.example.citacup.bakul;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.widget.Toast;
 
 
 public class MyActivity extends Activity
@@ -40,6 +44,8 @@ public class MyActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        Toast.makeText(this, "Log in as cita.audia", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -76,8 +82,8 @@ public class MyActivity extends Activity
                 objFragment = new Perbarui();
                 break;
             case 9:
-                startActivity(new Intent(getBaseContext(), MyActivity.class));
-                break;
+                this.alertMessage();
+                return;
         }
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
@@ -194,6 +200,526 @@ public class MyActivity extends Activity
             super.onAttach(activity);
             ((MyActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
+        }
+    }
+
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
+
+    public void logout() {
+        startActivity(new Intent(getBaseContext(), Logout.class));
+        this.finish();
+    }
+
+    public void alertMessage() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                    // Yes button clicked
+                        logout();
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                    // No button clicked
+                    // do nothing
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Apakah Anda yakin keluar dari sistem?")
+                .setPositiveButton("Ya", dialogClickListener)
+                .setNegativeButton("Tidak", dialogClickListener)
+                .show();
+    }
+
+    public void mainMenuListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case (R.id.satulayout) :
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), InformasiKuliah.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new InformasiKuliah())
+                        .commit();
+                break;
+            case (R.id.satuimage) :
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), InformasiKuliah.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new InformasiKuliah())
+                        .commit();
+                break;
+            case (R.id.satutext) :
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), InformasiKuliah.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new InformasiKuliah())
+                        .commit();
+                break;
+            case (R.id.dualayout):
+                //fitur 2
+                //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new PerancanganKuliah())
+                        .commit();
+                break;
+            case (R.id.duaimage):
+                //fitur 2
+                //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new PerancanganKuliah())
+                        .commit();
+                break;
+            case (R.id.duatext):
+                //fitur 2
+                //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new PerancanganKuliah())
+                        .commit();
+                break;
+            case (R.id.tigalayout) :
+                //fitur 3
+                //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new KalkulatorNilai())
+                        .commit();
+                break;
+            case (R.id.tigaimage) :
+                //fitur 3
+                //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new KalkulatorNilai())
+                        .commit();
+                break;
+            case (R.id.tigatext) :
+                //fitur 3
+                //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new KalkulatorNilai())
+                        .commit();
+                break;
+        }
+    }
+
+    public void informasiKuliahListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case (R.id.matkullayout) :
+                //informasi matkul
+                //startActivity(new Intent(getBaseContext(), Pencarian.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new Pencarian())
+                        .commit();
+                break;
+            case (R.id.matkulimage) :
+                //informasi matkul
+                //startActivity(new Intent(getBaseContext(), Pencarian.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new Pencarian())
+                        .commit();
+                break;
+            case (R.id.matkultext) :
+                //informasi matkul
+                //startActivity(new Intent(getBaseContext(), Pencarian.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new Pencarian())
+                        .commit();
+                break;
+            case (R.id.dosenlayout) :
+                //informasi dosen
+                //startActivity(new Intent(getBaseContext(), InformasiDosen.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new InformasiDosen())
+                        .commit();
+                break;
+            case (R.id.dosenimage) :
+                //informasi dosen
+                //startActivity(new Intent(getBaseContext(), InformasiDosen.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new InformasiDosen())
+                        .commit();
+                break;
+            case (R.id.dosentext) :
+                //informasi dosen
+                //startActivity(new Intent(getBaseContext(), InformasiDosen.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new InformasiDosen())
+                        .commit();
+                break;
+        }
+    }
+
+    public void pencarianListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case (R.id.namalayout) :
+                //pencarian berdasar nama
+                //startActivity(new Intent(getBaseContext(), PencarianNama.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new PencarianNama())
+                        .commit();
+                break;
+            case (R.id.namatext) :
+                //pencarian berdasar nama
+                //startActivity(new Intent(getBaseContext(), PencarianNama.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new PencarianNama())
+                        .commit();
+                break;
+            case (R.id.kategorilayout) :
+                //pencarian berdasar kategori
+                //startActivity(new Intent(getBaseContext(), PencarianKategori.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new PencarianKategori())
+                        .commit();
+                break;
+            case (R.id.kategoritext) :
+                //pencarian berdasar kategori
+                //startActivity(new Intent(getBaseContext(), PencarianKategori.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new PencarianKategori())
+                        .commit();
+                break;
+        }
+    }
+
+    public void informasiDosenListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.satulayout:
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), InformasiKuliah.class));
+                break;
+        }
+    }
+
+    public void pencarianNamaListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.satulayout :
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), InformasiMatkul.class));
+                break;
+        }
+    }
+
+    public void pencarianKategoriListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.satulayout :
+                //pencarian kategori
+                //startActivity(new Intent(getBaseContext(), InformasiMatkul.class));
+                break;
+        }
+    }
+
+    public void kalkulatorNilaiListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.tambah :
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), KalkulatorHasil.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new KalkulatorHasil())
+                        .commit();
+                break;
+        }
+    }
+
+    public void kalkulatorHasilListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.simpan :
+                //simpan
+                //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new KalkulatorNilai())
+                        .commit();
+                Toast.makeText(this, "Kalkulator nilai disimpan", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.hitung :
+                //kalkulasi
+                break;
+        }
+    }
+
+    public void perancanganKuliahListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case (R.id.lihatlayout):
+                //lihat rancangan
+                //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatRancangan())
+                        .commit();
+                break;
+            case (R.id.lihatimage):
+                //lihat rancangan
+                //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatRancangan())
+                        .commit();
+                break;
+            case (R.id.lihattext):
+                //lihat rancangan
+                //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatRancangan())
+                        .commit();
+                break;
+            case (R.id.ubahlayout) :
+                //ubah rancangan
+                //startActivity(new Intent(getBaseContext(), UbahSemester1.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new UbahSemester1())
+                        .commit();
+                break;
+            case (R.id.ubahimage) :
+                //ubah rancangan
+                //startActivity(new Intent(getBaseContext(), UbahSemester1.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new UbahSemester1())
+                        .commit();
+                break;
+            case (R.id.ubahtext) :
+                //ubah rancangan
+                //startActivity(new Intent(getBaseContext(), UbahSemester1.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new UbahSemester1())
+                        .commit();
+                break;
+        }
+    }
+
+    public void lihatRancanganListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.ok :
+                //kembali
+                //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new PerancanganKuliah())
+                        .commit();
+                break;
+        }
+    }
+
+    public void ubahSemester1Listener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.s1 :
+                //semester
+                //startActivity(new Intent(getBaseContext(), UbahIsian1.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new UbahIsian1())
+                        .commit();
+                break;
+            case R.id.lanjut :
+                //lanjut
+                //startActivity(new Intent(getBaseContext(), UbahSemester2.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new UbahSemester2())
+                        .commit();
+                break;
+        }
+    }
+
+    public void ubahIsian1Listener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.simpan :
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), UbahSemester1.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new UbahSemester1())
+                        .commit();
+                Toast.makeText(this, "Isian disimpan", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    public void ubahSemester2Listener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.s1 :
+                //semester
+                //startActivity(new Intent(getBaseContext(), UbahIsian2.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new UbahIsian2())
+                        .commit();
+                break;
+            case R.id.lihat :
+                //lihat
+                //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatRancangan())
+                        .commit();
+                break;
+        }
+    }
+
+    public void ubahIsian2Listener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.simpan :
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), UbahSemester2.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new UbahSemester2())
+                        .commit();
+                Toast.makeText(this, "Isian disimpan", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    public void perbaruiListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+    }
+
+    public void kirimPesanListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.pesan :
+                //kirim pesan
+                //startActivity(new Intent(getBaseContext(), MainMenu.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new MainMenu())
+                        .commit();
+                Toast.makeText(this, "Pesan dikirim", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    public void tutorialListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.ok :
+                //kirim pesan
+                //startActivity(new Intent(getBaseContext(), MainMenu.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new MainMenu())
+                        .commit();
+                break;
+        }
+    }
+
+    public void faqListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.ok :
+                //ok button
+                //startActivity(new Intent(getBaseContext(), MainMenu.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new MainMenu())
+                        .commit();
+                break;
+        }
+    }
+
+    public void menuPenggunaListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.simpan :
+                //simpan menu pengguna
+                //startActivity(new Intent(getBaseContext(), MainMenu.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new MainMenu())
+                        .commit();
+                Toast.makeText(this, "Menu pengguna disimpan", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 

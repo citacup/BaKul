@@ -22,15 +22,5 @@ public class Tutorial extends Fragment {
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
 
-    public void mainMenu(View v) {
-        //aktifkan efek klik dari button login
-        v.startAnimation(buttonClick);
-        switch(v.getId()) {
-        case R.id.ok :
-            //kirim pesan
-            //startActivity(new Intent(getBaseContext(), MainMenu.class));
-            //this.finish();
-            break;
-        }
-    }
+
 }

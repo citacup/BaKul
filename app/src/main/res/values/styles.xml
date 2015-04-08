@@ -14,9 +14,11 @@
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <!--parent="android:style/Widget.Holo.Light.ActionBar.Solid.Inverse"-->
         <item name="android:background">@color/biru</item>
+        <item name="android:actionButtonStyle">@style/ActionButton</item>
 
         <!-- Support library compatibility -->
         <item name="background">@color/biru</item>
+        <item name="actionButtonStyle">@style/ActionButton</item>
     </style>
 
     <!-- Base application theme. -->
@@ -36,6 +38,14 @@
         <!-- Support library compatibility -->
         <item name="background">@color/biru</item>
         <item name="icon">@drawable/logo_kecil</item>
+    </style>
+
+    <style name="ActionButton"
+        parent="android:style/Widget.Holo.Light.ActionButton">
+        <item name="android:textAllCaps">false</item>
+
+        <!-- Support library compatibility -->
+        <item name="textAllCaps">false</item>
     </style>
 
 

@@ -47,23 +47,33 @@
             android:layout_weight="1"
             android:layout_marginTop="50sp">
 
-            <AutoCompleteTextView android:id="@+id/email" android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:hint="@string/prompt_email"
-                android:inputType="textEmailAddress" android:maxLines="1"
+            <AutoCompleteTextView
+                android:id="@+id/email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_email"
+                android:fontFamily="@string/action_sign_in"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
                 android:singleLine="true" />
 
-            <EditText android:id="@+id/password" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:hint="@string/prompt_password"
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_password"
+                android:fontFamily="@string/action_sign_in"
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionUnspecified" android:inputType="textPassword"
                 android:maxLines="1" android:singleLine="true" />
 
-            <Button android:id="@+id/email_sign_in_button"
+            <Button
+                android:id="@+id/email_sign_in_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="@string/action_sign_in_short"
-                android:textStyle="bold|italic"
+                android:textStyle="italic"
                 android:background="@color/biru"
                 android:textColor="@android:color/white"
                 android:onClick="mainMenu"

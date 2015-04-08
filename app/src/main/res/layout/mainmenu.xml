@@ -24,7 +24,7 @@
             android:id="@+id/satulayout"
             android:gravity="center_vertical|center_horizontal"
             android:clickable="true"
-            android:onClick="mainMenu"
+            android:onClick="mainMenuListener"
             android:weightSum="1"
             android:layout_weight="0.33"
             android:padding="5sp">
@@ -34,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/satuimage"
                 android:src="@drawable/satu"
-                android:clickable="true" />
+                android:clickable="true"
+                android:onClick="mainMenuListener"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -45,6 +46,7 @@
                 android:textSize="@dimen/textsize"
                 android:textStyle="italic"
                 android:clickable="true"
+                android:onClick="mainMenuListener"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_marginLeft="10sp" />
 
@@ -58,7 +60,7 @@
             android:id="@+id/dualayout"
             android:gravity="center_vertical|center_horizontal"
             android:clickable="true"
-            android:onClick="mainMenu"
+            android:onClick="mainMenuListener"
             android:weightSum="1"
             android:layout_weight="0.33"
             android:padding="5sp">
@@ -68,7 +70,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/duaimage"
                 android:src="@drawable/dua"
-                android:clickable="true" />
+                android:clickable="true"
+                android:onClick="mainMenuListener"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -79,6 +82,7 @@
                 android:textSize="@dimen/textsize"
                 android:textStyle="italic"
                 android:clickable="true"
+                android:onClick="mainMenuListener"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_marginLeft="10sp" />
 
@@ -92,7 +96,7 @@
             android:id="@+id/tigalayout"
             android:gravity="center_vertical|center_horizontal"
             android:clickable="true"
-            android:onClick="mainMenu"
+            android:onClick="mainMenuListener"
             android:weightSum="1"
             android:layout_weight="0.33"
             android:padding="5sp">
@@ -102,7 +106,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tigaimage"
                 android:src="@drawable/tiga"
-                android:clickable="true" />
+                android:clickable="true"
+                android:onClick="mainMenuListener"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -113,6 +118,7 @@
                 android:textSize="@dimen/textsize"
                 android:textStyle="italic"
                 android:clickable="true"
+                android:onClick="mainMenuListener"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_marginLeft="10sp" />
 

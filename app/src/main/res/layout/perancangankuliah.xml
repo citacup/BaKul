@@ -58,7 +58,7 @@
             android:layout_marginTop="30sp"
             android:gravity="center_vertical|center_horizontal"
             android:clickable="true"
-            android:onClick="mainMenu">
+            android:onClick="perancanganKuliahListener">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -66,20 +66,23 @@
                 android:id="@+id/lihatimage"
                 android:src="@drawable/lihat"
                 android:paddingTop="5sp"
-                android:paddingBottom="5sp" />
+                android:paddingBottom="5sp"
+                android:clickable="true"
+                android:onClick="perancanganKuliahListener"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lihat Rancangan"
-                android:id="@+id/lihatext"
+                android:id="@+id/lihattext"
                 android:textColor="@color/biru"
                 android:textSize="@dimen/textpilihan"
                 android:textStyle="italic"
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
+                android:paddingLeft="20sp"
                 android:clickable="true"
-                android:paddingLeft="20sp" />
+                android:onClick="perancanganKuliahListener"/>
 
         </LinearLayout>
 
@@ -92,7 +95,7 @@
             android:layout_marginTop="30sp"
             android:gravity="center_vertical|center_horizontal"
             android:clickable="true"
-            android:onClick="mainMenu">
+            android:onClick="perancanganKuliahListener">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -100,7 +103,9 @@
                 android:id="@+id/ubahimage"
                 android:src="@drawable/ubah"
                 android:paddingTop="5sp"
-                android:paddingBottom="5sp" />
+                android:paddingBottom="5sp"
+                android:clickable="true"
+                android:onClick="perancanganKuliahListener"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -112,8 +117,9 @@
                 android:textStyle="italic"
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
+                android:paddingLeft="20sp"
                 android:clickable="true"
-                android:paddingLeft="20sp" />
+                android:onClick="perancanganKuliahListener"/>
 
         </LinearLayout>
     </LinearLayout>

@@ -57,7 +57,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center_vertical|center_horizontal"
             android:clickable="true"
-            android:onClick="mainMenu">
+            android:onClick="pencarianListener">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,7 +69,8 @@
                 android:textStyle="italic"
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:onClick="pencarianListener"/>
         </LinearLayout>
 
         <LinearLayout
@@ -81,7 +82,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center_vertical|center_horizontal"
             android:clickable="true"
-            android:onClick="mainMenu">
+            android:onClick="pencarianListener">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -91,9 +92,10 @@
                 android:textColor="@color/biru"
                 android:textSize="@dimen/textpilihan"
                 android:textStyle="italic"
-                android:paddingTop="20sp"
-                android:paddingBottom="20sp"
-                android:clickable="true"/>
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:clickable="true"
+                android:onClick="pencarianListener"/>
         </LinearLayout>
     </LinearLayout>
 

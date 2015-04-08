@@ -22,15 +22,4 @@ public class KalkulatorNilai extends Fragment {
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
 
-    public void mainMenu(View v) {
-        //aktifkan efek klik dari button login
-        v.startAnimation(buttonClick);
-        switch(v.getId()) {
-        case R.id.satulayout :
-            //fitur 1
-            //startActivity(new Intent(getBaseContext(), KalkulatorHasil.class));
-            //this.finish();
-            break;
-        }
-    }
 }
