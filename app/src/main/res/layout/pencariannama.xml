@@ -67,7 +67,7 @@
                 android:layout_gravity="right" />
         </LinearLayout>
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/scrollView"
@@ -77,8 +77,8 @@
             <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/listView" />
-        </ScrollView>
+                android:id="@+id/listMatkul" />
+        </LinearLayout>
 
     </LinearLayout>
 
