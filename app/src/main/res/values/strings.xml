@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello_world">Hello world!</string>
-    <string name="app_name">Bantu Kuliah</string>
+    <string name="app_name">BaKul</string>
     <string name="title_section0">Halaman Utama</string>
     <string name="title_section1">Informasi Kuliah</string>
     <string name="title_section2">Perancangan Kuliah</string>

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 
 
-public class InformasiMatkul extends ActionBarActivity {
+public class LihatMatkul extends ActionBarActivity {
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
     @Override
@@ -16,10 +16,10 @@ public class InformasiMatkul extends ActionBarActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.logo_kecil);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        setContentView(R.layout.informasimatkul);
+        setContentView(R.layout.lihatmatkul);
     }
 
-    public void mainMenu(View v) {
+    public void lihatMatkulListener(View v) {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
         switch(v.getId()) {

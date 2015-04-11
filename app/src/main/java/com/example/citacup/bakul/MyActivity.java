@@ -5,17 +5,35 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.citacup.bakul.Business.DatabaseHelper;
+import com.example.citacup.bakul.Business.JSONParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class MyActivity extends Activity
@@ -25,8 +43,16 @@ public class MyActivity extends Activity
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
+    private Context context;
+    private DatabaseHelper databaseHelper;
+    public static ArrayList<String> namaDosen = new ArrayList<String>();
 
-    /**
+
+
+
+
+
+     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
@@ -45,7 +71,80 @@ public class MyActivity extends Activity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
+
+        DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+        databaseHelper.getWritableDatabase();
+
+        new ProgressTask(MyActivity.this).execute();
+
         Toast.makeText(this, "Log in as cita.audia", Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    private class ProgressTask extends AsyncTask<String, Void, Boolean> {
+        private ProgressDialog dialog;
+
+        private MyActivity activity;
+
+        public ProgressTask(MyActivity activity) {
+            this.activity = activity;
+            context = activity;
+            dialog = new ProgressDialog(context);
+        }
+
+        protected void onPreExecute() {
+            this.dialog.setMessage("Sedang mengambil data...");
+            this.dialog.show();
+            this.dialog.setCancelable(false);
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            namaDosen = databaseHelper.getAllDosen();
+
+            databaseHelper.close();
+        }
+
+        @Override
+        protected Boolean doInBackground(String... arg0) {
+            String urlDosen = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/dosen.json";
+            JSONtoDBDosen(urlDosen);
+            return null;
+        }
+
+        private void JSONtoDBDosen(String url) {
+            databaseHelper = new DatabaseHelper(getApplicationContext());
+            databaseHelper.getWritableDatabase();
+
+            JSONParser jParser = new JSONParser();
+            JSONArray json = jParser.getJSONFromUrl(url);
+            generateDatabaseDosen(json);
+
+        }
+
+        private void generateDatabaseDosen(JSONArray data) {
+            if (data != null) {
+                for (int i = 0; i <data.length(); i++) {
+                    try {
+                        JSONObject obj = data.getJSONObject(i);
+                        String iddosen = obj.getString("iddosen");
+                        String nama = obj.getString("nama");
+                        String email = obj.getString("email");
+
+                        databaseHelper.insertDosen(iddosen, nama,email);
+
+                    } catch (JSONException e) {
+                        Log.e("ErrorDBDosen", e.toString());
+                    }
+
+                }
+            }
+        }
+
     }
 
     @Override

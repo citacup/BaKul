@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:background="#ff0272bc"
             android:id="@+id/labellayout"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical|center_horizontal">
 
             <TextView
@@ -76,17 +76,36 @@
             android:layout_weight="0.2"
             android:gravity="center_vertical|right">
 
-            <Button android:id="@+id/tambah"
-                android:layout_width="wrap_content"
+
+            <Spinner
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Tambah"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
-                android:clickable="true"
-                android:onClick="kalkulatorNilaiListener"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp" />
+                android:id="@+id/spinnermatkul"
+                android:layout_weight="0.75"
+                android:background="@drawable/abc_ab_share_pack_holo_light"
+                android:layout_marginRight="5sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.25"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5sp">
+
+                <Button android:id="@+id/tambah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah"
+                    android:textStyle="italic"
+                    android:background="@color/biru"
+                    android:textColor="@android:color/white"
+                    android:clickable="true"
+                    android:onClick="kalkulatorNilaiListener"
+                    android:paddingLeft="10sp"
+                    android:paddingRight="10sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
 

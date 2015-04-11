@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Informasi Mata Kuliah"
+                android:text="Nama Matkul"
                 android:id="@+id/labeltext"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textsize"
@@ -43,42 +43,57 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pencarian Berdasarkan Nama"
+            android:text="Deskripsi Mata Kuliah"
             android:id="@+id/label"
             style="@style/sectionHeader"
-            android:layout_marginTop="30sp" />
+            android:layout_marginTop="20sp" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:id="@+id/scrollView"
+            android:layout_marginTop="5sp"
+            android:layout_weight="0.80">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="ini adalah informasi mata kuliah yang bersangkut nyangkut gitu dee huahahahahah"
+                android:id="@+id/rincian"
+                android:padding="5dp" />
+        </ScrollView>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/abc_ab_share_pack_holo_light"
-            android:id="@+id/namalayout"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:clickable="true"
-            android:onClick="mainMenu">
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:gravity="center_vertical|right">
 
-            <SearchView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/searchView"
-                android:gravity="right"
-                android:layout_gravity="right" />
-        </LinearLayout>
-
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/scrollView"
-            android:background="@drawable/abc_ab_share_pack_holo_light"
-            android:layout_marginTop="20sp">
-
-            <ListView
+            <Button android:id="@+id/review"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/listView" />
-        </ScrollView>
+                android:text="Lihat Review"
+                android:textStyle="italic"
+                android:background="@color/biru"
+                android:textColor="@android:color/white"
+                android:onClick="lihatMatkulListener"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:layout_marginRight="15sp"/>
+
+            <Button android:id="@+id/rantai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lihat Rantai"
+                android:textStyle="italic"
+                android:background="@color/biru"
+                android:textColor="@android:color/white"
+                android:onClick="lihatMatkulListener"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" />
+        </LinearLayout>
 
     </LinearLayout>
 

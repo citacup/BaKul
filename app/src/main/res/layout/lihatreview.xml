@@ -24,13 +24,13 @@
             android:layout_height="wrap_content"
             android:background="#ff0272bc"
             android:id="@+id/labellayout"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical|center_horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nama Matkul"
+                android:text="Review Matkul"
                 android:id="@+id/labeltext"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textsize"
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Deskripsi Mata Kuliah"
+            android:text="Review Mata Kuliah"
             android:id="@+id/label"
             style="@style/sectionHeader"
             android:layout_marginTop="20sp" />
@@ -53,34 +53,45 @@
             android:layout_height="0dp"
             android:id="@+id/scrollView"
             android:layout_marginTop="5sp"
-            android:layout_weight="0.80">
+            android:layout_weight="0.70">
 
-            <TextView
+
+            <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="ini adalah informasi mata kuliah yang bersangkut nyangkut gitu dee huahahahahah"
-                android:id="@+id/rincian"
-                android:padding="5dp" />
+                android:id="@+id/listView" />
         </ScrollView>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:gravity="center_vertical|right">
+            android:layout_weight="0.30"
+            android:gravity="center_vertical|right"
+            android:padding="5sp">
 
-            <Button android:id="@+id/rantai"
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/editText2"
+                android:background="@drawable/abc_ab_share_pack_holo_light"
+                android:hint="Tuliskan review Anda disini..."
+                android:gravity="left|top"
+                android:padding="5dp" />
+
+            <Button android:id="@+id/tambah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lihat Rantai"
+                android:text="Tambah Review"
                 android:textStyle="italic"
                 android:background="@color/biru"
                 android:textColor="@android:color/white"
-                android:onClick="mainMenu"
+                android:onClick="lihatMatkulListener"
                 android:paddingLeft="10sp"
-                android:paddingRight="10sp" />
+                android:paddingRight="10sp"
+                android:layout_marginLeft="5sp" />
         </LinearLayout>
 
     </LinearLayout>

@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Perancangan Kuliah"
+                android:text="Informasi Dosen"
                 android:id="@+id/labeltext"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textsize"
@@ -45,54 +45,66 @@
             android:layout_height="wrap_content"
             android:id="@+id/labelimg"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20sp"
-            android:src="@drawable/dua" />
+            android:layout_marginTop="50sp"
+            android:src="@drawable/dosen" />
 
-        <TableLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi Dosen"
+            android:id="@+id/label"
+            style="@style/sectionHeader"
+            android:layout_marginTop="20sp" />
+
+        <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="30sp">
+            android:layout_height="0dp"
+            android:id="@+id/scrollView"
+            android:layout_marginTop="5sp"
+            android:layout_weight="0.80">
 
-            <TableRow
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical|center_horizontal">
+                android:id="@+id/rincianlayout"
+                android:layout_margin="5dp">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Semester berapa Kamu?"
-                    android:id="@+id/label"
-                    android:layout_weight="0.6"
-                    android:gravity="center_horizontal" />
-
-                <Spinner
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/semester"
-                    android:layout_weight="0.4" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
-
-                <Button android:id="@+id/lanjut"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15sp"
-                    android:text="Lanjut"
-                    android:textStyle="italic"
-                    android:background="@color/biru"
-                    android:textColor="@android:color/white"
-                    android:onClick="mainMenu"
-                    android:paddingLeft="10sp"
-                    android:paddingRight="10sp" />
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Nama : Cita Audia Ahlunaza"
+                    android:id="@+id/rinciannama"
+                    android:padding="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Email : cita.audia@ui.ac.id"
+                    android:id="@+id/rincianemail"
+                    android:padding="5dp" />
+            </LinearLayout>
+        </ScrollView>
 
-            </TableRow>
-        </TableLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:gravity="center_vertical|right">
+
+            <Button android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kirim Email"
+                android:textStyle="italic"
+                android:background="@color/biru"
+                android:textColor="@android:color/white"
+                android:onClick="lihatDosenListener"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" />
+        </LinearLayout>
 
     </LinearLayout>
 

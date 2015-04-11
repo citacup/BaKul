@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 
 
-public class LihatRantai extends ActionBarActivity {
+public class LihatDosen extends ActionBarActivity {
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
     @Override
@@ -16,16 +16,16 @@ public class LihatRantai extends ActionBarActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.logo_kecil);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        setContentView(R.layout.mainmenu);
+        setContentView(R.layout.lihatdosen);
     }
 
-    public void mainMenu(View v) {
+    public void lihatDosenListener(View v) {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
         switch(v.getId()) {
-        case R.id.ok :
-            //tombol ok
-            startActivity(new Intent(getBaseContext(), LihatMatkul.class));
+        case R.id.rantai :
+            //fitur 1
+            startActivity(new Intent(getBaseContext(), LihatRantai.class));
             this.finish();
             break;
         }
