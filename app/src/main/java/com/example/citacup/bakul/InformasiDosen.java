@@ -28,11 +28,6 @@ public class InformasiDosen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.informasidosen, container, false);
         listDosen = (ListView) rootview.findViewById(R.id.listDosen);
-
-        //String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-         //       "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-         //       "Linux", "OS/2" };
-
         ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
                 MyActivity.namaDosen);

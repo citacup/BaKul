@@ -46,8 +46,8 @@ public class MyActivity extends Activity
     private Context context;
     private DatabaseHelper databaseHelper;
     public static ArrayList<String> namaDosen = new ArrayList<String>();
-
-
+    public static ArrayList<String> namaMatakuliah = new ArrayList<String>();
+    public static ArrayList<String> namaKategori = new ArrayList<String>();
 
 
 
@@ -105,14 +105,20 @@ public class MyActivity extends Activity
                 dialog.dismiss();
             }
             namaDosen = databaseHelper.getAllDosen();
-
+            namaMatakuliah = databaseHelper.getAllMatakuliah();
+            namaKategori = databaseHelper.getAllKategori();
             databaseHelper.close();
         }
 
         @Override
         protected Boolean doInBackground(String... arg0) {
             String urlDosen = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/dosen.json";
+            String urlMatakuliah = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/matakuliah.json";
+            String urlKategori = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/kategori.json";
             JSONtoDBDosen(urlDosen);
+            JSONtoDBMatakuliah(urlMatakuliah);
+            JSONtoDBKategori(urlKategori);
+
             return null;
         }
 
@@ -145,6 +151,67 @@ public class MyActivity extends Activity
             }
         }
 
+        private void JSONtoDBMatakuliah(String url) {
+            databaseHelper = new DatabaseHelper(getApplicationContext());
+            databaseHelper.getWritableDatabase();
+
+            JSONParser jParser = new JSONParser();
+            JSONArray json = jParser.getJSONFromUrl(url);
+            generateDatabaseMatakuliah(json);
+
+        }
+        private void generateDatabaseMatakuliah(JSONArray data) {
+            if (data != null) {
+                for (int i = 0; i <data.length(); i++) {
+                    try {
+                        JSONObject obj = data.getJSONObject(i);
+                        String kodemk = obj.getString("kodemk");
+                        String nama = obj.getString("nama");
+                        String sks = obj.getString("sks");
+                        String semester = obj.getString("semester");
+                        String islulus = obj.getString("islulus");
+                        String deskripsi = obj.getString("deskripsi");
+                        String referensi = obj.getString("referensi");
+                        String objektif = obj.getString("objektif");
+                        String kategori = obj.getString("kategori");
+
+
+                        databaseHelper.insertMatakuliah(kodemk,nama,sks,semester,islulus,deskripsi,referensi,objektif,kategori);
+
+                    } catch (JSONException e) {
+                        Log.e("ErrorDBDosen", e.toString());
+                    }
+
+                }
+            }
+        }
+    }
+
+    private void JSONtoDBKategori(String url) {
+        databaseHelper = new DatabaseHelper(getApplicationContext());
+        databaseHelper.getWritableDatabase();
+
+        JSONParser jParser = new JSONParser();
+        JSONArray json = jParser.getJSONFromUrl(url);
+        generateDatabaseKategori(json);
+
+    }
+
+    private void generateDatabaseKategori(JSONArray data) {
+        if (data != null) {
+            for (int i = 0; i <data.length(); i++) {
+                try {
+                    JSONObject obj = data.getJSONObject(i);
+                    String kategori = obj.getString("kategori");
+
+                    databaseHelper.insertKategori(kategori);
+
+                } catch (JSONException e) {
+                    Log.e("ErrorDBDosen", e.toString());
+                }
+
+            }
+        }
     }
 
     @Override
