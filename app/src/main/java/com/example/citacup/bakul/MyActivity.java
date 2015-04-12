@@ -13,6 +13,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,6 +49,7 @@ public class MyActivity extends Activity
     public static ArrayList<String> namaDosen = new ArrayList<String>();
     public static ArrayList<String> namaMatakuliah = new ArrayList<String>();
     public static ArrayList<String> namaKategori = new ArrayList<String>();
+    public static String currentUser = "";
 
 
 
@@ -71,13 +73,12 @@ public class MyActivity extends Activity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-
         DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
         databaseHelper.getWritableDatabase();
 
         new ProgressTask(MyActivity.this).execute();
 
-        Toast.makeText(this, "Log in as cita.audia", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Log in as "+currentUser, Toast.LENGTH_SHORT).show();
 
 
     }

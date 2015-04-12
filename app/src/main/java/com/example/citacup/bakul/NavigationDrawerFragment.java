@@ -261,7 +261,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_login) {
-            Toast.makeText(getActivity(), "Login as cita.audia", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Login as "+MyActivity.currentUser, Toast.LENGTH_SHORT).show();
             return true;
         }
 
