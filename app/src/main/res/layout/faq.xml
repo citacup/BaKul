@@ -57,7 +57,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Q : Apakah bumi bulat?"
+                    android:text="Q : Apakah perbedaan Ilmu Komputer dan Sistem Informasi?"
                     android:id="@+id/label1"
                     style="@style/sectionHeader"
                     android:layout_marginTop="10sp" />
@@ -66,14 +66,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="A : Saya tidak tahu bisa jadi ya"
+                    android:text="A : Program Sistem Informasi lebih berfokus pada pengintegrasian solusi berbasis teknologi informasi dengan proses bisnis untuk memenuhi kebutuhan informasi bisnis dan usaha-usaha lain, yang memungkinkan tercapainya tujuan sebuah organisasi dengan efektif dan efisien. Perspektif bidang ilmu ini lebih memandang teknologi sebagai instrumen untuk mencatat, menghasilkan, mengolah, serta mendistribusikan informasi. Ahli-ahli di bidang ini memiliki kemampuan untuk memetakan kebutuhan informasi sebuah organisasi, dan menentukan cara terbaik teknologi informasi dapat digunakan untuk memenuhi kebutuhan tersebut. \n Ilmu Komputer memiliki fokus pada kemampuan untuk merancang dan mengembangkan perangkat lunak yang canggih untuk menyelesaikan permasalahan yang rumit. Cakupannya cukup luas, mulai dari fondasi teoritis mengenai perancangan algoritma, yaitu konsep dasar yang melandasi pengembangan perangkat lunak, sampai kepada penerapan mutakhir berupa aplikasi robotika, kecerdasan buatan, bio-informatika, dan topik-topik menarik lainnya."
                     android:id="@+id/rincian1"
                     android:padding="5dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Q : Apakah masuk UI susah?"
+                    android:text="Q : Apa saja bidang minat ilmu komputer yang ada di Fasilkom?"
                     android:id="@+id/label2"
                     style="@style/sectionHeader"
                     android:layout_marginTop="10sp" />
@@ -82,14 +82,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="A : Saya tidak tahu bisa jadi tidak"
+                    android:text="A : Bidang Minat Ilmu Komputer : \n- Arsitektur dan Infrastruktur Komputer \n- Pengolahan Mutimedia \n- Teknologi Perangkat Lunak \n- Komputasi Ilmiah"
                     android:id="@+id/rincian2"
                     android:padding="5dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Q : Apakah ini penting?"
+                    android:text="Q : Apa saja bidang minat sistem informasi yang ada di Fasilkom?"
+                    android:id="@+id/label4"
+                    style="@style/sectionHeader"
+                    android:layout_marginTop="10sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="A : Bidang minat Sistem Informasi : \n- System Enterprise \n- Teknologi Informasi"
+                    android:id="@+id/rincian4"
+                    android:padding="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Q : Apa saja ketentuan untuk bisa lulus dari Fasilkom?"
                     android:id="@+id/label3"
                     style="@style/sectionHeader"
                     android:layout_marginTop="10sp" />
@@ -98,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="A : Pastinyaaa!"
+                    android:text="A : Memenuhi standar minimal kurikulum, yakni 144 SKS yang terdiri dari 18 SKS Mata Kuliah Wajib Universitas, 5 SKS Mata Kuliah Wajib Rumpun, 43 SKS Mata Kuliah Wajib Fakultas, 47 SKS Mata Kuliah Wajib Program Studi, 21 SKS Mata Kuliah Pilihan Bidang Minat, 10 SKS Mata Kuliah Pilihan Lain"
                     android:id="@+id/rincian3"
                     android:padding="5dp" />
             </LinearLayout>

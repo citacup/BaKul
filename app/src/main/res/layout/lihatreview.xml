@@ -48,30 +48,30 @@
             style="@style/sectionHeader"
             android:layout_marginTop="20sp" />
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:id="@+id/scrollView"
             android:layout_marginTop="5sp"
-            android:layout_weight="0.70">
+            android:layout_weight="0.80">
 
 
             <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/listView" />
-        </ScrollView>
+                android:id="@+id/listReview" />
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.30"
+            android:layout_weight="0.20"
             android:gravity="center_vertical|right"
             android:padding="5sp">
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:inputType="textMultiLine"
                 android:ems="10"
@@ -79,19 +79,21 @@
                 android:background="@drawable/abc_ab_share_pack_holo_light"
                 android:hint="Tuliskan review Anda disini..."
                 android:gravity="left|top"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:layout_weight="0.7" />
 
             <Button android:id="@+id/tambah"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Tambah Review"
                 android:textStyle="italic"
                 android:background="@color/biru"
                 android:textColor="@android:color/white"
-                android:onClick="lihatMatkulListener"
+                android:onClick="lihatReviewListener"
                 android:paddingLeft="10sp"
                 android:paddingRight="10sp"
-                android:layout_marginLeft="5sp" />
+                android:layout_marginLeft="5sp"
+                android:layout_weight="0.3" />
         </LinearLayout>
 
     </LinearLayout>

@@ -1,33 +1,38 @@
 package com.example.citacup.bakul;
 
-import android.content.Intent;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
 
-
-public class LihatDosen extends ActionBarActivity {
-
+/**
+ * Created by CITACUP on PPL.
+ */
+public class LihatDosen extends Fragment {
+    View rootview;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
+
+    protected final String nama = "Nama : ";
+    protected final String email = "Email : ";
+
+    private TextView namaView;
+    private TextView emailView;
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.logo_kecil);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        setContentView(R.layout.lihatdosen);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        rootview = inflater.inflate(R.layout.lihatdosen, container, false);
+
+        namaView = (TextView) rootview.findViewById(R.id.rinciannama);
+        emailView = (TextView) rootview.findViewById(R.id.rincianemail);
+
+        namaView.setText(nama+InformasiDosen.selected.getNama());
+        emailView.setText(email+InformasiDosen.selected.getEmail());
+        return rootview;
     }
 
-    public void lihatDosenListener(View v) {
-        //aktifkan efek klik dari button login
-        v.startAnimation(buttonClick);
-        switch(v.getId()) {
-        case R.id.rantai :
-            //fitur 1
-            startActivity(new Intent(getBaseContext(), LihatRantai.class));
-            this.finish();
-            break;
-        }
-    }
 }

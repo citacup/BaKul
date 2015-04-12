@@ -47,11 +47,11 @@
             android:layout_weight="1"
             android:layout_marginTop="50sp">
 
-            <AutoCompleteTextView
-                android:id="@+id/email"
+            <EditText
+                android:id="@+id/username_SSO"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_email"
+                android:hint="Username"
                 android:fontFamily="@string/action_sign_in"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -76,7 +76,7 @@
                 android:textStyle="italic"
                 android:background="@color/biru"
                 android:textColor="@android:color/white"
-                android:onClick="mainMenu"
+                android:onClick="loginSSO"
                 android:paddingLeft="10sp"
                 android:paddingRight="10sp"/>
 

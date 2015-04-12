@@ -1,17 +1,20 @@
 package com.example.citacup.bakul;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.citacup.bakul.Business.DatabaseHelper;
+import com.example.citacup.bakul.Entities.MataKuliah;
 
 /**
  * Created by CITACUP on PPL.
@@ -21,6 +24,7 @@ public class PencarianNama extends Fragment {
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
     protected ListView listMatakuliah;
     protected ListView listDosen;
+
 
     @Nullable
     @Override
@@ -33,6 +37,17 @@ public class PencarianNama extends Fragment {
               MyActivity.namaMatakuliah);
 
         listMatakuliah.setAdapter(files);
+        listMatakuliah.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            //     selected = MyActivity.databaseHelper.getDosenFromNama(MyActivity.namaDosen.get(position));
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Pencarian.pilih = MyActivity.databaseHelper.getMatakuliahFromNama(MyActivity.namaMatakuliah.get(position));
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatMatkul())
+                        .commit();
+            }
+        });
         return rootview;
     }
 

@@ -91,7 +91,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -261,7 +261,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_login) {
-            Toast.makeText(getActivity(), "Login as cita.audia", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Login as "+MyActivity.currentUser, Toast.LENGTH_SHORT).show();
             return true;
         }
 

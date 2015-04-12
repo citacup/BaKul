@@ -10,6 +10,7 @@ import android.util.Log;
 import com.example.citacup.bakul.Entities.Dosen;
 import com.example.citacup.bakul.Entities.Kategori;
 import com.example.citacup.bakul.Entities.MataKuliah;
+import com.example.citacup.bakul.Entities.Review;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         query = "CREATE TABLE `Matakuliah` (`kodemk` TEXT, `nama` TEXT, `sks` TEXT, `semester` TEXT, `islulus` TEXT,`deskripsi` TEXT,`referensi` TEXT, `objektif` TEXT,`kategori` TEXT); ";
         db.execSQL(query);
         query = "CREATE TABLE `Kategori` (`kategori` TEXT); ";
+        db.execSQL(query);
+        query = "CREATE TABLE `Review` (`idrev` TEXT,`username` TEXT,`nama` TEXT,`komentar` TEXT,`app_flag` TEXT,`like` TEXT,`dislike` TEXT); ";
         db.execSQL(query);
     }
 
@@ -64,6 +67,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert("Kategori", null, values);
     }
 
+    public void insertReview (String idrev, String username, String nama, String komentar, String app_flag, String like, String dislike) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("idrev", idrev);
+        values.put("username", username);
+        values.put("nama", nama);
+        values.put("komentar", komentar);
+        values.put("app_flag", app_flag);
+        values.put("like", like);
+        values.put("dislike", dislike);
+        sqLiteDatabase.insert("Review", null, values);
+    }
+
     public ArrayList<String> getAllDosen() {
         ArrayList<Dosen> listDosen = new ArrayList<Dosen>();
         ArrayList<String> listNamaDosen = new ArrayList <String>();
@@ -85,9 +101,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return listNamaDosen;
     }
 
+
+
+
     public Dosen getDosenFromID (int id) {
         Dosen dosen = null;
         String query = "SELECT * from Dosen where id = " + id;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            dosen = new Dosen(cursor.getString(0), cursor.getString(1),cursor.getString(2));
+        }
+        return dosen;
+    }
+
+    public Dosen getDosenFromNama (String nama) {
+        Dosen dosen = null;
+        String query = "SELECT * from Dosen where nama = "+"'" + nama+"'" ;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.moveToFirst()) {
@@ -121,9 +151,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
       return listNamaMatakuliah;
   }
 
-    public MataKuliah getMatakuliahFromID (int id) {
+    public MataKuliah getMatakuliahFromNama (String nama) {
         MataKuliah matakuliah = null;
-        String query = "SELECT * from Matakuliah where kodemk = " + id;
+        String query = "SELECT * from Matakuliah where nama = "+"'" + nama+"'";
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.moveToFirst()) {
@@ -248,6 +278,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /////////////////////////////------------------------------------////////////////
+////////////////////////////////////REVIEW////////////////////////
+
+    public ArrayList<String> getAllReview() {
+        ArrayList<Review> listReview = new ArrayList<Review>();
+        ArrayList<String> listReviewMatkul = new ArrayList <String>();
+        String fetchdata = "select * from Review";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        ////(int id, String nama, String email)
+        if (cursor.moveToFirst()) {
+            Log.d("cursor dosen", "tidak null");
+            do {
+                Review review = new Review(cursor.getString(0), cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6));
+                listReview.add(review);
+            } while (cursor.moveToNext());
+        }
+
+        for(Review review : listReview){
+            listReviewMatkul.add(review.getNama());
+        }
+        return listReviewMatkul;
+    }
+
+    public ArrayList<String> getReviewFromNama(String nama) {
+        ArrayList<Review> listReview2 = new ArrayList<Review>();
+        ArrayList<String> listReviewMatkul2 = new ArrayList <String>();
+        String query = "SELECT * from Review where nama = "+"'" + nama+"'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        ////(int id, String nama, String email)
+        if (cursor.moveToFirst()) {
+            Log.d("cursor dosen", "tidak null");
+            do {
+                Review review2 = new Review(cursor.getString(0), cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6));
+                listReview2.add(review2);
+            } while (cursor.moveToNext());
+        }
+
+        for(Review review : listReview2){
+            listReviewMatkul2.add(review.getKomentar());
+        }
+        return listReviewMatkul2;
+    }
+
+
+    //---------------------------------------------------------------------------------///
+
     @Override
     public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
 

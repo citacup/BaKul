@@ -65,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="ini adalah informasi lalala yang bersangkut nyangkut gitu dee huahahahahah"
+                    android:text="Dari Menu Utama, pilih Informasi Kuliah, setelahnya pilih Informasi Mata Kuliah, dan lakukan pencarian berdasarkan nama atau kategori. Setelahnya pilih mata kuliah dari daftar yang ditampilkan"
                     android:id="@+id/rincian1"
                     android:padding="5dp" />
 
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="ini adalah informasi lalala yang bersangkut nyangkut gitu dee huahahahahah"
+                    android:text="Dari halaman mengenai sebuah mata kuliah, pilih Tulis Review, setelahnya tuliskan review pada tempat yang disediakan dan lakukan konfirmasi untuk menyimpan review "
                     android:id="@+id/rincian2"
                     android:padding="5dp" />
 
@@ -97,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="ini adalah informasi lalala yang bersangkut nyangkut gitu dee huahahahahah"
+                    android:text="Dari Menu Utama, pilih Kalkulator Nilai, kemudian masukkan nama mata kuliah sesuai dengan yang ingin dihitung. Setelahnya masukkan komponen sesuai dengan ketentuan masing-masing mata kuliah dan nilai yang telah didapatkan untuk tiap komponen yang sudah dilalui. Informasi mengenai perkiraan nilai yang dibutuhkan dapat dilihat di bagian kiri bawah "
                     android:id="@+id/rincian3"
                     android:padding="5dp" />
             </LinearLayout>

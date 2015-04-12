@@ -59,12 +59,26 @@
             android:clickable="true"
             android:onClick="mainMenu">
 
-            <SearchView
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/searchView"
-                android:gravity="right"
-                android:layout_gravity="right" />
+                android:id="@+id/kolomCari"
+                android:layout_weight="0.80"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp" />
+            <Button
+                android:id="@+id/cari"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Cari"
+                android:textStyle="italic"
+                android:background="@color/biru"
+                android:textColor="@android:color/white"
+                android:onClick="mainMenu"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:layout_weight="0.20" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -75,8 +89,8 @@
             android:layout_marginTop="20sp">
 
             <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:id="@+id/listNamaMatkul" />
         </LinearLayout>
 

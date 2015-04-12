@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -44,13 +45,13 @@ public class MyActivity extends Activity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private Context context;
-    private DatabaseHelper databaseHelper;
+    public static DatabaseHelper databaseHelper;
     public static ArrayList<String> namaDosen = new ArrayList<String>();
     public static ArrayList<String> namaMatakuliah = new ArrayList<String>();
     public static ArrayList<String> namaKategori = new ArrayList<String>();
+    public static ArrayList<String> listReview = new ArrayList<String>();
 
-
-
+    public static String currentUser = "";
 
      /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -77,7 +78,7 @@ public class MyActivity extends Activity
 
         new ProgressTask(MyActivity.this).execute();
 
-        Toast.makeText(this, "Log in as cita.audia", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Log in as "+currentUser, Toast.LENGTH_SHORT).show();
 
 
     }
@@ -107,6 +108,7 @@ public class MyActivity extends Activity
             namaDosen = databaseHelper.getAllDosen();
             namaMatakuliah = databaseHelper.getAllMatakuliah();
             namaKategori = databaseHelper.getAllKategori();
+            listReview = databaseHelper.getAllKategori();
             databaseHelper.close();
         }
 
@@ -115,9 +117,11 @@ public class MyActivity extends Activity
             String urlDosen = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/dosen.json";
             String urlMatakuliah = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/matakuliah.json";
             String urlKategori = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/kategori.json";
+            String urlReview = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/review.json";
             JSONtoDBDosen(urlDosen);
             JSONtoDBMatakuliah(urlMatakuliah);
             JSONtoDBKategori(urlKategori);
+            JSONtoDBReview(urlReview);
 
             return null;
         }
@@ -205,6 +209,38 @@ public class MyActivity extends Activity
                     String kategori = obj.getString("kategori");
 
                     databaseHelper.insertKategori(kategori);
+
+                } catch (JSONException e) {
+                    Log.e("ErrorDBDosen", e.toString());
+                }
+
+            }
+        }
+    }
+
+    private void JSONtoDBReview(String url) {
+        databaseHelper = new DatabaseHelper(getApplicationContext());
+        databaseHelper.getWritableDatabase();
+
+        JSONParser jParser = new JSONParser();
+        JSONArray json = jParser.getJSONFromUrl(url);
+        generateDatabaseReview(json);
+
+    }
+
+    private void generateDatabaseReview(JSONArray data) {
+        if (data != null) {
+            for (int i = 0; i <data.length(); i++) {
+                try {
+                    JSONObject obj = data.getJSONObject(i);
+                    String idrev = obj.getString("idrev");
+                    String username = obj.getString("username");
+                    String nama = obj.getString("nama");
+                    String komentar = obj.getString("komentar");
+                    String app_flag = obj.getString("app_flag");
+                    String like = obj.getString("like");
+                    String dislike = obj.getString("dislike");
+                    databaseHelper.insertReview(idrev,username,nama,komentar,app_flag,like,dislike);
 
                 } catch (JSONException e) {
                     Log.e("ErrorDBDosen", e.toString());
@@ -600,6 +636,93 @@ public class MyActivity extends Activity
             case R.id.satulayout :
                 //pencarian kategori
                 //startActivity(new Intent(getBaseContext(), InformasiMatkul.class));
+                break;
+        }
+    }
+
+    public void lihatDosenListener(View v) {
+        v.startAnimation(buttonClick);
+        switch(v.getId()) {
+            case R.id.email :
+                Log.i("Send email", "");
+
+                String[] TO = {InformasiDosen.selected.getEmail()};
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setData(Uri.parse("mailto:"));
+                emailIntent.setType("text/plain");
+
+
+                emailIntent.putExtra(Intent.EXTRA_EMAIL,TO);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+                try {
+                    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                    finish();
+                    Log.i("Finished sending email...", "");
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(MyActivity.this,
+                            "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                }
+        }
+    }
+	
+	public void lihatMatkulListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.rantai :
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), LihatRantai.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatRantai())
+                        .commit();
+                break;
+            case R.id.review :
+                //fitur 1
+                //startActivity(new Intent(getBaseContext(), LihatRantai.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatReview())
+                        .commit();
+                break;
+        }
+    }
+
+    public void lihatRantaiListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.ok :
+                //tombol ok
+                //startActivity(new Intent(getBaseContext(), LihatMatkul.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatMatkul())
+                        .commit();
+                break;
+        }
+    }
+
+    public void lihatReviewListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.tambah :
+                //tombol ok
+                //startActivity(new Intent(getBaseContext(), LihatMatkul.class));
+                //this.finish();
+                Toast.makeText(this, "Review dikirim...", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
