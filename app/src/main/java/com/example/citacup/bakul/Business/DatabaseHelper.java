@@ -10,6 +10,7 @@ import android.util.Log;
 import com.example.citacup.bakul.Entities.Dosen;
 import com.example.citacup.bakul.Entities.Kategori;
 import com.example.citacup.bakul.Entities.MataKuliah;
+import com.example.citacup.bakul.Entities.Pengguna;
 import com.example.citacup.bakul.Entities.Review;
 
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         query = "CREATE TABLE `Kategori` (`kategori` TEXT); ";
         db.execSQL(query);
         query = "CREATE TABLE `Review` (`idrev` TEXT,`username` TEXT,`nama` TEXT,`komentar` TEXT,`app_flag` TEXT,`like` TEXT,`dislike` TEXT); ";
+        db.execSQL(query);
+        query = "CREATE TABLE IF NOT EXISTS `Pengguna` (`username` TEXT, `jurusan` INTEGER,`session` INTEGER)";
         db.execSQL(query);
     }
 
@@ -78,6 +81,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("like", like);
         values.put("dislike", dislike);
         sqLiteDatabase.insert("Review", null, values);
+    }
+
+    public void insertPengguna (String username, int jurusan){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("username", username);
+        values.put("jurusan", jurusan);
+        values.put("session", 0);
+        sqLiteDatabase.insert("Pengguna", null, values);
+    }
+
+    //pengguna
+    public boolean hasPengguna(String username){
+        String query = "select * from Pengguna where username='"+username+"'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        int res = sqLiteDatabase.rawQuery(query, null).getCount();
+        return res!=0;
+    }
+
+    public Pengguna getPengguna(String username){
+        Pengguna res = null;
+        String query = "select * from Pengguna where username='"+username+"'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2));
+        }
+        return res;
+    }
+
+    public void switchSessionPengguna(String username, int session){
+        Pengguna current = getPengguna(username);
+        String query;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        if(current!=null){
+            query = "UPDATE Pengguna SET session="+session+" WHERE username='"+username+"'";
+            sqLiteDatabase.execSQL(query);
+        }
+    }
+
+    public Pengguna whoHasSession(){
+        Pengguna res = null;
+        String query = "select * from Pengguna where session=1";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2));
+        }
+        return res;
     }
 
     public ArrayList<String> getAllDosen() {

@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -30,11 +31,23 @@ import android.widget.Toast;
 import com.example.citacup.bakul.Business.DatabaseHelper;
 import com.example.citacup.bakul.Business.JSONParser;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MyActivity extends Activity
@@ -57,6 +70,9 @@ public class MyActivity extends Activity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    private HttpPost httppost;
+    private HttpClient httpclient;
+    private HttpResponse response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -408,6 +424,7 @@ public class MyActivity extends Activity
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
 
     public void logout() {
+        databaseHelper.switchSessionPengguna(currentUser, 0);
         startActivity(new Intent(getBaseContext(), Logout.class));
         this.finish();
     }
@@ -467,21 +484,21 @@ public class MyActivity extends Activity
                 //fitur 2
                 //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new PerancanganKuliah())
+                        .replace(R.id.container, new PerancanganKuliah1())
                         .commit();
                 break;
             case (R.id.duaimage):
                 //fitur 2
                 //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new PerancanganKuliah())
+                        .replace(R.id.container, new PerancanganKuliah1())
                         .commit();
                 break;
             case (R.id.duatext):
                 //fitur 2
                 //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new PerancanganKuliah())
+                        .replace(R.id.container, new PerancanganKuliah1())
                         .commit();
                 break;
             case (R.id.tigalayout) :
@@ -765,6 +782,22 @@ public class MyActivity extends Activity
         }
     }
 
+    public void perancanganKuliah1Listener(View v){
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.lanjut :
+                //fitur 1
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new PerancanganKuliah())
+                        .commit();
+                break;
+        }
+    }
+
     public void perancanganKuliahListener(View v) {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
@@ -945,15 +978,94 @@ public class MyActivity extends Activity
         FragmentManager fragmentManager = getFragmentManager();
 
         switch(v.getId()) {
-            case R.id.pesan :
+            case R.id.buttonPesan :
                 //kirim pesan
                 //startActivity(new Intent(getBaseContext(), MainMenu.class));
                 //this.finish();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, new MainMenu())
-                        .commit();
-                Toast.makeText(this, "Pesan dikirim", Toast.LENGTH_SHORT).show();
+                EditText pesanAdmin = (EditText) findViewById(R.id.editTextPesan);
+                String  pesan = pesanAdmin.getText().toString();
+
+                //check whether the msg empty or not
+                if(pesan.length()>0) {
+                    httpclient = new DefaultHttpClient();
+                    //url post web
+                    httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/submitAdminMessage.php");
+
+                    try {
+                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                        nameValuePairs.add(new BasicNameValuePair("message", pesan));
+                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                        KirimPesanTask doItInBackGround = new KirimPesanTask(new ProgressDialog(this), MyActivity.this);
+                        doItInBackGround.execute();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    //display message if text field is empty
+                    Toast.makeText(getBaseContext(), "Pesan Kosong", Toast.LENGTH_SHORT).show();
+                }
                 break;
+        }
+    }
+
+    public void kirimPesanHelper(boolean success){
+        if(success) {
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new MainMenu())
+                .commit();
+            Toast.makeText(this, "Pesan dikirim", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Pesan gagal dikirim", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class KirimPesanTask extends AsyncTask<Void, Void, Void> {
+        private ProgressDialog dialog;
+        private MyActivity activity;
+        boolean success = false;
+
+        private KirimPesanTask(ProgressDialog dialog, MyActivity activity) {
+            this.dialog = dialog;
+            this.activity = activity;
+        }
+
+        protected void onPreExecute() {
+            this.dialog.setMessage("Mengirim Pesan");
+            this.dialog.show();
+            this.dialog.setCancelable(false);
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            kirimPesanHelper(success);
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                //execute - means sending
+                response = httpclient.execute(httppost);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+                String json = reader.readLine();
+                Log.d("http response", json+"");
+                if(json.equals("Success")){
+                    success = true;
+                }
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (Exception e) {
+                Log.e("Login SSO", "Exception caught: ", e);
+            }
+            return null;
         }
     }
 

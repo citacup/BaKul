@@ -87,7 +87,7 @@
                     android:textStyle="italic"
                     android:background="@color/biru"
                     android:textColor="@android:color/white"
-                    android:onClick="mainMenu"
+                    android:onClick="perancanganKuliah1Listener"
                     android:paddingLeft="10sp"
                     android:paddingRight="10sp" />
 

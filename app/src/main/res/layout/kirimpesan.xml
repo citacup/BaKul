@@ -45,7 +45,7 @@
             android:layout_height="0sp"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/editTextPesan"
             android:layout_alignBottom="@+id/linearLayout"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -63,7 +63,7 @@
             android:layout_weight="0.4"
             android:gravity="right">
 
-            <Button android:id="@+id/pesan"
+            <Button android:id="@+id/buttonPesan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15sp"

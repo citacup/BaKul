@@ -1,5 +1,6 @@
 package com.example.citacup.bakul;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.citacup.bakul.Business.DatabaseHelper;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -37,7 +40,9 @@ public class LoginSso extends ActionBarActivity {
     private EditText password;
     private Button submitButton;
     private HttpPost httppost;
-    HttpClient httpclient;
+    private HttpClient httpclient;
+    private JSONObject jobject;
+    private boolean loginSuccess = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,14 +82,11 @@ public class LoginSso extends ActionBarActivity {
                 nameValuePairs.add(new BasicNameValuePair("username", uname));
                 nameValuePairs.add(new BasicNameValuePair("password", pwd));
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                //submit and get response
-                // HttpResponse response =
-                //httpclient.execute(httppost);
-
-                //password.setText(""); //reset the message text field
-                //Toast.makeText(getBaseContext(), "Sent", Toast.LENGTH_SHORT).show();
-                BackGroundTask doItInBackGround = new BackGroundTask();
+                BackGroundTask doItInBackGround = new BackGroundTask(new ProgressDialog(this), LoginSso.this);
                 doItInBackGround.execute();
+                if(!loginSuccess){
+                    //doSomething2();
+                }
             } /*catch (ClientProtocolException e) {
                 e.printStackTrace();
             }*/ catch (IOException e) {
@@ -96,7 +98,54 @@ public class LoginSso extends ActionBarActivity {
         }
     }
 
+    public void doSomething(){
+       try {
+           MyActivity.currentUser = jobject.getString("username");
+           String uname = jobject.getString("username");
+           // cek database mobile
+           DatabaseHelper db = new DatabaseHelper(getApplicationContext());
+           if (db.hasPengguna(uname)) {
+               db.switchSessionPengguna(uname, 1);
+               startActivity(new Intent(getBaseContext(), MyActivity.class));
+               this.finish();
+           } else {
+               startActivity(new Intent(getBaseContext(), PilihJurusan.class));
+               this.finish();
+           }
+       }catch (Exception e) {
+           Log.e("Login SSO", "Exception caught: ", e);
+       }
+    }
+
+    public void doSomething2(){
+        Toast.makeText(getBaseContext(), "Wrong username or password", Toast.LENGTH_SHORT).show();
+    }
+
     private class BackGroundTask extends AsyncTask<Void, Void, Void> {
+        private ProgressDialog dialog;
+        private LoginSso activity;
+
+        private BackGroundTask(ProgressDialog dialog, LoginSso activity) {
+            this.dialog = dialog;
+            this.activity = activity;
+        }
+
+        protected void onPreExecute() {
+            this.dialog.setMessage("Logging in");
+            this.dialog.show();
+            this.dialog.setCancelable(false);
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            if(dialog.isShowing()){
+                dialog.dismiss();
+            }
+            if(!loginSuccess) {
+                doSomething2();
+            }
+        }
+
         @Override
         protected Void doInBackground(Void... params) {
             try {
@@ -105,14 +154,14 @@ public class LoginSso extends ActionBarActivity {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
                 String json = reader.readLine();
                 Log.d("http response", json+"");
-                JSONObject jobject = new JSONObject(json);
+                jobject = new JSONObject(json);
                 Log.d("state response",jobject.getString("state"));
                 if(jobject.getString("state").equals("1")) {
-                    MyActivity.currentUser = jobject.getString("username");
-                    // cek database mobile
-                    // if yes start
-                    // if no write local database hp
-                    startActivity(new Intent(getBaseContext(), PilihJurusan.class));
+                    loginSuccess = true;
+                    doSomething();
+                }
+                else{
+                    loginSuccess = false;
                 }
             } catch (ClientProtocolException e) {
                 // TODO Auto-generated catch block
