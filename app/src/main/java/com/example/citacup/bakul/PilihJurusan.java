@@ -63,5 +63,7 @@ public class PilihJurusan extends ActionBarActivity {
                 this.finish();
                 break;
         }
+
+        db.switchSessionPengguna(MyActivity.currentUser, 1);
     }
 }

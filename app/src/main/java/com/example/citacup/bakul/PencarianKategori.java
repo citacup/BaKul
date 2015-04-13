@@ -16,6 +16,8 @@ import android.widget.SpinnerAdapter;
 
 import com.example.citacup.bakul.Entities.MataKuliah;
 
+import java.util.ArrayList;
+
 /**
  * Created by CITACUP on PPL.
  */
@@ -25,32 +27,81 @@ public class PencarianKategori extends Fragment {
     protected ListView listMatakuliah;
     protected Spinner listKategori;
 
+    public static String[] kategoriIlkom = {"Semua Mata Kuliah", "Wajib UI", "Wajib Rumpun Sains", "Wajib Fakultas", "Wajib Jurusan Ilmu Komputer", "Pilihan Bidang Minat Fakultas", "Pilihan Bidang Minat Ilmu Komputer", "Pilihan Lain"};
+    public static String[] kategoriSi = {"Semua Mata Kuliah", "Wajib UI", "Wajib Rumpun Sains", "Wajib Fakultas", "Wajib Jurusan Sistem Informasi", "Pilihan Bidang Minat Fakultas", "Pilihan Bidang Minat Sistem Informasi", "Pilihan Lain"};
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.pencariankategori, container, false);
         
 		listKategori = (Spinner) rootview.findViewById(R.id.spinnerKategori);
-        //ArrayAdapter<String> spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.MyActivity.namaKategori,android.R.layout.simple_spinner_item);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item,
-                MyActivity.namaKategori);
+        ArrayAdapter<String> spinnerAdapter = null;
+
+        if (MyActivity.jurusan == 0) {
+            spinnerAdapter = new ArrayAdapter<String>(getActivity(),
+                    android.R.layout.simple_spinner_dropdown_item,
+                    PencarianKategori.kategoriIlkom);
+            listKategori.setAdapter(spinnerAdapter);
+
+            listKategori.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    // Your code here
+                    if (position==0) {
+                        Pencarian.selected = MyActivity.databaseHelper.getAllMatakuliah();
+                    } else {
+                        Pencarian.selected = MyActivity.databaseHelper.getMatakuliahfromKategori(PencarianKategori.kategoriIlkom[position]);
+                    }
+                    ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_list_item_1,
+                            Pencarian.selected);
+                    listMatakuliah.setAdapter(files);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    return;
+                }
+            });
+        } else {
+            spinnerAdapter = new ArrayAdapter<String>(getActivity(),
+                    android.R.layout.simple_spinner_dropdown_item,
+                    PencarianKategori.kategoriSi);
+            listKategori.setAdapter(spinnerAdapter);
+
+            listKategori.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    // Your code here
+                    if (position==0) {
+                        Pencarian.selected = MyActivity.databaseHelper.getAllMatakuliah();
+                    } else {
+                        Pencarian.selected = MyActivity.databaseHelper.getMatakuliahfromKategori(PencarianKategori.kategoriSi[position]);
+                    }
+                    ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_list_item_1,
+                            Pencarian.selected);
+                    listMatakuliah.setAdapter(files);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    return;
+                }
+            });
+        }
 
         listMatakuliah = (ListView) rootview.findViewById(R.id.listNamaMatkul);
-        //listMatakuliah.setOnItemClickListener(new AdapterView.OnItemClickListener()
-
 		ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
-                MyActivity.namaMatakuliah);
-        
-		listKategori.setAdapter(spinnerAdapter);
+                Pencarian.selected);
         listMatakuliah.setAdapter(files);
 
         listMatakuliah.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            //     selected = MyActivity.databaseHelper.getDosenFromNama(MyActivity.namaDosen.get(position));
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Pencarian.pilih = MyActivity.databaseHelper.getMatakuliahFromNama(MyActivity.namaMatakuliah.get(position));
+                Pencarian.pilih = MyActivity.databaseHelper.getMatakuliahFromNama(Pencarian.selected.get(position));
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new LihatMatkul())

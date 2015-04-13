@@ -84,8 +84,8 @@ public class LoginSso extends ActionBarActivity {
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 BackGroundTask doItInBackGround = new BackGroundTask(new ProgressDialog(this), LoginSso.this);
                 doItInBackGround.execute();
-                if(!loginSuccess){
-                    //doSomething2();
+                if(loginSuccess){
+                    doSomething();
                 }
             } /*catch (ClientProtocolException e) {
                 e.printStackTrace();

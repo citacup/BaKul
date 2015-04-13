@@ -61,10 +61,10 @@ public class MyActivity extends Activity
     public static DatabaseHelper databaseHelper;
     public static ArrayList<String> namaDosen = new ArrayList<String>();
     public static ArrayList<String> namaMatakuliah = new ArrayList<String>();
-    public static ArrayList<String> namaKategori = new ArrayList<String>();
     public static ArrayList<String> listReview = new ArrayList<String>();
 
     public static String currentUser = "";
+    public static int jurusan = 0;
 
      /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -95,8 +95,6 @@ public class MyActivity extends Activity
         new ProgressTask(MyActivity.this).execute();
 
         Toast.makeText(this, "Log in as "+currentUser, Toast.LENGTH_SHORT).show();
-
-
     }
 
     private class ProgressTask extends AsyncTask<String, Void, Boolean> {
@@ -121,10 +119,14 @@ public class MyActivity extends Activity
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
+
+            jurusan = databaseHelper.whoHasSession().getJurusan();
+
             namaDosen = databaseHelper.getAllDosen();
             namaMatakuliah = databaseHelper.getAllMatakuliah();
-            namaKategori = databaseHelper.getAllKategori();
+            //namaKategori = databaseHelper.getAllKategori();
             listReview = databaseHelper.getAllKategori();
+
             databaseHelper.close();
         }
 
@@ -744,6 +746,36 @@ public class MyActivity extends Activity
         }
     }
 
+    public void suatuReviewListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.suka :
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatReview())
+                        .commit();
+                break;
+            case R.id.tidaksuka :
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatReview())
+                        .commit();
+                break;
+            case R.id.lapor :
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LaporReview())
+                        .commit();
+                break;
+            case R.id.ok :
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatReview())
+                        .commit();
+                break;
+        }
+    }
+
     public void kalkulatorNilaiListener(View v) {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
@@ -1010,11 +1042,11 @@ public class MyActivity extends Activity
 
     public void kirimPesanHelper(boolean success){
         if(success) {
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, new MainMenu())
-                .commit();
-            Toast.makeText(this, "Pesan dikirim", Toast.LENGTH_SHORT).show();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, new MainMenu())
+                    .commit();
+            Toast.makeText(this, "Pesan terkirim...", Toast.LENGTH_SHORT).show();
         }
         else{
             Toast.makeText(this, "Pesan gagal dikirim", Toast.LENGTH_SHORT).show();

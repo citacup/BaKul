@@ -27,15 +27,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE `Dosen` (`iddosen` TEXT, `nama` TEXT, `email` TEXT); ";
+        String query = "CREATE TABLE `Dosen` (`iddosen` TEXT PRIMARY KEY, `nama` TEXT, `email` TEXT); ";
         db.execSQL(query);
-        query = "CREATE TABLE `Matakuliah` (`kodemk` TEXT, `nama` TEXT, `sks` TEXT, `semester` TEXT, `islulus` TEXT,`deskripsi` TEXT,`referensi` TEXT, `objektif` TEXT,`kategori` TEXT); ";
+        query = "CREATE TABLE `Matakuliah` (`kodemk` TEXT PRIMARY KEY, `nama` TEXT, `sks` TEXT, `semester` TEXT, `islulus` TEXT,`deskripsi` TEXT,`referensi` TEXT, `objektif` TEXT,`kategori` TEXT); ";
         db.execSQL(query);
-        query = "CREATE TABLE `Kategori` (`kategori` TEXT); ";
+        query = "CREATE TABLE `Kategori` (`kategori` TEXT PRIMARY KEY); ";
         db.execSQL(query);
-        query = "CREATE TABLE `Review` (`idrev` TEXT,`username` TEXT,`nama` TEXT,`komentar` TEXT,`app_flag` TEXT,`like` TEXT,`dislike` TEXT); ";
+        query = "CREATE TABLE `Review` (`idrev` TEXT PRIMARY KEY,`username` TEXT,`nama` TEXT,`komentar` TEXT,`app_flag` TEXT,`like` TEXT,`dislike` TEXT); ";
         db.execSQL(query);
-        query = "CREATE TABLE IF NOT EXISTS `Pengguna` (`username` TEXT, `jurusan` INTEGER,`session` INTEGER)";
+        query = "CREATE TABLE IF NOT EXISTS `Pengguna` (`username` TEXT PRIMARY KEY, `jurusan` INTEGER,`session` INTEGER)";
         db.execSQL(query);
     }
 
@@ -123,7 +123,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Pengguna whoHasSession(){
         Pengguna res = null;
-        String query = "select * from Pengguna where session=1";
+        String query = "select * from Pengguna where session = 1";
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.moveToFirst()){
@@ -132,6 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    ///////////////////DOSEN!!!!!!!!!!!!!!!!!
     public ArrayList<String> getAllDosen() {
         ArrayList<Dosen> listDosen = new ArrayList<Dosen>();
         ArrayList<String> listNamaDosen = new ArrayList <String>();
@@ -203,6 +204,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
       return listNamaMatakuliah;
   }
 
+    public ArrayList<String> getMatakuliahfromKategori(String kategori) {
+        ArrayList<MataKuliah> listMatakuliah = new ArrayList<MataKuliah>();
+        ArrayList<String> listNamaMatakuliah = new ArrayList <String>();
+        String fetchdata = "select * from Matakuliah where kategori='"+kategori+"'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        ////(int id, String nama, String email)
+        if (cursor.moveToFirst()) {
+            do {
+                MataKuliah matakuliah = new MataKuliah(cursor.getString(0), cursor.getString(1),
+                        cursor.getString(2),cursor.getString(3),cursor.getString(4),
+                        cursor.getString(5),cursor.getString(6),cursor.getString(7),
+                        cursor.getString(8));
+                listMatakuliah.add(matakuliah);
+            } while (cursor.moveToNext());
+        }
+
+        for(MataKuliah matakuliah : listMatakuliah){
+            listNamaMatakuliah.add(matakuliah.getNama());
+        }
+        return listNamaMatakuliah;
+    }
+
     public MataKuliah getMatakuliahFromNama (String nama) {
         MataKuliah matakuliah = null;
         String query = "SELECT * from Matakuliah where nama = "+"'" + nama+"'";
@@ -212,6 +236,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             matakuliah = new MataKuliah(cursor.getString(0), cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8));
         }
         return matakuliah;
+    }
+
+    public ArrayList<String> getMataKuliahFromNama2(String nama) {
+        ArrayList<MataKuliah> listMatkul = new ArrayList<MataKuliah>();
+        ArrayList<String> listMatkul2 = new ArrayList <String>();
+        String query = "SELECT * from Matakuliah where nama like "+"'%" + nama+"%'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        ////(int id, String nama, String email)
+        if (cursor.moveToFirst()) {
+            Log.d("cursor dosen", "tidak null");
+            do {
+                MataKuliah matkul = new MataKuliah(cursor.getString(0), cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8));
+                listMatkul.add(matkul);
+            } while (cursor.moveToNext());
+        }
+
+        for(MataKuliah matakuliah : listMatkul){
+            listMatkul2.add(matakuliah.getNama());
+        }
+        return listMatkul2;
     }
 
     public String getSemesterMatkulFromID (int id) {

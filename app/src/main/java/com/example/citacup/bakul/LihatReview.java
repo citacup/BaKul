@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.citacup.bakul.Business.DatabaseHelper;
 import com.example.citacup.bakul.Entities.Dosen;
@@ -19,6 +20,7 @@ import com.example.citacup.bakul.Entities.Dosen;
 public class LihatReview extends Fragment {
     View rootview;
     protected ListView listReview;
+    protected TextView labeltext;
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
 
@@ -26,13 +28,14 @@ public class LihatReview extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.lihatreview, container, false);
-       listReview = (ListView) rootview.findViewById(R.id.listReview);
+        labeltext = (TextView) rootview.findViewById(R.id.labeltext);
+        labeltext.setText("Review "+Pencarian.pilih.getNama());
+
+        listReview = (ListView) rootview.findViewById(R.id.listReview);
         ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
-                 MyActivity.databaseHelper.getReviewFromNama(Pencarian.pilih.getNama()));
-
+                MyActivity.databaseHelper.getReviewFromNama(Pencarian.pilih.getNama()));
         listReview.setAdapter(files);
-
 
         return rootview;
     }

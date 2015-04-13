@@ -19,6 +19,4 @@ public class PerancanganKuliah1 extends Fragment {
     }
 
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
-
-
 }

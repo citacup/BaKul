@@ -24,6 +24,7 @@ public class LihatMatkul extends Fragment {
     private TextView kategori;
     private TextView objektif;
     private TextView referensi;
+
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
 
     @Nullable
