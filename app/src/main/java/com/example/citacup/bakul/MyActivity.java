@@ -1278,7 +1278,10 @@ public class MyActivity extends Activity
                 nameValuePairs.add(new BasicNameValuePair("report", pesan));
                 nameValuePairs.add(new BasicNameValuePair("idreview", Pencarian.pilihReview.getIdrev()));
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+<<<<<<< HEAD
                 Log.d("kirim report", Pencarian.pilihReview.getIdrev());
+=======
+>>>>>>> origin/master
                 KirimLaporanTask doItInBackGround = new KirimLaporanTask(new ProgressDialog(this), MyActivity.this);
                 doItInBackGround.execute();
             } catch (IOException e) {
