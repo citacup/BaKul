@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.citacup.bakul.Business.DatabaseHelper;
 import com.example.citacup.bakul.Business.JSONParser;
+import com.example.citacup.bakul.Entities.MataKuliah;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -737,12 +738,88 @@ public class MyActivity extends Activity
         FragmentManager fragmentManager = getFragmentManager();
 
         switch(v.getId()) {
-            case R.id.tambah :
-                //tombol ok
-                //startActivity(new Intent(getBaseContext(), LihatMatkul.class));
-                //this.finish();
-                Toast.makeText(this, "Review dikirim...", Toast.LENGTH_SHORT).show();
+            case R.id.tambahReivew :
+                EditText reviewText = (EditText) findViewById(R.id.editTextReview);
+                String  pesan = reviewText.getText().toString();
+
+                //check whether the msg empty or not
+                if(pesan.length()>0) {
+                    httpclient = new DefaultHttpClient();
+                    //url post web
+                    httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/submitReview.php");
+
+                    try {
+                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                        nameValuePairs.add(new BasicNameValuePair("komentar", pesan));
+                        nameValuePairs.add(new BasicNameValuePair("idMatkul", Pencarian.pilih.getKodemk()));
+                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                        KirimKomentarTask doItInBackGround = new KirimKomentarTask(new ProgressDialog(this), MyActivity.this);
+                        doItInBackGround.execute();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    //display message if text field is empty
+                    Toast.makeText(getBaseContext(), "Komentar Kosong", Toast.LENGTH_SHORT).show();
+                }
                 break;
+        }
+    }
+
+    public void kirimKomentarHelper(boolean success){
+        if(success){
+            Toast.makeText(getBaseContext(), "Komentar Berhasil di Kirim", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Komentar Gagal di Kirim", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class KirimKomentarTask extends AsyncTask<Void, Void, Void> {
+        private ProgressDialog dialog;
+        private MyActivity activity;
+        boolean success = false;
+
+        private KirimKomentarTask(ProgressDialog dialog, MyActivity activity) {
+            this.dialog = dialog;
+            this.activity = activity;
+        }
+
+        protected void onPreExecute() {
+            this.dialog.setMessage("Mengirim Pesan");
+            this.dialog.show();
+            this.dialog.setCancelable(false);
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            kirimKomentarHelper(success);
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                //execute - means sending
+                response = httpclient.execute(httppost);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+                String json = reader.readLine();
+                Log.d("http response", json+"");
+                if(json.equals("Success")){
+                    success = true;
+                }
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (Exception e) {
+                Log.e("Login SSO", "Exception caught: ", e);
+            }
+            return null;
         }
     }
 
@@ -754,11 +831,37 @@ public class MyActivity extends Activity
 
         switch(v.getId()) {
             case R.id.suka :
+                httpclient = new DefaultHttpClient();
+                //url post web
+                httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/likeReview.php");
+
+                try {
+                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                    nameValuePairs.add(new BasicNameValuePair("idreview", Pencarian.pilihReview.getIdrev()));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    SuatuReviewTask doItInBackGround = new SuatuReviewTask(new ProgressDialog(this), MyActivity.this);
+                    doItInBackGround.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new LihatReview())
                         .commit();
                 break;
             case R.id.tidaksuka :
+                httpclient = new DefaultHttpClient();
+                //url post web
+                httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/dislikeReview.php");
+
+                try {
+                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                    nameValuePairs.add(new BasicNameValuePair("idreview", Pencarian.pilihReview.getIdrev()));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    SuatuReviewTask doItInBackGround = new SuatuReviewTask(new ProgressDialog(this), MyActivity.this);
+                    doItInBackGround.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new LihatReview())
                         .commit();
@@ -773,6 +876,63 @@ public class MyActivity extends Activity
                         .replace(R.id.container, new LihatReview())
                         .commit();
                 break;
+        }
+    }
+
+    public void suatuReviewHelper(boolean success){
+        if(success){
+            Toast.makeText(getBaseContext(), "Like/Dislike Telah di Tambah", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Like/Dislike Gagal di Tambah", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class SuatuReviewTask extends AsyncTask<Void, Void, Void> {
+        private ProgressDialog dialog;
+        private MyActivity activity;
+        boolean success = false;
+
+        private SuatuReviewTask(ProgressDialog dialog, MyActivity activity) {
+            this.dialog = dialog;
+            this.activity = activity;
+        }
+
+        protected void onPreExecute() {
+            this.dialog.setMessage("Koneksi ke Server");
+            this.dialog.show();
+            this.dialog.setCancelable(false);
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            suatuReviewHelper(success);
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                //execute - means sending
+                response = httpclient.execute(httppost);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+                String json = reader.readLine();
+                Log.d("http response", json+"");
+                if(json.equals("Success")){
+                    success = true;
+                }
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (Exception e) {
+                Log.e("Login SSO", "Exception caught: ", e);
+            }
+            return null;
         }
     }
 
@@ -1075,6 +1235,92 @@ public class MyActivity extends Activity
                 dialog.dismiss();
             }
             kirimPesanHelper(success);
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                //execute - means sending
+                response = httpclient.execute(httppost);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+                String json = reader.readLine();
+                Log.d("http response", json+"");
+                if(json.equals("Success")){
+                    success = true;
+                }
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (Exception e) {
+                Log.e("Login SSO", "Exception caught: ", e);
+            }
+            return null;
+        }
+    }
+
+    public void sendReportListener(View v){
+        FragmentManager fragmentManager = getFragmentManager();
+
+        EditText reportMessage = (EditText) findViewById(R.id.editTextReport);
+        String  pesan = reportMessage.getText().toString();
+
+        //check whether the msg empty or not
+        if(pesan.length()>0) {
+            httpclient = new DefaultHttpClient();
+            //url post web
+            httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/submitReport.php");
+
+            try {
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                nameValuePairs.add(new BasicNameValuePair("report", pesan));
+                nameValuePairs.add(new BasicNameValuePair("idreview", Pencarian.pilihReview.getIdrev()));
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                Log.d("kirim report", Pencarian.pilihReview.getIdrev());
+                KirimLaporanTask doItInBackGround = new KirimLaporanTask(new ProgressDialog(this), MyActivity.this);
+                doItInBackGround.execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            //display message if text field is empty
+            Toast.makeText(getBaseContext(), "Laporan Kosong", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void kirimLaporanHelper(boolean success){
+        if(success){
+            Toast.makeText(getBaseContext(), "Laporan Berhasil di Kirim", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Laporan Gagal di Kirim", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class KirimLaporanTask extends AsyncTask<Void, Void, Void> {
+        private ProgressDialog dialog;
+        private MyActivity activity;
+        boolean success = false;
+
+        private KirimLaporanTask(ProgressDialog dialog, MyActivity activity) {
+            this.dialog = dialog;
+            this.activity = activity;
+        }
+
+        protected void onPreExecute() {
+            this.dialog.setMessage("Mengirim Pesan");
+            this.dialog.show();
+            this.dialog.setCancelable(false);
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            kirimLaporanHelper(success);
         }
 
         @Override
