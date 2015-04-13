@@ -50,6 +50,9 @@ public class PencarianKategori extends Fragment {
                     // Your code here
                     if (position==0) {
                         Pencarian.selected = MyActivity.databaseHelper.getAllMatakuliah();
+                    } else if (position==7){
+                        Pencarian.selected = MyActivity.databaseHelper.getMatakuliahfromKategori("Wajib Jurusan Sistem Informasi");
+                        Pencarian.selected.addAll(MyActivity.databaseHelper.getMatakuliahfromKategori("Pilihan Bidang Minat Sistem Informasi"));
                     } else {
                         Pencarian.selected = MyActivity.databaseHelper.getMatakuliahfromKategori(PencarianKategori.kategoriIlkom[position]);
                     }
@@ -76,6 +79,9 @@ public class PencarianKategori extends Fragment {
                     // Your code here
                     if (position==0) {
                         Pencarian.selected = MyActivity.databaseHelper.getAllMatakuliah();
+                    } else if (position==7){
+                        Pencarian.selected = MyActivity.databaseHelper.getMatakuliahfromKategori("Wajib Jurusan Ilmu Komputer");
+                        Pencarian.selected.addAll(MyActivity.databaseHelper.getMatakuliahfromKategori("Pilihan Bidang Minat Ilmu Komputer"));
                     } else {
                         Pencarian.selected = MyActivity.databaseHelper.getMatakuliahfromKategori(PencarianKategori.kategoriSi[position]);
                     }

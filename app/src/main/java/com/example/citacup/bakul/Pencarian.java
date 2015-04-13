@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 
 import com.example.citacup.bakul.Entities.MataKuliah;
+import com.example.citacup.bakul.Entities.Review;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,9 @@ public class Pencarian extends Fragment {
     View rootview;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
     public static MataKuliah pilih;
+    public static Review pilihReview;
     public static ArrayList<String> selected = MyActivity.namaMatakuliah;
+    public static ArrayList<String> selectedReview = null;
 
     @Nullable
     @Override

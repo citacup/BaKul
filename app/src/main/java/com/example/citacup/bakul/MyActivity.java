@@ -281,7 +281,7 @@ public class MyActivity extends Activity
                 objFragment = new InformasiKuliah();
                 break;
             case 2:
-                objFragment = new PerancanganKuliah();
+                objFragment = new PerancanganKuliah1();
                 break;
             case 3:
                 objFragment = new KalkulatorNilai();

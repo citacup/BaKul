@@ -398,9 +398,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return listReviewMatkul;
     }
 
-    public ArrayList<String> getReviewFromNama(String nama) {
+    public Review getReviewFromKomentar(String komentar) {
+        Review review = null;
         ArrayList<Review> listReview2 = new ArrayList<Review>();
         ArrayList<String> listReviewMatkul2 = new ArrayList <String>();
+        String query = "SELECT * from Review where komentar = "+"'" + komentar+"'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            review = new Review(cursor.getString(0), cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6));
+        }
+        return review;
+    }
+
+
+    public ArrayList<String> getReviewFromNama (String nama) {
+        ArrayList<Review> listReview = new ArrayList<Review>();
+        ArrayList<String> listReview2 = new ArrayList <String>();
         String query = "SELECT * from Review where nama = "+"'" + nama+"'";
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
@@ -408,15 +422,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             Log.d("cursor dosen", "tidak null");
             do {
-                Review review2 = new Review(cursor.getString(0), cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6));
-                listReview2.add(review2);
+                Review review = new Review(cursor.getString(0), cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6));
+                listReview.add(review);
             } while (cursor.moveToNext());
         }
 
-        for(Review review : listReview2){
-            listReviewMatkul2.add(review.getKomentar());
+        for(Review review : listReview){
+            listReview2.add(review.getKomentar());
         }
-        return listReviewMatkul2;
+        return listReview2;
     }
 
 

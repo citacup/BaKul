@@ -7,16 +7,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class PerancanganKuliah1 extends Fragment {
     View rootview;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
+    protected Spinner semester;
+    protected String[] sem = {"1", "2", "3", "4", "5", "6", "7", "8"};
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.perancangankuliah1, container, false);
+        semester = (Spinner) rootview.findViewById(R.id.semester);
+
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_dropdown_item,
+                sem);
+        semester.setAdapter(spinnerAdapter);
+
+        semester.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                // Your code here
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                return;
+            }
+        });
+
         return rootview;
     }
-
-    private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
 }
