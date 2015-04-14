@@ -88,17 +88,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|right">
 
-                <Button android:id="@+id/tambahReivew"
-                    android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="50sp"
                     android:layout_height="wrap_content"
-                    android:text="Tambah \nReview"
-                    android:textStyle="italic"
-                    android:background="@color/biru"
-                    android:textColor="@android:color/white"
-                    android:onClick="lihatReviewListener"
-                    android:paddingLeft="10sp"
-                    android:paddingRight="10sp"
-                    android:layout_marginLeft="5sp" />
+                    android:id="@+id/tambahReivew"
+                    android:src="@drawable/tambah"
+                    android:layout_marginLeft="5sp"
+                    android:clickable="true"
+                    android:onClick="lihatReviewListener"/>
             </LinearLayout>
 
         </LinearLayout>
