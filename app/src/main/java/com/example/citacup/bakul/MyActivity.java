@@ -731,6 +731,7 @@ public class MyActivity extends Activity
         }
     }
 
+    EditText reviewText = null;
     public void lihatReviewListener(View v) {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
@@ -739,7 +740,7 @@ public class MyActivity extends Activity
 
         switch(v.getId()) {
             case R.id.tambahReivew :
-                EditText reviewText = (EditText) findViewById(R.id.editTextReview);
+                reviewText = (EditText) findViewById(R.id.editTextReview);
                 String  pesan = reviewText.getText().toString();
 
                 //check whether the msg empty or not
@@ -760,7 +761,7 @@ public class MyActivity extends Activity
                     }
                 } else {
                     //display message if text field is empty
-                    Toast.makeText(getBaseContext(), "Komentar Kosong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Review tidak boleh kosong!", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -768,10 +769,11 @@ public class MyActivity extends Activity
 
     public void kirimKomentarHelper(boolean success){
         if(success){
-            Toast.makeText(getBaseContext(), "Komentar Berhasil di Kirim", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Review Berhasil di Kirim", Toast.LENGTH_SHORT).show();
+            reviewText.setText("");
         }
         else{
-            Toast.makeText(getBaseContext(), "Komentar Gagal di Kirim", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Review Gagal di Kirim", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -786,7 +788,7 @@ public class MyActivity extends Activity
         }
 
         protected void onPreExecute() {
-            this.dialog.setMessage("Mengirim Pesan");
+            this.dialog.setMessage("Mengirim Review");
             this.dialog.show();
             this.dialog.setCancelable(false);
         }
@@ -848,7 +850,43 @@ public class MyActivity extends Activity
                         .replace(R.id.container, new LihatReview())
                         .commit();
                 break;
+            case R.id.sukatext :
+                httpclient = new DefaultHttpClient();
+                //url post web
+                httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/likeReview.php");
+
+                try {
+                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                    nameValuePairs.add(new BasicNameValuePair("idreview", Pencarian.pilihReview.getIdrev()));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    SuatuReviewTask doItInBackGround = new SuatuReviewTask(new ProgressDialog(this), MyActivity.this);
+                    doItInBackGround.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatReview())
+                        .commit();
+                break;
             case R.id.tidaksuka :
+                httpclient = new DefaultHttpClient();
+                //url post web
+                httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/dislikeReview.php");
+
+                try {
+                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                    nameValuePairs.add(new BasicNameValuePair("idreview", Pencarian.pilihReview.getIdrev()));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    SuatuReviewTask doItInBackGround = new SuatuReviewTask(new ProgressDialog(this), MyActivity.this);
+                    doItInBackGround.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LihatReview())
+                        .commit();
+                break;
+            case R.id.tidaksukatext :
                 httpclient = new DefaultHttpClient();
                 //url post web
                 httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/dislikeReview.php");
@@ -1163,6 +1201,7 @@ public class MyActivity extends Activity
         FragmentManager fragmentManager = getFragmentManager();
     }
 
+    EditText pesanAdmin = null;
     public void kirimPesanListener(View v) {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
@@ -1172,9 +1211,7 @@ public class MyActivity extends Activity
         switch(v.getId()) {
             case R.id.buttonPesan :
                 //kirim pesan
-                //startActivity(new Intent(getBaseContext(), MainMenu.class));
-                //this.finish();
-                EditText pesanAdmin = (EditText) findViewById(R.id.editTextPesan);
+                pesanAdmin = (EditText) findViewById(R.id.editTextPesan);
                 String  pesan = pesanAdmin.getText().toString();
 
                 //check whether the msg empty or not
@@ -1194,7 +1231,7 @@ public class MyActivity extends Activity
                     }
                 } else {
                     //display message if text field is empty
-                    Toast.makeText(getBaseContext(), "Pesan Kosong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Pesan tidak boleh kosong!", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -1207,6 +1244,7 @@ public class MyActivity extends Activity
                     .replace(R.id.container, new MainMenu())
                     .commit();
             Toast.makeText(this, "Pesan terkirim...", Toast.LENGTH_SHORT).show();
+            pesanAdmin.setText("");
         }
         else{
             Toast.makeText(this, "Pesan gagal dikirim", Toast.LENGTH_SHORT).show();
@@ -1261,10 +1299,10 @@ public class MyActivity extends Activity
         }
     }
 
+    EditText reportMessage = null;
     public void sendReportListener(View v){
         FragmentManager fragmentManager = getFragmentManager();
-
-        EditText reportMessage = (EditText) findViewById(R.id.editTextReport);
+        reportMessage = (EditText) findViewById(R.id.editTextReport);
         String  pesan = reportMessage.getText().toString();
 
         //check whether the msg empty or not
@@ -1278,10 +1316,8 @@ public class MyActivity extends Activity
                 nameValuePairs.add(new BasicNameValuePair("report", pesan));
                 nameValuePairs.add(new BasicNameValuePair("idreview", Pencarian.pilihReview.getIdrev()));
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-<<<<<<< HEAD
-                Log.d("kirim report", Pencarian.pilihReview.getIdrev());
-=======
->>>>>>> origin/master
+
+                //Log.d("kirim report", Pencarian.pilihReview.getIdrev());
                 KirimLaporanTask doItInBackGround = new KirimLaporanTask(new ProgressDialog(this), MyActivity.this);
                 doItInBackGround.execute();
             } catch (IOException e) {
@@ -1289,13 +1325,18 @@ public class MyActivity extends Activity
             }
         } else {
             //display message if text field is empty
-            Toast.makeText(getBaseContext(), "Laporan Kosong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Laporan tidak boleh kosong!", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void kirimLaporanHelper(boolean success){
         if(success){
+            FragmentManager fragmentManager = getFragmentManager();
             Toast.makeText(getBaseContext(), "Laporan Berhasil di Kirim", Toast.LENGTH_SHORT).show();
+            reportMessage.setText("");
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, new SuatuReview())
+                    .commit();
         }
         else{
             Toast.makeText(getBaseContext(), "Laporan Gagal di Kirim", Toast.LENGTH_SHORT).show();

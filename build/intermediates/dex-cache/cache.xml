@@ -2,6 +2,20 @@
 <items version="2" >
 
     <item
+        jar="E:\BaKul0\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="E:\BaKul0\app\build\intermediates\pre-dexed\debug\classes-6241337f5ee7553125c9c13dd0be1cbd3095bb7c.jar" />
+    </item>
+    <item
+        jar="E:\BaKul0\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="E:\BaKul0\app\build\intermediates\pre-dexed\debug\classes-decc508de4b9909fe9a4f3788a3ee49fbc04fbf2.jar" />
+    </item>
+    <item
         jar="E:\BaKul0\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -16,18 +30,25 @@
         <dex dex="E:\BaKul0\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-f2c76288baed2ea79046d4be919f646a30f101f0.jar" />
     </item>
     <item
-        jar="E:\BaKul0\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="D:\Documents\GitHub\BaKul\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="E:\BaKul0\app\build\intermediates\pre-dexed\debug\classes-6241337f5ee7553125c9c13dd0be1cbd3095bb7c.jar" />
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\Documents\GitHub\BaKul\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-7cce433dcd3f0c37bd24855a4ab395d2b8417d94.jar" />
     </item>
     <item
-        jar="E:\BaKul0\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="D:\Documents\GitHub\BaKul\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="E:\BaKul0\app\build\intermediates\pre-dexed\debug\classes-decc508de4b9909fe9a4f3788a3ee49fbc04fbf2.jar" />
+        <dex dex="D:\Documents\GitHub\BaKul\app\build\intermediates\pre-dexed\debug\classes-26d707824f950ab5309bd9926ca50e6528136a5a.jar" />
+    </item>
+    <item
+        jar="D:\Documents\GitHub\BaKul\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\Documents\GitHub\BaKul\app\build\intermediates\pre-dexed\debug\classes-1cbf65c19bd7c7fc7746a7be4945c74624e343c2.jar" />
     </item>
 
 </items>

@@ -72,7 +72,7 @@
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
+                android:layout_height="60sp"
                 android:inputType="textMultiLine"
                 android:ems="10"
                 android:id="@+id/editTextReview"
@@ -80,20 +80,27 @@
                 android:hint="Tuliskan review Anda disini..."
                 android:gravity="left|top"
                 android:padding="5dp"
-                android:layout_weight="0.7" />
+                android:layout_weight="1" />
 
-            <Button android:id="@+id/tambahReivew"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tambah Review"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
-                android:onClick="lihatReviewListener"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"
-                android:layout_marginLeft="5sp"
-                android:layout_weight="0.3" />
+                android:gravity="center_vertical|right">
+
+                <Button android:id="@+id/tambahReivew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah \nReview"
+                    android:textStyle="italic"
+                    android:background="@color/biru"
+                    android:textColor="@android:color/white"
+                    android:onClick="lihatReviewListener"
+                    android:paddingLeft="10sp"
+                    android:paddingRight="10sp"
+                    android:layout_marginLeft="5sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

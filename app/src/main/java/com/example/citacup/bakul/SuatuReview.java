@@ -16,6 +16,7 @@ public class SuatuReview extends Fragment {
     private TextView jumlahsuka;
     private TextView jumlahtidaksuka;
     private TextView judul;
+    private TextView isi;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
 
     @Nullable
@@ -23,12 +24,15 @@ public class SuatuReview extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.suatureview, container, false);
 
+        isi = (TextView) rootview.findViewById(R.id.isi);
         judul = (TextView) rootview.findViewById(R.id.labeltext);
         jumlahsuka = (TextView) rootview.findViewById(R.id.jumlahsuka);
         jumlahtidaksuka = (TextView) rootview.findViewById(R.id.jumlahtidaksuka);
+
         String suka = Pencarian.pilihReview.getLike();
         String tidaksuka = Pencarian.pilihReview.getDislike();
 
+        isi.setText(Pencarian.pilihReview.getKomentar());
         judul.setText("Review "+Pencarian.pilihReview.getNama());
         jumlahsuka.setText(suka);
         jumlahtidaksuka.setText(tidaksuka);

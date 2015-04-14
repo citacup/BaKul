@@ -110,7 +110,9 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/Total3"
-                        android:layout_weight="0.35" />
+                        android:layout_weight="0.35"
+                        android:editable="false"
+                        android:focusable="false"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -141,7 +143,9 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/A3"
-                        android:layout_weight="0.35" />
+                        android:layout_weight="0.35"
+                        android:editable="false"
+                        android:focusable="false"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -171,7 +175,9 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/Am3"
-                        android:layout_weight="0.35" />
+                        android:layout_weight="0.35"
+                        android:editable="false"
+                        android:focusable="false"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -201,7 +207,9 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/Bp3"
-                        android:layout_weight="0.35" />
+                        android:layout_weight="0.35"
+                        android:editable="false"
+                        android:focusable="false"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -231,7 +239,9 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/B3"
-                        android:layout_weight="0.35" />
+                        android:layout_weight="0.35"
+                        android:editable="false"
+                        android:focusable="false"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -261,7 +271,9 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/Bm3"
-                        android:layout_weight="0.35" />
+                        android:layout_weight="0.35"
+                        android:editable="false"
+                        android:focusable="false"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -291,7 +303,9 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/Cp3"
-                        android:layout_weight="0.35" />
+                        android:layout_weight="0.35"
+                        android:editable="false"
+                        android:focusable="false"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -322,7 +336,9 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/C3"
-                        android:layout_weight="0.35" />
+                        android:layout_weight="0.35"
+                        android:editable="false"
+                        android:focusable="false"/>
                 </LinearLayout>
 
                 </LinearLayout>
