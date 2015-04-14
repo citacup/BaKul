@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.citacup.bakul.Business.DatabaseHelper;
 import com.example.citacup.bakul.Business.JSONParser;
+import com.example.citacup.bakul.Entities.Kalkulator;
 import com.example.citacup.bakul.Entities.MataKuliah;
 
 import org.apache.http.HttpResponse;
@@ -984,9 +985,21 @@ public class MyActivity extends Activity
             case R.id.tambah :
                 //fitur 1
                 //startActivity(new Intent(getBaseContext(), KalkulatorHasil.class));
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, new KalkulatorHasil())
-                        .commit();
+                if (databaseHelper.insertKalkulator(currentUser,KalkulatorNilai.selectedTambah.getNama())) {
+                    ArrayAdapter<String> files = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_list_item_1,
+                            MyActivity.databaseHelper.getAllMatkulKalkulator());
+                    KalkulatorNilai.listKalkulator.setAdapter(files);
+
+                    KalkulatorNilai.spinnerkalkulator.remove(KalkulatorNilai.selectedTambah.getNama());
+                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_spinner_dropdown_item,
+                            KalkulatorNilai.spinnerkalkulator);
+                    KalkulatorNilai.spinnermatkul.setAdapter(spinnerAdapter);
+                    Toast.makeText(getBaseContext(), "Kalkulator berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getBaseContext(), "Kalkulator gagal ditambahkan", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
@@ -1009,6 +1022,15 @@ public class MyActivity extends Activity
             case R.id.hitung :
                 //kalkulasi
                 break;
+            case R.id.delete :
+                if (databaseHelper.deleteKalkulator(currentUser, KalkulatorNilai.selected.getNama())) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, new KalkulatorNilai())
+                            .commit();
+                    Toast.makeText(getBaseContext(), "Kalkulator berhasil dihapus", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getBaseContext(), "Kalkulator gagal dihapus", Toast.LENGTH_SHORT).show();
+                }
         }
     }
 

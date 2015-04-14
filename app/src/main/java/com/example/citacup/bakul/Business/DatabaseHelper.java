@@ -8,10 +8,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.citacup.bakul.Entities.Dosen;
+import com.example.citacup.bakul.Entities.Kalkulator;
 import com.example.citacup.bakul.Entities.Kategori;
 import com.example.citacup.bakul.Entities.MataKuliah;
 import com.example.citacup.bakul.Entities.Pengguna;
 import com.example.citacup.bakul.Entities.Review;
+import com.example.citacup.bakul.MyActivity;
 
 import java.util.ArrayList;
 
@@ -37,6 +39,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         query = "CREATE TABLE IF NOT EXISTS `Pengguna` (`username` TEXT PRIMARY KEY, `jurusan` INTEGER,`session` INTEGER)";
         db.execSQL(query);
+        query = "CREATE TABLE IF NOT EXISTS `Kalkulator` (`username` TEXT, `namamatkul` TEXT)";
+        db.execSQL(query);
+    }
+
+    public boolean insertKalkulator (String username, String namamatkul) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("username", username);
+        values.put("namamatkul", namamatkul);
+        sqLiteDatabase.insert("Kalkulator", null, values);
+        return !getKalkulator(username, namamatkul).isEmpty();
+    }
+
+    public boolean deleteKalkulator (String username, String namamatkul) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete("Kalkulator", "username = '"+username+"' and namamatkul = '"+namamatkul+"'", null);
+        return getKalkulator(username, namamatkul).isEmpty();
     }
 
     public void insertDosen (String iddosen, String nama, String email) {
@@ -431,6 +450,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             listReview2.add(review.getKomentar());
         }
         return listReview2;
+    }
+
+    ////////////////////KALKULATOR!!!!!!!!!!!!!!!!
+    public ArrayList<Kalkulator> getKalkulator (String username, String namamatkul) {
+        ArrayList<Kalkulator> listKalkulator = new ArrayList<Kalkulator>();
+        String query = "SELECT * from Kalkulator where username = "+"'" + username+"' and namamatkul = '"+namamatkul+"'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Kalkulator kalkulator = new Kalkulator(cursor.getString(0), cursor.getString(1));
+                listKalkulator.add(kalkulator);
+            } while (cursor.moveToNext());
+        }
+        return listKalkulator;
+    }
+
+    public ArrayList<String> getAllMatkulKalkulator() {
+        ArrayList<Kalkulator> listKalkulator = new ArrayList<Kalkulator>();
+        ArrayList<String> listKalkulator2 = new ArrayList <String>();
+        String fetchdata = "select * from Kalkulator where username = '"+ MyActivity.currentUser+"'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        ////(int id, String nama, String email)
+        if (cursor.moveToFirst()) {
+            do {
+                Kalkulator kalkulator = new Kalkulator(cursor.getString(0), cursor.getString(1));
+                listKalkulator.add(kalkulator);
+            } while (cursor.moveToNext());
+        }
+
+        for(Kalkulator kalkulator : listKalkulator){
+            listKalkulator2.add(kalkulator.getMatkul());
+        }
+        return listKalkulator2;
     }
 
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
 
 public class KalkulatorHasil extends Fragment {
     View rootview;
@@ -15,6 +16,9 @@ public class KalkulatorHasil extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.kalkulatorhasil, container, false);
+
+        TextView judul = (TextView) rootview.findViewById(R.id.namamatkul);
+        judul.setText(KalkulatorNilai.selected.getNama());
         return rootview;
     }
 
