@@ -47,7 +47,7 @@ public class LihatMatkul extends Fragment {
         judulMatkul.setText(Pencarian.pilih.getNama());
         kode.setText(Pencarian.pilih.getKodemk());
         nama.setText(Pencarian.pilih.getNama());
-        jumlahsks.setText(Pencarian.pilih.getSks());
+        jumlahsks.setText(""+Pencarian.pilih.getSks());
         semester.setText(Pencarian.pilih.getSemester());
         kategori.setText(Pencarian.pilih.getKategori());
         objektif.setText(Pencarian.pilih.getObjektif());

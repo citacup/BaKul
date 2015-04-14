@@ -17,6 +17,7 @@ public class PerancanganKuliah1 extends Fragment {
     private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
     protected Spinner semester;
     protected String[] sem = {"1", "2", "3", "4", "5", "6", "7", "8"};
+    public static String semSelect;
 
     @Nullable
     @Override
@@ -32,6 +33,7 @@ public class PerancanganKuliah1 extends Fragment {
         semester.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 // Your code here
+                semSelect = sem[position];
             }
 
             public void onNothingSelected(AdapterView<?> adapterView) {

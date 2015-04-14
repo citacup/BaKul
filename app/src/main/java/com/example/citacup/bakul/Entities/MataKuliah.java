@@ -7,7 +7,7 @@ public class MataKuliah {
 
     String kodemk;
     String nama;
-    String sks;
+    int sks;
     String semester;
     String islulus;
     String deskripsi;
@@ -16,7 +16,7 @@ public class MataKuliah {
     String kategori;
 
     //(int id, String nama, String email)
-    public MataKuliah(String kodemk, String nama, String sks, String semester, String islulus,String deskripsi, String referensi, String objektif,String kategori) {
+    public MataKuliah(String kodemk, String nama, int sks, String semester, String islulus,String deskripsi, String referensi, String objektif,String kategori) {
         this.kodemk = kodemk;
         this.nama = nama;
         this.sks = sks;
@@ -35,7 +35,7 @@ public class MataKuliah {
     public String getNama() {
         return nama;
     }
-    public String getSks() {
+    public int getSks() {
         return sks;
     }
     public String getSemester() {

@@ -12,6 +12,7 @@ import com.example.citacup.bakul.Entities.Kalkulator;
 import com.example.citacup.bakul.Entities.Kategori;
 import com.example.citacup.bakul.Entities.MataKuliah;
 import com.example.citacup.bakul.Entities.Pengguna;
+import com.example.citacup.bakul.Entities.Rancangan;
 import com.example.citacup.bakul.Entities.Review;
 import com.example.citacup.bakul.MyActivity;
 
@@ -31,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE `Dosen` (`iddosen` TEXT PRIMARY KEY, `nama` TEXT, `email` TEXT); ";
         db.execSQL(query);
-        query = "CREATE TABLE `Matakuliah` (`kodemk` TEXT PRIMARY KEY, `nama` TEXT, `sks` TEXT, `semester` TEXT, `islulus` TEXT,`deskripsi` TEXT,`referensi` TEXT, `objektif` TEXT,`kategori` TEXT); ";
+        query = "CREATE TABLE `Matakuliah` (`kodemk` TEXT PRIMARY KEY, `nama` TEXT, `sks` INTEGER, `semester` TEXT, `islulus` TEXT,`deskripsi` TEXT,`referensi` TEXT, `objektif` TEXT,`kategori` TEXT); ";
         db.execSQL(query);
         query = "CREATE TABLE `Kategori` (`kategori` TEXT PRIMARY KEY); ";
         db.execSQL(query);
@@ -41,6 +42,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         query = "CREATE TABLE IF NOT EXISTS `Kalkulator` (`username` TEXT, `namamatkul` TEXT)";
         db.execSQL(query);
+        query = "CREATE TABLE IF NOT EXISTS `Rancangan` (`username` TEXT PRIMARY KEY, `semester` TEXT)";
+        db.execSQL(query);
+    }
+
+    public void insertRancangan (String username, String semester) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("username", username);
+        values.put("semester", semester);
+        sqLiteDatabase.insert("Rancangan", null, values);
+    }
+
+    public boolean deleteRancangan (String username, String semester) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete("Rancangan", "username = '"+username+"' and semester = '"+semester+"'", null);
+        return getKalkulator(username, semester).isEmpty();
     }
 
     public boolean insertKalkulator (String username, String namamatkul) {
@@ -54,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean deleteKalkulator (String username, String namamatkul) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        sqLiteDatabase.delete("Kalkulator", "username = '"+username+"' and namamatkul = '"+namamatkul+"'", null);
+        sqLiteDatabase.delete("Kalkulator", "username = '" + username + "' and namamatkul = '" + namamatkul + "'", null);
         return getKalkulator(username, namamatkul).isEmpty();
     }
 
@@ -210,7 +227,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
           Log.d("cursor dosen", "tidak null");
           do {
               MataKuliah matakuliah = new MataKuliah(cursor.getString(0), cursor.getString(1),
-                      cursor.getString(2),cursor.getString(3),cursor.getString(4),
+                      cursor.getInt(2),cursor.getString(3),cursor.getString(4),
                       cursor.getString(5),cursor.getString(6),cursor.getString(7),
                       cursor.getString(8));
               listMatakuliah.add(matakuliah);
@@ -233,7 +250,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 MataKuliah matakuliah = new MataKuliah(cursor.getString(0), cursor.getString(1),
-                        cursor.getString(2),cursor.getString(3),cursor.getString(4),
+                        cursor.getInt(2),cursor.getString(3),cursor.getString(4),
                         cursor.getString(5),cursor.getString(6),cursor.getString(7),
                         cursor.getString(8));
                 listMatakuliah.add(matakuliah);
@@ -252,7 +269,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.moveToFirst()) {
-            matakuliah = new MataKuliah(cursor.getString(0), cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8));
+            matakuliah = new MataKuliah(cursor.getString(0), cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8));
         }
         return matakuliah;
     }
@@ -267,7 +284,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             Log.d("cursor dosen", "tidak null");
             do {
-                MataKuliah matkul = new MataKuliah(cursor.getString(0), cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8));
+                MataKuliah matkul = new MataKuliah(cursor.getString(0), cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8));
                 listMatkul.add(matkul);
             } while (cursor.moveToNext());
         }
@@ -303,14 +320,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return namaMatkul;
     }
 
-    public String getSksMatkulFromID (int id) {
+    public int getSksMatkulFromID (int id) {
         MataKuliah matakuliah = null;
         String query = "SELECT sks from Matakuliah where kodemk = " + id;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        String sksMatkul="";
+        int sksMatkul=0;
         if (cursor.moveToFirst()) {
-            sksMatkul = cursor.getString(2);
+            sksMatkul = cursor.getInt(2);
         }
 
         return sksMatkul;
@@ -365,6 +382,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return kategoriMatkul;
+    }
+
+    public void setLulus(String matakuliah){
+
+        String query;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        //query = "UPDATE Pengguna SET session="+session+" WHERE username='"+username+"'";
+        query = "UPDATE Matakuliah SET islulus= '1' where nama ='"+ matakuliah+"'";
+        sqLiteDatabase.execSQL(query);
+
+    }
+
+    public void setTidakLulus(String matakuliah){
+
+        String query;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        //query = "UPDATE Pengguna SET session="+session+" WHERE username='"+username+"'";
+        query = "UPDATE Matakuliah SET islulus= '0' where nama ='"+ matakuliah+"'";
+        sqLiteDatabase.execSQL(query);
+
+    }
+
+
+    public ArrayList<String> getMatkulLulus() {
+        ArrayList<MataKuliah> listLulus = new ArrayList<MataKuliah>();
+        ArrayList<String> listLulus2 = new ArrayList <String>();
+        String fetchdata = "select * from Matakuliah where islulus = '1'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        ////(int id, String nama, String email)
+        if (cursor.moveToFirst()) {
+            do {
+                MataKuliah matakuliah = new MataKuliah(cursor.getString(0), cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8));
+                listLulus.add(matakuliah);
+            } while (cursor.moveToNext());
+        }
+
+        for(MataKuliah matakuliah : listLulus){
+            listLulus2.add(matakuliah.getNama());
+        }
+        return listLulus2;
     }
     //--------------------------------------------------------------------------------------///
 
@@ -487,6 +545,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return listKalkulator2;
     }
 
+    ///////////////////////RANCANGAN!!!!!!!!!!!!!!!
+    public String getRancangan (String username) {
+        String query = "SELECT semester from Rancangan where username = '" + username+"'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        String rancangan = null;
+        if (cursor.moveToFirst()) {
+            rancangan = cursor.getString(0);
+        }
+
+        return rancangan;
+    }
+
+    public boolean cekValidLulus (int sks){
+        String query = "SELECT sum(sks) from MataKuliah where islulus = '1'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        int rancangan = 0;
+        if (cursor.moveToFirst()) {
+            rancangan = cursor.getInt(0);
+        }
+        if (rancangan+sks <= 24) {
+            return true;
+        }
+        return false;
+    }
 
     //---------------------------------------------------------------------------------///
 

@@ -67,6 +67,7 @@ public class MyActivity extends Activity
 
     public static String currentUser = "";
     public static int jurusan = 0;
+    public static String semester;
 
      /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -123,6 +124,7 @@ public class MyActivity extends Activity
             }
 
             jurusan = databaseHelper.whoHasSession().getJurusan();
+            semester = databaseHelper.getRancangan(currentUser);
 
             namaDosen = databaseHelper.getAllDosen();
             namaMatakuliah = databaseHelper.getAllMatakuliah();
@@ -283,7 +285,11 @@ public class MyActivity extends Activity
                 objFragment = new InformasiKuliah();
                 break;
             case 2:
-                objFragment = new PerancanganKuliah1();
+                if (semester == null) {
+                    objFragment = new PerancanganKuliah1();
+                } else {
+                    objFragment = new PerancanganKuliah();
+                }
                 break;
             case 3:
                 objFragment = new KalkulatorNilai();
@@ -487,23 +493,41 @@ public class MyActivity extends Activity
             case (R.id.dualayout):
                 //fitur 2
                 //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, new PerancanganKuliah1())
-                        .commit();
+                if (semester == null) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, new PerancanganKuliah1())
+                            .commit();
+                } else {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, new PerancanganKuliah())
+                            .commit();
+                }
                 break;
             case (R.id.duaimage):
                 //fitur 2
                 //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, new PerancanganKuliah1())
-                        .commit();
+                if (semester == null) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, new PerancanganKuliah1())
+                            .commit();
+                } else {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, new PerancanganKuliah())
+                            .commit();
+                }
                 break;
             case (R.id.duatext):
                 //fitur 2
                 //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, new PerancanganKuliah1())
-                        .commit();
+                if (semester == null) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, new PerancanganKuliah1())
+                            .commit();
+                } else {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, new PerancanganKuliah())
+                            .commit();
+                }
                 break;
             case (R.id.tigalayout) :
                 //fitur 3
@@ -1023,6 +1047,7 @@ public class MyActivity extends Activity
                 //kalkulasi
                 break;
             case R.id.delete :
+                KalkulatorNilai.spinnerkalkulator.add(KalkulatorNilai.selected.getNama());
                 if (databaseHelper.deleteKalkulator(currentUser, KalkulatorNilai.selected.getNama())) {
                     fragmentManager.beginTransaction()
                             .replace(R.id.container, new KalkulatorNilai())
@@ -1043,6 +1068,9 @@ public class MyActivity extends Activity
         switch(v.getId()) {
             case R.id.lanjut :
                 //fitur 1
+                databaseHelper.insertRancangan(currentUser, PerancanganKuliah1.semSelect);
+                semester = PerancanganKuliah1.semSelect;
+
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new PerancanganKuliah())
                         .commit();

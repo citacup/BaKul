@@ -47,7 +47,7 @@
             style="@style/sectionHeader"
             android:layout_marginTop="20sp" />
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0sp"
             android:id="@+id/komponen"
@@ -56,10 +56,10 @@
             android:layout_weight="0.45">
 
             <ListView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/listView" />
-        </ScrollView>
+                android:id="@+id/listkomponen" />
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"

@@ -88,7 +88,7 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
                             android:onClick="ubahSemester1Listener" />
 
@@ -102,7 +102,7 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
                             android:onClick="ubahSemester1Listener"/>
                     </LinearLayout>
@@ -122,7 +122,7 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
                             android:onClick="ubahSemester1Listener" />
 
@@ -136,7 +136,7 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
                             android:onClick="ubahSemester1Listener" />
                     </LinearLayout>
@@ -156,7 +156,7 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
                             android:onClick="ubahSemester1Listener" />
 
@@ -170,7 +170,7 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
                             android:onClick="ubahSemester1Listener" />
                     </LinearLayout>
@@ -197,14 +197,15 @@
                         <Button
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="Tambah..."
-                            android:id="@+id/tambah"
+                            android:text="Semester 8"
+                            android:id="@+id/s8"
                             android:layout_weight="1"
                             android:background="@drawable/abc_ab_share_pack_holo_light"
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
                             android:clickable="true"
+                            android:visibility="invisible"
                             android:onClick="ubahSemester1Listener" />
                     </LinearLayout>
                 </LinearLayout>

@@ -7,6 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * Created by CITACUP on PPL.

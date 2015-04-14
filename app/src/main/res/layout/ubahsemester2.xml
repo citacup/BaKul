@@ -83,16 +83,16 @@
                         <Button
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="Tambah..."
-                            android:id="@+id/tambah"
+                            android:text="Semester 1"
+                            android:id="@+id/s1"
                             android:layout_weight="1"
                             android:background="@drawable/abc_ab_share_pack_holo_light"
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
-                            android:onClick="ubahSemester2Listener" />
+                            android:onClick="ubahSemester1Listener" />
 
                         <Button
                             android:layout_width="0dp"
@@ -104,9 +104,9 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
-                            android:onClick="ubahSemester2Listener" />
+                            android:onClick="ubahSemester1Listener"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -124,9 +124,9 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
-                            android:onClick="ubahSemester2Listener" />
+                            android:onClick="ubahSemester1Listener" />
 
                         <Button
                             android:layout_width="0dp"
@@ -138,9 +138,9 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
-                            android:onClick="ubahSemester2Listener" />
+                            android:onClick="ubahSemester1Listener" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -158,9 +158,9 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
-                            android:onClick="ubahSemester2Listener" />
+                            android:onClick="ubahSemester1Listener" />
 
                         <Button
                             android:layout_width="0dp"
@@ -172,9 +172,9 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="visible"
+                            android:visibility="invisible"
                             android:clickable="true"
-                            android:onClick="ubahSemester2Listener" />
+                            android:onClick="ubahSemester1Listener" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -194,7 +194,7 @@
                             android:textStyle="italic"
                             android:visibility="invisible"
                             android:clickable="true"
-                            android:onClick="ubahSemester2Listener" />
+                            android:onClick="ubahSemester1Listener" />
 
                         <Button
                             android:layout_width="0dp"
@@ -206,9 +206,9 @@
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
                             android:textStyle="italic"
-                            android:visibility="invisible"
                             android:clickable="true"
-                            android:onClick="ubahSemester2Listener" />
+                            android:visibility="invisible"
+                            android:onClick="ubahSemester1Listener" />
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
