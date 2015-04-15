@@ -10,6 +10,7 @@ import android.util.Log;
 import com.example.citacup.bakul.Entities.Dosen;
 import com.example.citacup.bakul.Entities.Kalkulator;
 import com.example.citacup.bakul.Entities.Kategori;
+import com.example.citacup.bakul.Entities.KomponenPenilaian;
 import com.example.citacup.bakul.Entities.MataKuliah;
 import com.example.citacup.bakul.Entities.Pengguna;
 import com.example.citacup.bakul.Entities.Rancangan;
@@ -19,7 +20,7 @@ import com.example.citacup.bakul.MyActivity;
 import java.util.ArrayList;
 
 /**
- * Created by SAMSUNG NB on 4/11/2015.
+ * Created by CITACUP on 4/11/2015.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -44,6 +45,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         query = "CREATE TABLE IF NOT EXISTS `Rancangan` (`username` TEXT PRIMARY KEY, `semester` TEXT)";
         db.execSQL(query);
+        query = "CREATE TABLE IF NOT EXISTS `KomponenPenilaian` (`nama` TEXT, `bobot` TEXT, `nilai` TEXT)";
+        db.execSQL(query);
+    }
+
+    public boolean insertKomponen (String nama, String bobot, String nilai) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("nama", nama);
+        values.put("bobot", bobot);
+        values.put("nilai", nilai);
+        sqLiteDatabase.insert("KomponenPenilaian", null, values);
+
+        return !getAllKomponen().isEmpty();
     }
 
     public void insertRancangan (String username, String semester) {
@@ -570,6 +584,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
         return false;
+    }
+
+    ///-------------------KOMPONEN--------------------------------------////////////////////
+
+
+    public ArrayList<String> getAllKomponen() {
+        ArrayList<KomponenPenilaian> listKomponen = new ArrayList<KomponenPenilaian>();
+        ArrayList<String> listKomponenMatkul = new ArrayList <String>();
+        String fetchdata = "select * from KomponenPenilaian";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        ////(int id, String nama, String email)
+        if (cursor.moveToFirst()) {
+            Log.d("cursor dosen", "tidak null");
+            do {
+                KomponenPenilaian komponen = new KomponenPenilaian(cursor.getString(0), cursor.getString(1),cursor.getString(2));
+                listKomponen.add(komponen);
+            } while (cursor.moveToNext());
+        }
+
+        for(KomponenPenilaian komponenpenilaian : listKomponen){
+            listKomponenMatkul.add(komponenpenilaian.getNama());
+        }
+        return listKomponenMatkul;
+    }
+
+    public KomponenPenilaian getKomponenFromNama (String nama) {
+        KomponenPenilaian komponenPenilaian = null;
+        String query = "SELECT * from KomponenPenilaian where nama = "+"'" + nama+"'";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            komponenPenilaian = new KomponenPenilaian(cursor.getString(0), cursor.getString(1),cursor.getString(2));
+        }
+        return komponenPenilaian;
+    }
+
+    public void updateKomponen(String nama, String nilai, String persentase){
+        String query;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        query = "UPDATE KomponenPenilaian SET nilai="+nilai+", bobot="+persentase+" WHERE nama='"+nama+"'";
+        sqLiteDatabase.execSQL(query);
+
+    }
+
+    public void deleteKomponen(String nama){
+        String query;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        query = "DELETE From KomponenPenilaian WHERE nama='"+nama+"'";
+        sqLiteDatabase.execSQL(query);
+
     }
 
     //---------------------------------------------------------------------------------///

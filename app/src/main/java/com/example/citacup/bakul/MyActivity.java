@@ -1045,6 +1045,24 @@ public class MyActivity extends Activity
                 break;
             case R.id.hitung :
                 //kalkulasi
+                EditText total = (EditText) findViewById(R.id.total3);
+                EditText a3 = (EditText) findViewById(R.id.A3);
+                EditText am3 = (EditText) findViewById(R.id.Am3);
+                EditText bp3 = (EditText) findViewById(R.id.Bp3);
+                EditText b3 = (EditText) findViewById(R.id.B3);
+                EditText bm3 = (EditText) findViewById(R.id.Bm3);
+                EditText cp3 = (EditText) findViewById(R.id.Cp3);
+                EditText c3 = (EditText) findViewById(R.id.C3);
+
+                total.setText("0");
+                a3.setText("0");
+                am3.setText("0");
+                bp3.setText("0");
+                b3.setText("0");
+                bm3.setText("0");
+                cp3.setText("0");
+                c3.setText("0");
+
                 break;
             case R.id.delete :
                 KalkulatorNilai.spinnerkalkulator.add(KalkulatorNilai.selected.getNama());

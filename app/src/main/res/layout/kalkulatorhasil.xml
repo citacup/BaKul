@@ -93,7 +93,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Total Nilai"
-                        android:id="@+id/Total1"
+                        android:id="@+id/total1"
                         android:layout_weight="0.6"
                         android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text=":"
-                        android:id="@+id/Total2"
+                        android:id="@+id/total2"
                         android:layout_weight="0.05" />
 
                     <EditText
@@ -109,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:ems="10"
-                        android:id="@+id/Total3"
+                        android:id="@+id/total3"
                         android:layout_weight="0.35"
                         android:editable="false"
                         android:focusable="false"/>

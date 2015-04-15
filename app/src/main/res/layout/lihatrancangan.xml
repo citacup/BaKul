@@ -175,7 +175,6 @@
             </LinearLayout>
         </LinearLayout>
 
-
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
