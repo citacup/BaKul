@@ -222,7 +222,7 @@
             <Button android:id="@+id/lanjut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lanjut"
+                android:text="Olah"
                 android:textStyle="italic"
                 android:background="@color/biru"
                 android:textColor="@android:color/white"

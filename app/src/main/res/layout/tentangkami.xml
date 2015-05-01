@@ -1,0 +1,217 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/relativeLayout"
+    android:padding="@dimen/marginluar">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:padding="@dimen/margindalem"
+        android:elevation="@dimen/margindalem"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#ff0272bc"
+            android:id="@+id/labellayout"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical|center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tentang Kami"
+                android:id="@+id/judulMatkul"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:gravity="center_vertical|center_horizontal" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ksatria Bakul (PPL A07)"
+            android:id="@+id/label"
+            style="@style/sectionHeader"
+            android:layout_marginTop="20sp" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:id="@+id/scrollView"
+            android:layout_marginTop="5sp"
+            android:layout_weight="0.80">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="5sp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5sp"
+                    android:gravity="center_vertical|center_horizontal">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/image1"
+                        android:src="@drawable/cita"
+                        android:layout_weight="0.4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Cita Audia Ahlunaza\n1206208233"
+                        android:id="@+id/rinci1"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical|center_horizontal" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5sp"
+                    android:gravity="center_vertical|center_horizontal">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/image2"
+                        android:src="@drawable/tondhy"
+                        android:layout_weight="0.4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Tondhy Eko Pramudya\n1206277363"
+                        android:id="@+id/rinci2"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical|center_horizontal" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5sp"
+                    android:gravity="center_vertical|center_horizontal">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/image3"
+                        android:src="@drawable/dev"
+                        android:layout_weight="0.4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="M. Devakto Ibnu N.\n1206238671"
+                        android:id="@+id/rinci3"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical|center_horizontal" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5sp"
+                    android:gravity="center_vertical|center_horizontal">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/image4"
+                        android:src="@drawable/helmi"
+                        android:layout_weight="0.4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Helmi Fakhriandi R.\n1206277312"
+                        android:id="@+id/rinci4"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical|center_horizontal" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5sp"
+                    android:gravity="center_vertical|center_horizontal">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/image5"
+                        android:src="@drawable/thea"
+                        android:layout_weight="0.4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Althea Averina\n1206208082"
+                        android:id="@+id/rinc5"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical|center_horizontal" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:gravity="center_vertical|right">
+
+            <Button android:id="@+id/review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lihat Review"
+                android:textStyle="italic"
+                android:background="@color/biru"
+                android:textColor="@android:color/white"
+                android:onClick="lihatMatkulListener"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:layout_marginRight="15sp"/>
+
+            <Button android:id="@+id/rantai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lihat Rantai"
+                android:textStyle="italic"
+                android:background="@color/biru"
+                android:textColor="@android:color/white"
+                android:onClick="lihatMatkulListener"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

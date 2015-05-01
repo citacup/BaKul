@@ -28,7 +28,7 @@ public class SuatuKomponen extends Fragment {
     public static String nilai1="";
     public static String persentase1="";
     protected Button simpan;
-    
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
