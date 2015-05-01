@@ -41,17 +41,253 @@
                 android:gravity="center_vertical|center_horizontal" />
         </LinearLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:id="@+id/scrollView"
             android:layout_weight="0.80"
-            android:layout_marginTop="20sp" >
+            android:layout_marginTop="10sp" >
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rincian SKS Perancangan"
+                        android:id="@+id/label"
+                        style="@style/sectionHeader"
+                        android:layout_marginBottom="5sp"/>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="SKS Diperoleh"
+                            android:id="@+id/rincilabel1"
+                            android:layout_weight="0.295"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=":"
+                            android:id="@+id/rincidua1"
+                            android:layout_weight="0.05"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="SKS Lulus"
+                            android:id="@+id/skslulus"
+                            android:layout_weight="0.7"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="- Wajib UI"
+                            android:id="@+id/rincilabel2"
+                            android:layout_weight="0.295" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=":"
+                            android:id="@+id/rincidua2"
+                            android:layout_weight="0.05" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="SKS Wajib UI diperoleh"
+                            android:id="@+id/wajibui"
+                            android:layout_weight="0.7" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="- Wajib Rumpun Sains"
+                            android:id="@+id/rincilabel3"
+                            android:layout_weight="0.295" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=":"
+                            android:id="@+id/rincidua3"
+                            android:layout_weight="0.05" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="SKS Wajib Rumpun Sains diperoleh"
+                            android:id="@+id/wajibsains"
+                            android:layout_weight="0.7" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="- Wajib Fakultas"
+                            android:id="@+id/rincilabel4"
+                            android:layout_weight="0.295" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=":"
+                            android:id="@+id/rincidua4"
+                            android:layout_weight="0.05" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="SKS Wajib Fakultas diperoleh"
+                            android:id="@+id/wajibfakultas"
+                            android:layout_weight="0.7" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="- Wajib Program Studi"
+                            android:id="@+id/rincilabel5"
+                            android:layout_weight="0.295" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=":"
+                            android:id="@+id/rincidua5"
+                            android:layout_weight="0.05" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="SKS Wajib Program Studi diperoleh"
+                            android:id="@+id/wajibprodi"
+                            android:layout_weight="0.7" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="- Pilihan Bidang Minat"
+                            android:id="@+id/rincilabel6"
+                            android:layout_weight="0.295" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=":"
+                            android:id="@+id/rincidua6"
+                            android:layout_weight="0.05" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="SKS Pilihan Bidang Minat diperoleh"
+                            android:id="@+id/pilihanbidangminat"
+                            android:layout_weight="0.7" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="- Pilihan Lain"
+                            android:id="@+id/rincilabel7"
+                            android:layout_weight="0.295" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=":"
+                            android:id="@+id/rincidua7"
+                            android:layout_weight="0.05" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="SKS Pilihan Lain"
+                            android:id="@+id/pilihanlain"
+                            android:layout_weight="0.7" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Sisa SKS"
+                            android:id="@+id/rincilabel8"
+                            android:layout_weight="0.295"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=":"
+                            android:id="@+id/rincidua8"
+                            android:layout_weight="0.05"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="SKS Sisa"
+                            android:id="@+id/sisa"
+                            android:layout_weight="0.7"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -173,7 +409,7 @@
                     android:id="@+id/sem8"
                     android:visibility="invisible"/>
             </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
 
         <LinearLayout
             android:orientation="horizontal"

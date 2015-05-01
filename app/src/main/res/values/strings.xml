@@ -12,7 +12,8 @@
     <string name="title_section6">Menu Pengguna</string>
     <string name="title_section7">Kirim Pesan ke Admin</string>
     <string name="title_section8">Perbarui Aplikasi</string>
-    <string name="title_section9">Log out</string>
+    <string name="title_section9">Tentang Kami</string>
+    <string name="title_section10">Log out</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_login">Accounts</string>

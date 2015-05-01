@@ -310,6 +310,9 @@ public class MyActivity extends Activity
                 objFragment = new Perbarui();
                 break;
             case 9:
+                objFragment = new TentangKami();
+                break;
+            case 10:
                 this.alertMessage();
                 return;
         }
@@ -351,6 +354,9 @@ public class MyActivity extends Activity
                 break;
             case 9:
                 mTitle = getString(R.string.title_section9);
+                break;
+            case 10:
+                mTitle = getString(R.string.title_section10);
                 break;
         }
     }
@@ -1192,7 +1198,7 @@ public class MyActivity extends Activity
                 //startActivity(new Intent(getBaseContext(), UbahSemester2.class));
                 //this.finish();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new UbahSemester2())
+                        .replace(R.id.container, new OlahRancangan())
                         .commit();
                 break;
         }
@@ -1213,6 +1219,24 @@ public class MyActivity extends Activity
                         .replace(R.id.container, new UbahSemester1())
                         .commit();
                 Toast.makeText(this, "Isian disimpan", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    public void olahRancanganListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.lanjut :
+                //lanjut
+                //startActivity(new Intent(getBaseContext(), UbahSemester2.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new UbahSemester2())
+                        .commit();
                 break;
         }
     }
@@ -1478,6 +1502,24 @@ public class MyActivity extends Activity
     }
 
     public void faqListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        switch(v.getId()) {
+            case R.id.ok :
+                //ok button
+                //startActivity(new Intent(getBaseContext(), MainMenu.class));
+                //this.finish();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new MainMenu())
+                        .commit();
+                break;
+        }
+    }
+
+    public void tentangKamiListener(View v) {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
 

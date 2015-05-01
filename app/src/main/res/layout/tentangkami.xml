@@ -188,26 +188,14 @@
             android:layout_weight="0.2"
             android:gravity="center_vertical|right">
 
-            <Button android:id="@+id/review"
+            <Button android:id="@+id/ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lihat Review"
+                android:text="OK"
                 android:textStyle="italic"
                 android:background="@color/biru"
                 android:textColor="@android:color/white"
-                android:onClick="lihatMatkulListener"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"
-                android:layout_marginRight="15sp"/>
-
-            <Button android:id="@+id/rantai"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lihat Rantai"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
-                android:onClick="lihatMatkulListener"
+                android:onClick="tentangKamiListener"
                 android:paddingLeft="10sp"
                 android:paddingRight="10sp" />
         </LinearLayout>
