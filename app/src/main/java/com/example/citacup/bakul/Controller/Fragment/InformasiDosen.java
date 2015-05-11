@@ -49,7 +49,8 @@ public class InformasiDosen extends Fragment {
 
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatDosen())
+                               .add(R.id.container, new LihatDosen())
+                               .addToBackStack(null)
                                .commit();
             }
         });

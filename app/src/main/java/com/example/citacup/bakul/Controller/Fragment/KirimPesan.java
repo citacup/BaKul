@@ -24,6 +24,4 @@ public class KirimPesan extends Fragment {
         rootview = inflater.inflate(R.layout.kirimpesan, container, false);
         return rootview;
     }
-
-
 }

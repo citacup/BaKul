@@ -49,7 +49,8 @@ public class LihatReview extends Fragment {
                         .getReviewFromKomentar(Pencarian.selectedReview.get(position));
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new SuatuReview())
+                               .add(R.id.container, new SuatuReview())
+                        .addToBackStack(null)
                                .commit();
             }
         });

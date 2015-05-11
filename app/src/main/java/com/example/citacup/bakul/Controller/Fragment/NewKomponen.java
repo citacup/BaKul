@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
@@ -19,7 +20,7 @@ import com.example.citacup.bakul.R;
 /**
  * Created by CITACUP on PPL.
  */
-public class SuatuKomponen extends Fragment {
+public class NewKomponen extends Fragment {
     public static String nama1 = "";
     public static String nilai1 = "";
     public static String persentase1 = "";
@@ -41,10 +42,6 @@ public class SuatuKomponen extends Fragment {
         persentase = (EditText) rootview.findViewById(R.id.persentase);
         simpan = (ImageView) rootview.findViewById(R.id.simpan);
 
-
-        //MyActivity.databaseHelper.insertKomponen();
-
-
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,16 +50,13 @@ public class SuatuKomponen extends Fragment {
                 persentase1 = persentase.getText().toString();
 
                 if (nama1.length() == 0 || nilai1.length() == 0 || persentase1.length() == 0) {
-
+                    Toast.makeText(getActivity().getBaseContext(), "Periksa Masukan",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     MyActivity.databaseHelper.insertKomponen(nama1, persentase1, nilai1);
                 }
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorHasil())
-                               .commit();
-
-                ;
+                fragmentManager.popBackStack();
             }
         });
         return rootview;

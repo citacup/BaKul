@@ -64,14 +64,16 @@ public class KalkulatorHasil extends Fragment {
                     dipilih = MyActivity.databaseHelper.getKomponenFromNama(isiKomponen.get(0));
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new SuatuKomponen())
+                                   .add(R.id.container, new NewKomponen())
+                                   .addToBackStack(null)
                                    .commit();
                 } else {
                     dipilih = MyActivity.databaseHelper
                             .getKomponenFromNama(isiKomponen.get(position));
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new HasilKomponen())
+                                   .add(R.id.container, new EditKomponen())
+                                   .addToBackStack(null)
                                    .commit();
                 }
 

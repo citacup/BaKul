@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -228,6 +229,24 @@ public class MyActivity extends ActionBarActivity {
         new ProgressTask(MyActivity.this).execute();
 
         Toast.makeText(this, "Log in as " + currentUser, Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public void backHome() {
+        FragmentManager fm = getFragmentManager();
+        int count = fm.getBackStackEntryCount();
+        for(int i = 0; i < count; ++i) {
+            fm.popBackStackImmediate();
+        }
     }
 
     /**
@@ -241,14 +260,23 @@ public class MyActivity extends ActionBarActivity {
             Drawer.closeDrawer(findViewById(R.id.RecyclerView));
         }
 
+        if (position == 0) {
+            Toast.makeText(this, "Login as " + currentUser, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // update the main content by replacing fragments
+        FragmentManager fragmentManager = getFragmentManager();
+        this.backHome();
+        fragmentManager.beginTransaction()
+                       .add(R.id.container, new MainMenu())
+                       .commit();
+
         Fragment objFragment = null;
         switch (position) {
-            case 0:
-                Toast.makeText(this, "Login as " + currentUser, Toast.LENGTH_SHORT).show();
-                return;
             case 1:
                 objFragment = new MainMenu();
-                break;
+                return;
             case 2:
                 objFragment = new InformasiKuliah();
                 break;
@@ -285,10 +313,9 @@ public class MyActivity extends ActionBarActivity {
                 return;
         }
 
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                       .replace(R.id.container, objFragment)
+                       .add(R.id.container, objFragment)
+                       .addToBackStack(null)
                        .commit();
     }
 
@@ -384,9 +411,6 @@ public class MyActivity extends ActionBarActivity {
         actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>" + mTitle + "</font>"));
     }
 
-
-    //-------------------------------LISTENER START HERE !!-------------------------------------//
-
     /**
      * option menu ketika di create
      *
@@ -421,6 +445,8 @@ public class MyActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //-------------------------------LISTENER START HERE !!-------------------------------------//
+
     /**
      * for mainMenu listener page
      *
@@ -435,35 +461,41 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case (R.id.satulayout):
                 //fitur 1
-                //startActivity(new Intent(getBaseContext(), InformasiKuliah.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new InformasiKuliah())
-                               .commit();
+                        .add(R.id.container, new InformasiKuliah())
+                                // Add this transaction to the back stack
+                        .addToBackStack(null)
+                        .commit();
                 break;
             case (R.id.satuimage):
                 //fitur 1
-                //startActivity(new Intent(getBaseContext(), InformasiKuliah.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new InformasiKuliah())
-                               .commit();
+                        .add(R.id.container, new InformasiKuliah())
+                                // Add this transaction to the back stack
+                        .addToBackStack(null)
+                        .commit();
                 break;
             case (R.id.satutext):
                 //fitur 1
-                //startActivity(new Intent(getBaseContext(), InformasiKuliah.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new InformasiKuliah())
-                               .commit();
+                        .add(R.id.container, new InformasiKuliah())
+                                // Add this transaction to the back stack
+                        .addToBackStack(null)
+                        .commit();
+
                 break;
             case (R.id.dualayout):
                 //fitur 2
                 //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
                 if (semester == null) {
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new PerancanganKuliah1())
+                                   .add(R.id.container, new PerancanganKuliah1())
+                                   .addToBackStack(null)
                                    .commit();
                 } else {
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new PerancanganKuliah())
+                                   .add(R.id.container, new PerancanganKuliah())
+                                   .addToBackStack(null)
                                    .commit();
                 }
                 break;
@@ -472,11 +504,13 @@ public class MyActivity extends ActionBarActivity {
                 //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
                 if (semester == null) {
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new PerancanganKuliah1())
+                                   .add(R.id.container, new PerancanganKuliah1())
+                                   .addToBackStack(null)
                                    .commit();
                 } else {
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new PerancanganKuliah())
+                                   .add(R.id.container, new PerancanganKuliah())
+                                   .addToBackStack(null)
                                    .commit();
                 }
                 break;
@@ -485,11 +519,13 @@ public class MyActivity extends ActionBarActivity {
                 //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
                 if (semester == null) {
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new PerancanganKuliah1())
+                                   .add(R.id.container, new PerancanganKuliah1())
+                                   .addToBackStack(null)
                                    .commit();
                 } else {
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new PerancanganKuliah())
+                                   .add(R.id.container, new PerancanganKuliah())
+                                   .addToBackStack(null)
                                    .commit();
                 }
                 break;
@@ -497,24 +533,28 @@ public class MyActivity extends ActionBarActivity {
                 //fitur 3
                 //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorNilai())
+                               .add(R.id.container, new KalkulatorNilai())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.tigaimage):
                 //fitur 3
                 //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorNilai())
+                               .add(R.id.container, new KalkulatorNilai())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.tigatext):
                 //fitur 3
                 //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorNilai())
+                               .add(R.id.container, new KalkulatorNilai())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
+
     }
 
     /**
@@ -533,42 +573,48 @@ public class MyActivity extends ActionBarActivity {
                 //informasi matkul
                 //startActivity(new Intent(getBaseContext(), Pencarian.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new Pencarian())
+                               .add(R.id.container, new Pencarian())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.matkulimage):
                 //informasi matkul
                 //startActivity(new Intent(getBaseContext(), Pencarian.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new Pencarian())
+                               .add(R.id.container, new Pencarian())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.matkultext):
                 //informasi matkul
                 //startActivity(new Intent(getBaseContext(), Pencarian.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new Pencarian())
+                               .add(R.id.container, new Pencarian())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.dosenlayout):
                 //informasi dosen
                 //startActivity(new Intent(getBaseContext(), InformasiDosen.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new InformasiDosen())
+                               .add(R.id.container, new InformasiDosen())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.dosenimage):
                 //informasi dosen
                 //startActivity(new Intent(getBaseContext(), InformasiDosen.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new InformasiDosen())
+                               .add(R.id.container, new InformasiDosen())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.dosentext):
                 //informasi dosen
                 //startActivity(new Intent(getBaseContext(), InformasiDosen.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new InformasiDosen())
+                               .add(R.id.container, new InformasiDosen())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
@@ -590,42 +636,48 @@ public class MyActivity extends ActionBarActivity {
                 //pencarian berdasar nama
                 //startActivity(new Intent(getBaseContext(), PencarianNama.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new PencarianNama())
+                               .add(R.id.container, new PencarianNama())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.namaimage):
                 //pencarian berdasar nama
                 //startActivity(new Intent(getBaseContext(), PencarianNama.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new PencarianNama())
+                               .add(R.id.container, new PencarianNama())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.namatext):
                 //pencarian berdasar nama
                 //startActivity(new Intent(getBaseContext(), PencarianNama.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new PencarianNama())
+                               .add(R.id.container, new PencarianNama())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.kategorilayout):
                 //pencarian berdasar kategori
                 //startActivity(new Intent(getBaseContext(), PencarianKategori.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new PencarianKategori())
+                               .add(R.id.container, new PencarianKategori())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.kategoriimage):
                 //pencarian berdasar kategori
                 //startActivity(new Intent(getBaseContext(), PencarianKategori.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new PencarianKategori())
+                               .add(R.id.container, new PencarianKategori())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.kategoritext):
                 //pencarian berdasar kategori
                 //startActivity(new Intent(getBaseContext(), PencarianKategori.class));
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new PencarianKategori())
+                               .add(R.id.container, new PencarianKategori())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
@@ -644,9 +696,7 @@ public class MyActivity extends ActionBarActivity {
 
         switch (v.getId()) {
             case R.id.ok:
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new MainMenu())
-                               .commit();
+                fragmentManager.popBackStack();
                 break;
         }
     }
@@ -712,7 +762,7 @@ public class MyActivity extends ActionBarActivity {
 
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                    finish();
+                    //finish();
                     Log.i("Sending email...", "");
                 } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(MyActivity.this,
@@ -738,7 +788,8 @@ public class MyActivity extends ActionBarActivity {
                 //startActivity(new Intent(getBaseContext(), LihatRantai.class));
                 //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatRantai())
+                               .add(R.id.container, new LihatRantai())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case R.id.review:
@@ -746,7 +797,8 @@ public class MyActivity extends ActionBarActivity {
                 //startActivity(new Intent(getBaseContext(), LihatRantai.class));
                 //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatReview())
+                               .add(R.id.container, new LihatReview())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
@@ -766,11 +818,7 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.ok:
                 //tombol ok
-                //startActivity(new Intent(getBaseContext(), LihatMatkul.class));
-                //this.finish();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatMatkul())
-                               .commit();
+                fragmentManager.popBackStack();
                 break;
         }
     }
@@ -860,10 +908,8 @@ public class MyActivity extends ActionBarActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatReview())
-                               .commit();
                 break;
+
             case R.id.tidaksuka:
                 httpclient = new DefaultHttpClient();
                 //url post web
@@ -880,19 +926,16 @@ public class MyActivity extends ActionBarActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatReview())
-                               .commit();
                 break;
+
             case R.id.lapor:
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LaporReview())
+                               .add(R.id.container, new LaporReview())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case R.id.ok:
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatReview())
-                               .commit();
+                fragmentManager.popBackStack();
                 break;
         }
     }
@@ -965,11 +1008,10 @@ public class MyActivity extends ActionBarActivity {
             case R.id.simpan:
                 //simpan
                 //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorNilai())
-                               .commit();
+                fragmentManager.popBackStack();
                 Toast.makeText(this, "Kalkulator nilai disimpan", Toast.LENGTH_SHORT).show();
                 break;
+
             case R.id.hitung:
                 //kalkulasi
                 EditText total = (EditText) findViewById(R.id.total3);
@@ -989,21 +1031,20 @@ public class MyActivity extends ActionBarActivity {
                 bm3.setText("0");
                 cp3.setText("0");
                 c3.setText("0");
-
                 break;
+
             case R.id.delete:
                 KalkulatorNilai.spinnerkalkulator.add(KalkulatorNilai.selected.getNama());
                 if (databaseHelper
                         .deleteKalkulator(currentUser, KalkulatorNilai.selected.getNama())) {
-                    fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new KalkulatorNilai())
-                                   .commit();
+                    fragmentManager.popBackStack();
                     Toast.makeText(getBaseContext(), "Kalkulator berhasil dihapus",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getBaseContext(), "Kalkulator gagal dihapus", Toast.LENGTH_SHORT)
                          .show();
                 }
+                break;
         }
     }
 
@@ -1020,12 +1061,17 @@ public class MyActivity extends ActionBarActivity {
 
         switch (v.getId()) {
             case R.id.lanjut:
-                //fitur 1
+                //perancangan
                 databaseHelper.insertRancangan(currentUser, PerancanganKuliah1.semSelect);
                 semester = PerancanganKuliah1.semSelect;
 
+                this.backHome();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new PerancanganKuliah())
+                               .add(R.id.container, new MainMenu())
+                               .commit();
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new PerancanganKuliah())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
@@ -1045,50 +1091,44 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case (R.id.lihatlayout):
                 //lihat rancangan
-                //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatRancangan())
+                               .add(R.id.container, new LihatRancangan())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.lihatimage):
                 //lihat rancangan
-                //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatRancangan())
+                               .add(R.id.container, new LihatRancangan())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.lihattext):
                 //lihat rancangan
-                //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatRancangan())
+                               .add(R.id.container, new LihatRancangan())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.ubahlayout):
                 //ubah rancangan
-                //startActivity(new Intent(getBaseContext(), UbahSemester1.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new UbahSemester1())
+                               .add(R.id.container, new UbahSemester1())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.ubahimage):
                 //ubah rancangan
-                //startActivity(new Intent(getBaseContext(), UbahSemester1.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new UbahSemester1())
+                               .add(R.id.container, new UbahSemester1())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case (R.id.ubahtext):
                 //ubah rancangan
-                //startActivity(new Intent(getBaseContext(), UbahSemester1.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new UbahSemester1())
+                               .add(R.id.container, new UbahSemester1())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
@@ -1108,10 +1148,13 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.ok:
                 //kembali
-                //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
-                //this.finish();
+                this.backHome();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new PerancanganKuliah())
+                               .add(R.id.container, new MainMenu())
+                               .commit();
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new PerancanganKuliah())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
@@ -1134,7 +1177,8 @@ public class MyActivity extends ActionBarActivity {
                 //startActivity(new Intent(getBaseContext(), UbahIsian1.class));
                 //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new UbahIsian1())
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case R.id.lanjut:
@@ -1142,7 +1186,8 @@ public class MyActivity extends ActionBarActivity {
                 //startActivity(new Intent(getBaseContext(), UbahSemester2.class));
                 //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new OlahRancangan())
+                               .add(R.id.container, new OlahRancangan())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
@@ -1161,12 +1206,8 @@ public class MyActivity extends ActionBarActivity {
 
         switch (v.getId()) {
             case R.id.simpan:
-                //fitur 1
-                //startActivity(new Intent(getBaseContext(), UbahSemester1.class));
-                //this.finish();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new UbahSemester1())
-                               .commit();
+                //kembali
+                fragmentManager.popBackStack();
                 Toast.makeText(this, "Isian disimpan", Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -1186,10 +1227,9 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.lanjut:
                 //lanjut
-                //startActivity(new Intent(getBaseContext(), UbahSemester2.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new UbahSemester2())
+                               .add(R.id.container, new UbahSemester2())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
@@ -1207,12 +1247,13 @@ public class MyActivity extends ActionBarActivity {
         FragmentManager fragmentManager = getFragmentManager();
 
         switch (v.getId()) {
-            case R.id.s1:
+            case R.id.s12:
                 //semester
                 //startActivity(new Intent(getBaseContext(), UbahIsian2.class));
                 //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new UbahIsian2())
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
                                .commit();
                 break;
             case R.id.lanjut:
@@ -1220,7 +1261,8 @@ public class MyActivity extends ActionBarActivity {
                 //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
                 //this.finish();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatRancangan())
+                               .add(R.id.container, new LihatRancangan())
+                               .addToBackStack(null)
                                .commit();
                 break;
         }
@@ -1239,12 +1281,8 @@ public class MyActivity extends ActionBarActivity {
 
         switch (v.getId()) {
             case R.id.simpan:
-                //fitur 1
-                //startActivity(new Intent(getBaseContext(), UbahSemester2.class));
-                //this.finish();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new UbahSemester2())
-                               .commit();
+                //kembali
+                fragmentManager.popBackStack();
                 Toast.makeText(this, "Isian disimpan", Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -1313,9 +1351,7 @@ public class MyActivity extends ActionBarActivity {
     public void kirimPesanHelper(boolean success) {
         if (success) {
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                           .replace(R.id.container, new MainMenu())
-                           .commit();
+            fragmentManager.popBackStack();
             Toast.makeText(this, "Pesan terkirim...", Toast.LENGTH_SHORT).show();
             pesanAdmin.setText("");
         } else {
@@ -1371,9 +1407,7 @@ public class MyActivity extends ActionBarActivity {
             Toast.makeText(getBaseContext(), "Laporan Berhasil di Kirim", Toast.LENGTH_SHORT)
                  .show();
             reportMessage.setText("");
-            fragmentManager.beginTransaction()
-                           .replace(R.id.container, new SuatuReview())
-                           .commit();
+            fragmentManager.popBackStack();
         } else {
             Toast.makeText(getBaseContext(), "Laporan Gagal di Kirim", Toast.LENGTH_SHORT).show();
         }
@@ -1392,12 +1426,8 @@ public class MyActivity extends ActionBarActivity {
 
         switch (v.getId()) {
             case R.id.ok:
-                //kirim pesan
-                //startActivity(new Intent(getBaseContext(), MainMenu.class));
-                //this.finish();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new MainMenu())
-                               .commit();
+                //tutorial
+                fragmentManager.popBackStack();
                 break;
         }
     }
@@ -1416,11 +1446,7 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.ok:
                 //ok button
-                //startActivity(new Intent(getBaseContext(), MainMenu.class));
-                //this.finish();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new MainMenu())
-                               .commit();
+                fragmentManager.popBackStack();
                 break;
         }
     }
@@ -1439,11 +1465,7 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.ok:
                 //ok button
-                //startActivity(new Intent(getBaseContext(), MainMenu.class));
-                //this.finish();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new MainMenu())
-                               .commit();
+                fragmentManager.popBackStack();
                 break;
         }
     }
@@ -1462,11 +1484,7 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.simpan:
                 //simpan menu pengguna
-                //startActivity(new Intent(getBaseContext(), MainMenu.class));
-                //this.finish();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new MainMenu())
-                               .commit();
+                fragmentManager.popBackStack();
                 Toast.makeText(this, "Menu pengguna disimpan", Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -1747,7 +1765,7 @@ public class MyActivity extends ActionBarActivity {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (Exception e) {
-                Log.e("kirim review", "Exception caught: ", e);
+                Log.e("kirim like or dislike", "Exception caught: ", e);
             }
             return null;
         }

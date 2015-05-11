@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
@@ -19,7 +20,7 @@ import com.example.citacup.bakul.R;
 /**
  * Created by CITACUP on PPL.
  */
-public class HasilKomponen extends Fragment {
+public class EditKomponen extends Fragment {
     public static String nama1 = "";
     public static String nilai1 = "";
     public static String persentase1 = "";
@@ -52,34 +53,31 @@ public class HasilKomponen extends Fragment {
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 nama1 = nama.getText().toString();
                 nilai1 = nilai.getText().toString();
                 persentase1 = persentase.getText().toString();
-                MyActivity.databaseHelper.updateKomponen(nama1, nilai1, persentase1);
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorHasil())
-                               .commit();
 
-                ;
+                if (nama1.length() == 0 || nilai1.length() == 0 || persentase1.length() == 0) {
+                    Toast.makeText(getActivity().getBaseContext(), "Periksa Masukan",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    MyActivity.databaseHelper.updateKomponen(nama1, nilai1, persentase1);
+                }
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.popBackStack();
             }
         });
 
         hapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 nama1 = nama.getText().toString();
                 MyActivity.databaseHelper.deleteKomponen(nama1);
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorHasil())
-                               .commit();
-
-                ;
+                fragmentManager.popBackStack();
             }
         });
+
         return rootview;
     }
 }

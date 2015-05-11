@@ -181,7 +181,6 @@
                 android:background="@drawable/circle"
                 android:id="@+id/simpan"
                 android:clickable="true"
-                android:onClick="suatuKomponenListener"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15sp"
                 android:layout_marginRight="10sp"/>
@@ -193,7 +192,6 @@
                 android:background="@drawable/circle"
                 android:id="@+id/hapus"
                 android:clickable="true"
-                android:onClick="suatuKomponenListener"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15sp"/>
 

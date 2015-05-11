@@ -24,8 +24,4 @@ public class InformasiKuliah extends Fragment {
         rootview = inflater.inflate(R.layout.informasikuliah, container, false);
         return rootview;
     }
-
-    //public void onBackPressed(){
-    //    this.finish();
-    //}
 }

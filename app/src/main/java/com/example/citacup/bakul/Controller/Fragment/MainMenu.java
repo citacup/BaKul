@@ -26,8 +26,4 @@ public class MainMenu extends Fragment {
         rootview = inflater.inflate(R.layout.mainmenu, container, false);
         return rootview;
     }
-
-    // public void onBackPressed(){
-    //this.finish();
-    //}
 }

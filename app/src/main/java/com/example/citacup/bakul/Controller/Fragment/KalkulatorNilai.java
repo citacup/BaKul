@@ -71,7 +71,8 @@ public class KalkulatorNilai extends Fragment {
                 selected = db.getMatakuliahFromNama(db.getAllMatkulKalkulator().get(position));
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorHasil())
+                               .add(R.id.container, new KalkulatorHasil())
+                        .addToBackStack(null)
                                .commit();
             }
         });

@@ -65,7 +65,8 @@ public class PencarianNama extends Fragment {
                         .getMatakuliahFromNama(Pencarian.selected.get(position));
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new LihatMatkul())
+                               .add(R.id.container, new LihatMatkul())
+                        .addToBackStack(null)
                                .commit();
             }
         });
