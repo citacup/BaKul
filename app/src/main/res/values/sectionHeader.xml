@@ -6,7 +6,7 @@
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:paddingLeft">4dp</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
         <item name="android:textColor">@color/biru</item>
-        <item name="android:textSize">16sp</item>
     </style>
 </resources>

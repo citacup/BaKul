@@ -13,7 +13,9 @@ public class Review {
     String dislike;
 
 
-    public Review(String idrev,String username, String nama, String komentar, String app_flag, String like, String dislike) {
+    public Review(
+            String idrev, String username, String nama, String komentar, String app_flag,
+            String like, String dislike) {
         this.idrev = idrev;
         this.username = username;
         this.nama = nama;
@@ -50,7 +52,6 @@ public class Review {
     public String getDislike() {
         return dislike;
     }
-
 
 
 }

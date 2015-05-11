@@ -18,27 +18,16 @@
         android:elevation="@dimen/margindalem"
         android:background="@android:color/white">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#ff0272bc"
-            android:id="@+id/labellayout"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical|center_horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Komponen Nilai"
-                android:id="@+id/labeltext"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:gravity="center_vertical|center_horizontal" />
-        </LinearLayout>
+            android:text="Komponen Nilai"
+            android:id="@+id/labeltext"
+            style="@style/sectionHeader"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="10sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -175,14 +164,8 @@
                             android:hint="% Persentase"
                             android:layout_marginLeft="5sp" />
                     </LinearLayout>
-
                 </LinearLayout>
-
-
-
             </LinearLayout>
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -191,25 +174,28 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical|right">
 
-            <Button android:id="@+id/hapus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hapus"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
-                android:onClick="suatuReviewListener"
-                android:padding="10sp" />
-            <Button android:id="@+id/simpan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Simpan"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
+            <ImageView
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:src="@drawable/save"
+                android:background="@drawable/circle"
+                android:id="@+id/simpan"
+                android:clickable="true"
+                android:onClick="suatuKomponenListener"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15sp"
+                android:layout_marginRight="10sp"/>
 
-                android:padding="10sp"
-                android:layout_marginLeft="5sp" />
+            <ImageView
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:src="@drawable/hapus"
+                android:background="@drawable/circle"
+                android:id="@+id/hapus"
+                android:clickable="true"
+                android:onClick="suatuKomponenListener"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15sp"/>
 
         </LinearLayout>
     </LinearLayout>

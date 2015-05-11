@@ -13,7 +13,7 @@
 
         <!-- Splash screen -->
         <activity
-            android:name=".SplashScreen"
+            android:name=".Controller.Activity.SplashScreen"
             android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
@@ -26,7 +26,7 @@
 
         <!-- Main activity -->
         <activity
-            android:name=".Login"
+            android:name=".Controller.Activity.Login"
             android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
             android:theme="@style/AppTheme">
@@ -37,19 +37,19 @@
 
         <!-- Pilih Jurusan -->
         <activity
-            android:name=".LoginSso"
+            android:name=".Controller.Activity.LoginSso"
             android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
-            android:parentActivityName=".Login"
+            android:parentActivityName=".Controller.Activity.Login"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Login" />
+                android:value=".Controller.Activity.Login" />
         </activity>
 
         <!-- Pilih Jurusan -->
         <activity
-            android:name=".PilihJurusan"
+            android:name=".Controller.Activity.PilihJurusan"
             android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
             android:theme="@style/AppTheme">
@@ -68,7 +68,7 @@
 
         <!-- Splash screen Logout-->
         <activity
-            android:name=".Logout"
+            android:name=".Controller.Activity.Logout"
             android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"

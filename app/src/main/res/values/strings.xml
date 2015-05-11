@@ -3,41 +3,22 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="app_name">BaKul</string>
+
     <string name="title_section0">Halaman Utama</string>
     <string name="title_section1">Informasi Kuliah</string>
     <string name="title_section2">Perancangan Kuliah</string>
     <string name="title_section3">Kalkulator Nilai</string>
-    <string name="title_section4">Panduan Aplikasi</string>
-    <string name="title_section5">F.A.Q</string>
-    <string name="title_section6">Menu Pengguna</string>
-    <string name="title_section7">Kirim Pesan ke Admin</string>
-    <string name="title_section8">Perbarui Aplikasi</string>
+    <string name="title_section4">Tanya Jawab</string>
+    <string name="title_section5">Panduan Pengguna</string>
+    <string name="title_section6">Perbarui Aplikasi</string>
+    <string name="title_section7">Pengaturan</string>
+    <string name="title_section8">Hubungi Kami</string>
     <string name="title_section9">Tentang Kami</string>
     <string name="title_section10">Log out</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_login">Accounts</string>
     <string name="action_settings">Settings</string>
-
-    <!-- Nav Drawer Menu Items -->
-    <string-array name="nav_drawer_items">
-        <item >Home</item>
-        <item >Find People</item>
-        <item >Photos</item>
-        <item >Communities</item>
-        <item >Pages</item>
-        <item >What\'s Hot</item>
-    </string-array>
-
-    <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in -->
-    <array name="nav_drawer_icons">
-        <item>@drawable/logo_kecil</item>
-        <item>@drawable/logo_kecil</item>
-        <item>@drawable/logo_kecil</item>
-        <item>@drawable/logo_kecil</item>
-        <item>@drawable/logo_kecil</item>
-        <item>@drawable/logo_kecil</item>
-    </array>
 
 </resources>

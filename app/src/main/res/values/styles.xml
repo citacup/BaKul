@@ -21,8 +21,13 @@
         <item name="actionButtonStyle">@style/ActionButton</item>
     </style>
 
+    <style name="AppTheme1" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <!-- Base application theme. -->
-    <style name="AppTheme1" parent="android:style/Theme.Holo.Light">
+    <style name="AppTheme2" parent="android:style/Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/MyActionBar1</item>
 
         <!-- Support library compatibility -->
@@ -47,6 +52,5 @@
         <!-- Support library compatibility -->
         <item name="textAllCaps">false</item>
     </style>
-
 
 </resources>

@@ -18,85 +18,107 @@
         android:elevation="@dimen/margindalem"
         android:padding="@dimen/margindalem">
 
+        <ImageView
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:src="@drawable/matkul"
+            android:background="@drawable/circlestroke"
+            android:id="@+id/labelimg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Informasi Mata Kuliah"
+            android:id="@+id/label"
+            style="@style/sectionHeader"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="10sp"/>
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#ff0272bc"
-            android:id="@+id/labellayout"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical|center_horizontal">
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20sp">
 
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Informasi Mata Kuliah"
-                android:id="@+id/labeltext"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:gravity="center_vertical|center_horizontal" />
+                android:gravity="center_horizontal">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1"
+                    android:id="@+id/namalayout"
+                    android:clickable="true"
+                    android:onClick="pencarianListener"
+                    android:padding="5sp">
+
+                    <ImageView
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:id="@+id/namaimage"
+                        android:src="@drawable/nama"
+                        android:clickable="true"
+                        android:onClick="pencarianListener"
+                        android:background="@drawable/circlelight"
+                        android:layout_marginBottom="5sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Cari Berdasar Nama"
+                        android:id="@+id/namatext"
+                        android:clickable="true"
+                        android:onClick="pencarianListener"
+                        android:textColor="@color/biru"
+                        android:gravity="center_vertical|center_horizontal"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1"
+                    android:id="@+id/kategorilayout"
+                    android:clickable="true"
+                    android:onClick="pencarianListener"
+                    android:padding="5sp">
+
+                    <ImageView
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:id="@+id/kategoriimage"
+                        android:src="@drawable/kategori"
+                        android:clickable="true"
+                        android:onClick="pencarianListener"
+                        android:background="@drawable/circlelight"
+                        android:layout_marginBottom="5sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Cari Berdasar Kategori"
+                        android:id="@+id/kategoritext"
+                        android:clickable="true"
+                        android:onClick="pencarianListener"
+                        android:textColor="@color/biru"
+                        android:gravity="center_vertical|center_horizontal"
+                        />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/labelimg"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20sp"
-            android:src="@drawable/matkul" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/abc_ab_share_pack_holo_light"
-            android:id="@+id/namalayout"
-            android:layout_marginTop="30dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:clickable="true"
-            android:onClick="pencarianListener">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cari Berdasar Nama"
-                android:id="@+id/namatext"
-                android:textColor="@color/biru"
-                android:textSize="@dimen/textpilihan"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:clickable="true"
-                android:onClick="pencarianListener"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/abc_ab_share_pack_holo_light"
-            android:id="@+id/kategorilayout"
-            android:layout_marginTop="30dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:clickable="true"
-            android:onClick="pencarianListener">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cari Berdasar Kategori"
-                android:id="@+id/kategoritext"
-                android:textColor="@color/biru"
-                android:textSize="@dimen/textpilihan"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:clickable="true"
-                android:onClick="pencarianListener"/>
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

@@ -18,35 +18,23 @@
         android:elevation="@dimen/margindalem"
         android:background="@android:color/white">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff0272bc"
-            android:id="@+id/labellayout"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical|center_horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tentang Kami"
-                android:id="@+id/judulMatkul"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:gravity="center_vertical|center_horizontal" />
-        </LinearLayout>
+        <ImageView
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:src="@drawable/tentang"
+            android:id="@+id/labelimg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ksatria Bakul (PPL A07)"
-            android:id="@+id/label"
+            android:id="@+id/labeltext"
+            android:textStyle="bold"
             style="@style/sectionHeader"
-            android:layout_marginTop="20sp" />
+            android:layout_marginTop="5sp"
+            android:gravity="center_vertical|center_horizontal"/>
 
         <ScrollView
             android:layout_width="fill_parent"
@@ -188,16 +176,13 @@
             android:layout_weight="0.2"
             android:gravity="center_vertical|right">
 
-            <Button android:id="@+id/ok"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OK"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
-                android:onClick="tentangKamiListener"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp" />
+            <ImageView
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:src="@drawable/ok"
+                android:background="@drawable/circle"
+                android:id="@+id/ok"
+                android:onClick="tentangKamiListener"/>
         </LinearLayout>
 
     </LinearLayout>

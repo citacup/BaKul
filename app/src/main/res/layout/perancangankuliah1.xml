@@ -18,35 +18,23 @@
         android:elevation="@dimen/margindalem"
         android:background="@android:color/white">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff0272bc"
-            android:id="@+id/labellayout"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical|center_horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Perancangan Kuliah"
-                android:id="@+id/labeltext"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:gravity="center_vertical|center_horizontal" />
-        </LinearLayout>
-
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:src="@drawable/perancangan"
             android:id="@+id/labelimg"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20sp"
-            android:src="@drawable/dua" />
+            android:layout_marginTop="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perancangan Kuliah"
+            android:id="@+id/labeltext"
+            style="@style/sectionHeader"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="10sp"/>
 
         <TableLayout
             android:layout_width="fill_parent"
@@ -87,17 +75,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
-                <Button android:id="@+id/lanjut"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15sp"
-                    android:text="Lanjut"
-                    android:textStyle="italic"
-                    android:background="@color/biru"
-                    android:textColor="@android:color/white"
+                <ImageView
+                    android:layout_width="60sp"
+                    android:layout_height="60sp"
+                    android:src="@drawable/lanjut"
+                    android:background="@drawable/circle"
+                    android:id="@+id/lanjut"
+                    android:clickable="true"
                     android:onClick="perancanganKuliah1Listener"
-                    android:paddingLeft="10sp"
-                    android:paddingRight="10sp" />
+                    android:layout_marginTop="20sp"/>
 
             </TableRow>
         </TableLayout>

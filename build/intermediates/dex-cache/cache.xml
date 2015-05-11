@@ -30,6 +30,13 @@
         <dex dex="E:\BaKul0\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-f2c76288baed2ea79046d4be919f646a30f101f0.jar" />
     </item>
     <item
+        jar="D:\Documents\GitHub\BaKul\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="D:\Documents\GitHub\BaKul\app\build\intermediates\pre-dexed\debug\classes-68c8cf8eeb0cde64035ee39abfd5e7f28823333e.jar" />
+    </item>
+    <item
         jar="D:\Documents\GitHub\BaKul\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -42,6 +49,13 @@
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
         <dex dex="D:\Documents\GitHub\BaKul\app\build\intermediates\pre-dexed\debug\classes-26d707824f950ab5309bd9926ca50e6528136a5a.jar" />
+    </item>
+    <item
+        jar="D:\Documents\GitHub\BaKul\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b868b833b0887aa48c4e581558eef4f1196f6a2">
+        <dex dex="D:\Documents\GitHub\BaKul\app\build\intermediates\pre-dexed\debug\classes-0e8cc3fd7a34829edd0784eed93b8a9c2039d9cd.jar" />
     </item>
     <item
         jar="D:\Documents\GitHub\BaKul\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"

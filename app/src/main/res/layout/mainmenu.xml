@@ -10,119 +10,150 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:gravity="center_vertical|center_horizontal"
-        android:weightSum="1"
-        android:padding="@dimen/margindalem"
         android:elevation="@dimen/margindalem"
         android:background="@android:color/white">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/birumuda"
-            android:id="@+id/satulayout"
-            android:gravity="center_vertical|center_horizontal"
-            android:clickable="true"
-            android:onClick="mainMenuListener"
-            android:weightSum="1"
-            android:layout_weight="0.33"
-            android:padding="5sp">
+            android:id="@+id/mainlayout"
+            android:layout_marginBottom="20sp">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/satuimage"
-                android:src="@drawable/satu"
-                android:clickable="true"
-                android:onClick="mainMenuListener"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Informasi Kuliah"
-                android:id="@+id/satutext"
-                android:textColor="@color/biru"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:clickable="true"
-                android:onClick="mainMenuListener"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_marginLeft="10sp" />
-
+                android:scaleType="fitStart"
+                android:adjustViewBounds="true"
+                android:id="@+id/mainimage"
+                android:src="@drawable/main"
+                android:background="@color/birumuda"/>
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:background="@drawable/abc_ab_share_pack_holo_light"
-            android:id="@+id/dualayout"
-            android:gravity="center_vertical|center_horizontal"
-            android:clickable="true"
-            android:onClick="mainMenuListener"
-            android:weightSum="1"
-            android:layout_weight="0.33"
-            android:padding="5sp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/duaimage"
-                android:src="@drawable/dua"
-                android:clickable="true"
-                android:onClick="mainMenuListener"/>
+            android:gravity="center_horizontal"
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Perancangan Kuliah"
-                android:id="@+id/duatext"
-                android:textColor="@color/biru"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:clickable="true"
-                android:onClick="mainMenuListener"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_marginLeft="10sp" />
+                android:text="Fitur Utama"
+                android:id="@+id/labelmain"
+                style="@style/sectionHeader"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10sp"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:background="@color/birumuda"
-            android:id="@+id/tigalayout"
-            android:gravity="center_vertical|center_horizontal"
-            android:clickable="true"
-            android:onClick="mainMenuListener"
-            android:weightSum="1"
-            android:layout_weight="0.33"
-            android:padding="5sp">
-
-            <ImageView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tigaimage"
-                android:src="@drawable/tiga"
-                android:clickable="true"
-                android:onClick="mainMenuListener"/>
+                android:gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kalkulator Nilai"
-                android:id="@+id/tigatext"
-                android:textColor="@color/biru"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:clickable="true"
-                android:onClick="mainMenuListener"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_marginLeft="10sp" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1"
+                    android:id="@+id/satulayout"
+                    android:clickable="true"
+                    android:onClick="mainMenuListener"
+                    android:padding="5sp">
 
+                    <ImageView
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:id="@+id/satuimage"
+                        android:src="@drawable/f1"
+                        android:clickable="true"
+                        android:onClick="mainMenuListener"
+                        android:background="@drawable/circle"
+                        android:layout_marginBottom="5sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Informasi Kuliah"
+                        android:id="@+id/satutext"
+                        android:textColor="@color/biru"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:clickable="true"
+                        android:onClick="mainMenuListener"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1"
+                    android:id="@+id/dualayout"
+                    android:clickable="true"
+                    android:onClick="mainMenuListener"
+                    android:padding="5sp">
+
+                    <ImageView
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:id="@+id/duaimage"
+                        android:src="@drawable/f2"
+                        android:clickable="true"
+                        android:onClick="mainMenuListener"
+                        android:background="@drawable/circle"
+                        android:layout_marginBottom="5sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Perancangan Kuliah"
+                        android:id="@+id/duatext"
+                        android:textColor="@color/biru"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:clickable="true"
+                        android:onClick="mainMenuListener"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1"
+                    android:id="@+id/tigalayout"
+                    android:clickable="true"
+                    android:onClick="mainMenuListener"
+                    android:padding="5sp">
+
+                    <ImageView
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:id="@+id/tigaimage"
+                        android:src="@drawable/f3"
+                        android:clickable="true"
+                        android:onClick="mainMenuListener"
+                        android:background="@drawable/circle"
+                        android:layout_marginBottom="5sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Kalkulator Nilai"
+                        android:id="@+id/tigatext"
+                        android:textColor="@color/biru"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:clickable="true"
+                        android:onClick="mainMenuListener"/>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

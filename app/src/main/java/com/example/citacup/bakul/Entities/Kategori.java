@@ -6,6 +6,7 @@ package com.example.citacup.bakul.Entities;
 public class Kategori {
 
     String kategori;
+
     public Kategori(String kategori) {
         this.kategori = kategori;
     }

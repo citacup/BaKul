@@ -8,21 +8,21 @@ public class KomponenPenilaian {
     String bobot;
     String nilai;
 
-    public KomponenPenilaian(String nama, String bobot, String nilai){
+    public KomponenPenilaian(String nama, String bobot, String nilai) {
         this.nama = nama;
         this.bobot = bobot;
         this.nilai = nilai;
     }
 
-    public String getNama(){
+    public String getNama() {
         return nama;
     }
 
-    public String getBobot(){
+    public String getBobot() {
         return bobot;
     }
 
-    public String getNilai (){
+    public String getNilai() {
         return nilai;
     }
 }

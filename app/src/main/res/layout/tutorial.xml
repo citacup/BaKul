@@ -18,34 +18,31 @@
         android:elevation="@dimen/margindalem"
         android:padding="@dimen/margindalem">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff0272bc"
-            android:id="@+id/labellayout"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical|center_horizontal">
+        <ImageView
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:src="@drawable/panduan"
+            android:id="@+id/labelimg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tutorial Penggunaan Aplikasi"
-                android:id="@+id/labeltext"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:gravity="center_vertical|center_horizontal" />
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Panduan Pengguna"
+            android:id="@+id/labeltext"
+            android:textStyle="bold"
+            style="@style/sectionHeader"
+            android:layout_marginTop="5sp"
+            android:gravity="center_vertical|center_horizontal"/>
 
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:id="@+id/scrollView"
             android:layout_weight="0.80"
-            android:layout_marginTop="20sp">
+            android:layout_marginTop="5sp"
+            android:padding="10sp">
 
 
             <LinearLayout
@@ -56,7 +53,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tutorial Melihat Informasi Mata Kuliah"
+                    android:text="Cara Melihat Informasi Mata Kuliah :"
                     android:id="@+id/label1"
                     style="@style/sectionHeader"
                     android:layout_marginTop="10sp" />
@@ -72,7 +69,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tutorial Memberikan Review"
+                    android:text="Cara Memberikan Review :"
                     android:id="@+id/label2"
                     style="@style/sectionHeader"
                     android:layout_marginTop="10sp" />
@@ -88,7 +85,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tutorial Menggunakan Kalkulator Nilai Akhir"
+                    android:text="Cara Menggunakan Kalkulator Nilai Akhir :"
                     android:id="@+id/label3"
                     style="@style/sectionHeader"
                     android:layout_marginTop="10sp" />
@@ -110,17 +107,14 @@
             android:layout_weight="0.2"
             android:gravity="center_vertical|right">
 
-            <Button android:id="@+id/ok"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OK"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
+            <ImageView
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:src="@drawable/ok"
+                android:background="@drawable/circle"
+                android:id="@+id/ok"
                 android:clickable="true"
-                android:onClick="tutorialListener"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp" />
+                android:onClick="tutorialListener"/>
         </LinearLayout>
 
     </LinearLayout>

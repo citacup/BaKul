@@ -18,110 +18,106 @@
         android:background="@android:color/white"
         android:elevation="@dimen/margindalem">
 
+        <ImageView
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:src="@drawable/perancangan"
+            android:id="@+id/labelimg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perancangan Kuliah"
+            android:id="@+id/labeltext"
+            style="@style/sectionHeader"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="10sp"/>
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#ff0272bc"
-            android:id="@+id/labellayout"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical|center_horizontal">
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20sp">
 
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Perancangan Kuliah"
-                android:id="@+id/labeltext"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:gravity="center_vertical|center_horizontal" />
+                android:gravity="center_horizontal">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1"
+                    android:id="@+id/lihatlayout"
+                    android:clickable="true"
+                    android:onClick="perancanganKuliahListener"
+                    android:padding="5sp">
+
+                    <ImageView
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:id="@+id/lihatimage"
+                        android:src="@drawable/lihat"
+                        android:clickable="true"
+                        android:onClick="perancanganKuliahListener"
+                        android:background="@drawable/circlelight"
+                        android:layout_marginBottom="5sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Lihat Rancangan"
+                        android:id="@+id/lihattext"
+                        android:clickable="true"
+                        android:onClick="perancanganKuliahListener"
+                        android:textColor="@color/biru"
+                        android:gravity="center_vertical|center_horizontal"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1"
+                    android:id="@+id/ubahlayout"
+                    android:clickable="true"
+                    android:onClick="perancanganKuliahListener"
+                    android:padding="5sp">
+
+                    <ImageView
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:id="@+id/ubahimage"
+                        android:src="@drawable/ubah"
+                        android:clickable="true"
+                        android:onClick="perancanganKuliahListener"
+                        android:background="@drawable/circlelight"
+                        android:layout_marginBottom="5sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Ubah Rancangan"
+                        android:id="@+id/ubahtext"
+                        android:clickable="true"
+                        android:onClick="perancanganKuliahListener"
+                        android:textColor="@color/biru"
+                        android:gravity="center_vertical|center_horizontal"
+                        />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/labelimg"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20sp"
-            android:src="@drawable/dua" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/abc_ab_share_pack_holo_light"
-            android:id="@+id/lihatlayout"
-            android:layout_marginTop="30sp"
-            android:gravity="center_vertical|center_horizontal"
-            android:clickable="true"
-            android:onClick="perancanganKuliahListener">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lihatimage"
-                android:src="@drawable/lihat"
-                android:paddingTop="5sp"
-                android:paddingBottom="5sp"
-                android:clickable="true"
-                android:onClick="perancanganKuliahListener"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lihat Rancangan"
-                android:id="@+id/lihattext"
-                android:textColor="@color/biru"
-                android:textSize="@dimen/textpilihan"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:paddingLeft="20sp"
-                android:clickable="true"
-                android:onClick="perancanganKuliahListener"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/abc_ab_share_pack_holo_light"
-            android:id="@+id/ubahlayout"
-            android:layout_marginTop="30sp"
-            android:gravity="center_vertical|center_horizontal"
-            android:clickable="true"
-            android:onClick="perancanganKuliahListener">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ubahimage"
-                android:src="@drawable/ubah"
-                android:paddingTop="5sp"
-                android:paddingBottom="5sp"
-                android:clickable="true"
-                android:onClick="perancanganKuliahListener"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ubah Rancangan"
-                android:id="@+id/ubahtext"
-                android:textColor="@color/biru"
-                android:textSize="@dimen/textpilihan"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:paddingLeft="20sp"
-                android:clickable="true"
-                android:onClick="perancanganKuliahListener"/>
-
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

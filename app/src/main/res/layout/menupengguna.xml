@@ -18,33 +18,30 @@
         android:elevation="@dimen/margindalem"
         android:background="@android:color/white">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff0272bc"
-            android:id="@+id/labellayout"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical|center_horizontal">
+        <ImageView
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:src="@drawable/pengaturan"
+            android:id="@+id/labelimg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Menu Pengguna"
-                android:id="@+id/labeltext"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:gravity="center_vertical|center_horizontal" />
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pengaturan"
+            android:id="@+id/labeltext"
+            android:textStyle="bold"
+            style="@style/sectionHeader"
+            android:layout_marginTop="5sp"
+            android:gravity="center_vertical|center_horizontal"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.80"
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="5sp"
+            android:padding="10sp"
             android:orientation="vertical">
 
             <TextView
@@ -183,17 +180,14 @@
             android:layout_weight="0.2"
             android:gravity="center_vertical|right">
 
-            <Button android:id="@+id/simpan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Simpan"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
+            <ImageView
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:src="@drawable/apply"
+                android:background="@drawable/circle"
+                android:id="@+id/simpan"
                 android:clickable="true"
-                android:onClick="menuPenggunaListener"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp" />
+                android:onClick="menuPenggunaListener"/>
         </LinearLayout>
 
     </LinearLayout>

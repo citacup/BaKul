@@ -18,42 +18,23 @@
         android:elevation="@dimen/margindalem"
         android:background="@android:color/white">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff0272bc"
-            android:id="@+id/labellayout"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical|center_horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Review Matkul"
-                android:id="@+id/labeltext"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:gravity="center_vertical|center_horizontal" />
-        </LinearLayout>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Review Mata Kuliah"
-            android:id="@+id/label"
+            android:id="@+id/labeltext"
             style="@style/sectionHeader"
-            android:layout_marginTop="20sp" />
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="10sp"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
             android:id="@+id/scrollView"
-            android:layout_marginTop="5sp"
+            android:layout_marginTop="20sp"
             android:layout_weight="0.80">
 
 
@@ -144,25 +125,13 @@
                         android:gravity="center_vertical|left">
 
                         <ImageView
-                            android:layout_width="35sp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
                             android:id="@+id/suka"
                             android:src="@drawable/like"
+                            android:background="@drawable/circle"
                             android:layout_marginLeft="5sp"
                             android:onClick="suatuReviewListener"
-                            android:clickable="true" />
-
-                        <TextView android:id="@+id/sukatext"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Suka"
-                            android:textStyle="italic"
-                            android:textColor="@color/biru"
-                            android:onClick="suatuReviewListener"
-                            android:gravity="center_vertical|left"
-                            android:paddingLeft="10sp"
-                            android:paddingRight="10sp"
-                            android:layout_marginLeft="5sp"
                             android:clickable="true" />
                     </LinearLayout>
                 </LinearLayout>
@@ -216,25 +185,13 @@
                         android:gravity="center_vertical|left">
 
                         <ImageView
-                            android:layout_width="35sp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
                             android:id="@+id/tidaksuka"
                             android:src="@drawable/dislike"
+                            android:background="@drawable/circle"
                             android:layout_marginLeft="5sp"
                             android:onClick="suatuReviewListener"
-                            android:clickable="true" />
-
-                        <TextView android:id="@+id/tidaksukatext"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tidak Suka"
-                            android:textStyle="italic"
-                            android:textColor="@color/biru"
-                            android:onClick="suatuReviewListener"
-                            android:gravity="center_vertical|left"
-                            android:paddingLeft="10sp"
-                            android:paddingRight="10sp"
-                            android:layout_marginLeft="5sp"
                             android:clickable="true" />
                     </LinearLayout>
                 </LinearLayout>
@@ -268,16 +225,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6">
 
-                        <Button android:id="@+id/lapor"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Lapor"
-                            android:textStyle="italic"
-                            android:background="@color/biru"
-                            android:textColor="@android:color/white"
-                            android:onClick="suatuReviewListener"
-                            android:padding="10sp"
-                            android:layout_marginLeft="5sp" />
+                        <ImageView
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
+                            android:layout_marginLeft="5sp"
+                            android:src="@drawable/lapor"
+                            android:background="@drawable/circle"
+                            android:id="@+id/lapor"
+                            android:clickable="true"
+                            android:onClick="suatuReviewListener"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -293,17 +249,14 @@
             android:gravity="center_vertical|right"
             android:padding="5sp">
 
-            <Button android:id="@+id/ok"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OK"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
-                android:onClick="suatuReviewListener"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"
-                android:layout_marginLeft="5sp" />
+            <ImageView
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:src="@drawable/ok"
+                android:background="@drawable/circle"
+                android:id="@+id/ok"
+                android:clickable="true"
+                android:onClick="suatuReviewListener"/>
         </LinearLayout>
 
     </LinearLayout>

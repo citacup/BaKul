@@ -10,75 +10,112 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:padding="@dimen/margindalem"
         android:elevation="@dimen/margindalem"
         android:background="@android:color/white">
-
-        <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content" android:layout_height="0dp"
-            android:layout_marginBottom="8dp" android:visibility="gone"
-            android:layout_weight="1" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#ff0272bc"
+            android:background="@color/birumuda"
             android:id="@+id/labellayout"
-            android:layout_marginTop="10sp"
             android:gravity="center_vertical|center_horizontal">
+
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imagebanner"
+                android:scaleType="fitStart"
+                android:adjustViewBounds="true"
+                android:src="@drawable/sso"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:padding="25sp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SSO Log in"
+                android:text="SSO Login"
                 android:id="@+id/labeltext"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic"
-                android:paddingTop="10sp"
-                android:paddingBottom="10sp"
-                android:gravity="center_vertical|center_horizontal" />
-        </LinearLayout>
+                style="@style/sectionHeader"
+                android:layout_marginBottom="10sp"
+                android:gravity="center_vertical|center_horizontal"/>
 
-        <LinearLayout android:id="@+id/email_login_form" android:layout_width="match_parent"
-            android:layout_height="match_parent" android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            android:layout_marginTop="50sp">
-
-            <EditText
-                android:id="@+id/username_SSO"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
-                android:fontFamily="@string/action_sign_in"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:singleLine="true" />
+                android:gravity="center_horizontal|bottom"
+                android:paddingRight="5sp"
+                android:paddingLeft="5sp">
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/user"
+                    android:background="@drawable/circlelight"
+                    android:id="@+id/emailimage"/>
+
+                <EditText
+                    android:id="@+id/username_SSO"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:paddingLeft="20sp"
+                    android:hint="Username"
+                    android:fontFamily="@string/action_sign_in"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_password"
-                android:fontFamily="@string/action_sign_in"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified" android:inputType="textPassword"
-                android:maxLines="1" android:singleLine="true" />
+                android:gravity="center_horizontal|bottom"
+                android:paddingLeft="5sp"
+                android:paddingRight="5sp">
 
-            <Button
+                <ImageView
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/pass"
+                    android:background="@drawable/circlelight"
+                    android:id="@+id/passimage"/>
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:paddingLeft="20sp"
+                    android:hint="@string/prompt_password"
+                    android:fontFamily="@string/action_sign_in"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_marginTop="20sp"
+                android:src="@drawable/login"
+                android:background="@drawable/circle"
                 android:id="@+id/email_sign_in_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/action_sign_in_short"
-                android:textStyle="italic"
-                android:background="@color/biru"
-                android:textColor="@android:color/white"
-                android:onClick="loginSSO"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"/>
+                android:clickable="true"
+                android:onClick="loginSSO"/>
 
         </LinearLayout>
     </LinearLayout>
