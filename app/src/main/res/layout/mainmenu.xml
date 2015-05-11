@@ -43,6 +43,8 @@
                 android:layout_height="wrap_content"
                 android:text="Fitur Utama"
                 android:id="@+id/labelmain"
+                android:layout_marginRight="30sp"
+                android:layout_marginLeft="30sp"
                 style="@style/sectionHeader"
                 android:gravity="center_horizontal"
                 android:layout_marginBottom="10sp"/>
@@ -65,14 +67,14 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="100sp"
-                        android:layout_height="100sp"
+                        android:layout_width="80sp"
+                        android:layout_height="80sp"
                         android:id="@+id/satuimage"
                         android:src="@drawable/f1"
                         android:clickable="true"
                         android:onClick="mainMenuListener"
                         android:background="@drawable/circle"
-                        android:layout_marginBottom="5sp"/>
+                        android:layout_marginBottom="10sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -98,14 +100,14 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="100sp"
-                        android:layout_height="100sp"
+                        android:layout_width="80sp"
+                        android:layout_height="80sp"
                         android:id="@+id/duaimage"
                         android:src="@drawable/f2"
                         android:clickable="true"
                         android:onClick="mainMenuListener"
                         android:background="@drawable/circle"
-                        android:layout_marginBottom="5sp"/>
+                        android:layout_marginBottom="10sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -131,14 +133,14 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="100sp"
-                        android:layout_height="100sp"
+                        android:layout_width="80sp"
+                        android:layout_height="80sp"
                         android:id="@+id/tigaimage"
                         android:src="@drawable/f3"
                         android:clickable="true"
                         android:onClick="mainMenuListener"
                         android:background="@drawable/circle"
-                        android:layout_marginBottom="5sp"/>
+                        android:layout_marginBottom="10sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"

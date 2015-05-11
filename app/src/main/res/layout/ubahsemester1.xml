@@ -64,13 +64,13 @@
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:paddingLeft="50sp"
+                    android:paddingRight="50sp"
                     android:gravity="center_horizontal|center_vertical">
 
                         <Button
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="25sp"
-                            android:paddingRight="25sp"
                             android:text="Semester 1"
                             android:id="@+id/s1"
                             android:background="@drawable/rectangle"
@@ -86,8 +86,6 @@
                             android:layout_height="wrap_content"
                             android:text="Semester 2"
                             android:id="@+id/s2"
-                            android:paddingLeft="25sp"
-                            android:paddingRight="25sp"
                             android:background="@drawable/rectangle"
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
@@ -101,8 +99,6 @@
                             android:layout_height="wrap_content"
                             android:text="Semester 3"
                             android:id="@+id/s3"
-                            android:paddingLeft="25sp"
-                            android:paddingRight="25sp"
                             android:background="@drawable/rectangle"
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
@@ -116,8 +112,6 @@
                             android:layout_height="wrap_content"
                             android:text="Semester 4"
                             android:id="@+id/s4"
-                            android:paddingLeft="25sp"
-                            android:paddingRight="25sp"
                             android:background="@drawable/rectangle"
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
@@ -131,8 +125,6 @@
                             android:layout_height="wrap_content"
                             android:text="Semester 5"
                             android:id="@+id/s5"
-                            android:paddingLeft="25sp"
-                            android:paddingRight="25sp"
                             android:background="@drawable/rectangle"
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
@@ -146,8 +138,6 @@
                             android:layout_height="wrap_content"
                             android:text="Semester 6"
                             android:id="@+id/s6"
-                            android:paddingLeft="25sp"
-                            android:paddingRight="25sp"
                             android:background="@drawable/rectangle"
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
@@ -161,8 +151,6 @@
                             android:layout_height="wrap_content"
                             android:text="Semester 7"
                             android:id="@+id/s7"
-                            android:paddingLeft="25sp"
-                            android:paddingRight="25sp"
                             android:background="@drawable/rectangle"
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
@@ -176,8 +164,6 @@
                             android:layout_height="wrap_content"
                             android:text="Semester 8"
                             android:id="@+id/s8"
-                            android:paddingLeft="25sp"
-                            android:paddingRight="25sp"
                             android:background="@drawable/rectangle"
                             android:layout_margin="5sp"
                             android:textColor="@color/biru"
@@ -185,6 +171,57 @@
                             android:clickable="true"
                             android:visibility="gone"
                             android:onClick="ubahSemester1Listener" />
+                    <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Semester 9"
+                        android:id="@+id/s9"
+                        android:background="@drawable/rectangle"
+                        android:layout_margin="5sp"
+                        android:textColor="@color/biru"
+                        android:textStyle="italic"
+                        android:visibility="gone"
+                        android:clickable="true"
+                        android:onClick="ubahSemester1Listener" />
+
+                    <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Semester 10"
+                        android:id="@+id/s10"
+                        android:background="@drawable/rectangle"
+                        android:layout_margin="5sp"
+                        android:textColor="@color/biru"
+                        android:textStyle="italic"
+                        android:visibility="gone"
+                        android:clickable="true"
+                        android:onClick="ubahSemester1Listener" />
+
+                    <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Semester 11"
+                        android:id="@+id/s11"
+                        android:background="@drawable/rectangle"
+                        android:layout_margin="5sp"
+                        android:textColor="@color/biru"
+                        android:textStyle="italic"
+                        android:visibility="gone"
+                        android:clickable="true"
+                        android:onClick="ubahSemester1Listener" />
+
+                    <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Semester 12"
+                        android:id="@+id/s12"
+                        android:background="@drawable/rectangle"
+                        android:layout_margin="5sp"
+                        android:textColor="@color/biru"
+                        android:textStyle="italic"
+                        android:clickable="true"
+                        android:visibility="gone"
+                        android:onClick="ubahSemester1Listener" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

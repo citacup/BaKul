@@ -31,7 +31,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rancang Kuliah Saya"
+            android:text="Rancangan Kuliah Saya"
             android:id="@+id/labeltext"
             style="@style/sectionHeader"
             android:layout_marginTop="10sp"
@@ -397,6 +397,65 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/sem8"
+                    android:visibility="gone"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 9"
+                    android:id="@+id/s9"
+                    style="@style/sectionHeader"
+                    android:layout_marginTop="10sp"
+                    android:visibility="gone"/>
+
+                <ListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sem9"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 10"
+                    android:id="@+id/s10"
+                    style="@style/sectionHeader"
+                    android:layout_marginTop="10sp"
+                    android:visibility="gone"/>
+
+                <ListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sem10"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 11"
+                    android:id="@+id/s11"
+                    style="@style/sectionHeader"
+                    android:layout_marginTop="10sp"
+                    android:visibility="gone"/>
+
+                <ListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sem11"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Semester 12"
+                    android:id="@+id/s12"
+                    style="@style/sectionHeader"
+                    android:layout_marginTop="10sp"
+                    android:visibility="gone"/>
+
+                <ListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sem12"
                     android:visibility="gone"/>
             </LinearLayout>
         </ScrollView>

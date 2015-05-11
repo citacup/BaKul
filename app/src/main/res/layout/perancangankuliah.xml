@@ -41,7 +41,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_marginTop="20sp">
+            android:layout_marginTop="70sp">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -61,8 +61,8 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="100sp"
-                        android:layout_height="100sp"
+                        android:layout_width="80sp"
+                        android:layout_height="80sp"
                         android:id="@+id/lihatimage"
                         android:src="@drawable/lihat"
                         android:clickable="true"
@@ -94,8 +94,8 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="100sp"
-                        android:layout_height="100sp"
+                        android:layout_width="80sp"
+                        android:layout_height="80sp"
                         android:id="@+id/ubahimage"
                         android:src="@drawable/ubah"
                         android:clickable="true"

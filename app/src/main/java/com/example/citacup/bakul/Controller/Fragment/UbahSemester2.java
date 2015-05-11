@@ -37,8 +37,12 @@ public class UbahSemester2 extends Fragment {
         akan.add((Button) rootview.findViewById(R.id.s6));
         akan.add((Button) rootview.findViewById(R.id.s7));
         akan.add((Button) rootview.findViewById(R.id.s8));
+        akan.add((Button) rootview.findViewById(R.id.s9));
+        akan.add((Button) rootview.findViewById(R.id.s10));
+        akan.add((Button) rootview.findViewById(R.id.s11));
+        akan.add((Button) rootview.findViewById(R.id.s12));
 
-        for (int i = 7; i >= Integer.parseInt(MyActivity.semester) - 1; i--) {
+        for (int i = 11; i >= Integer.parseInt(MyActivity.semester) - 1; i--) {
             akan.get(i).setVisibility(View.VISIBLE);
         }
 

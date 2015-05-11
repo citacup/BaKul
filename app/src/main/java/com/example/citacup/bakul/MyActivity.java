@@ -123,7 +123,7 @@ public class MyActivity extends ActionBarActivity {
             R.drawable.tentang,
             R.drawable.logout
     };
-    int PROFILE = R.drawable.cita;
+    int PROFILE = R.drawable.avatar1;
     RecyclerView mRecyclerView;
     // Declaring RecyclerView
     RecyclerView.Adapter mAdapter;

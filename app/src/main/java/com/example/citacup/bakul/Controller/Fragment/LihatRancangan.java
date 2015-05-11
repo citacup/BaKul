@@ -62,6 +62,10 @@ public class LihatRancangan extends Fragment {
         textLihat.add((TextView) rootview.findViewById(R.id.s6));
         textLihat.add((TextView) rootview.findViewById(R.id.s7));
         textLihat.add((TextView) rootview.findViewById(R.id.s8));
+        textLihat.add((TextView) rootview.findViewById(R.id.s9));
+        textLihat.add((TextView) rootview.findViewById(R.id.s10));
+        textLihat.add((TextView) rootview.findViewById(R.id.s11));
+        textLihat.add((TextView) rootview.findViewById(R.id.s12));
 
         listLihat = new ArrayList<>();
         listLihat.add((ListView) rootview.findViewById(R.id.sem1));
@@ -72,6 +76,10 @@ public class LihatRancangan extends Fragment {
         listLihat.add((ListView) rootview.findViewById(R.id.sem6));
         listLihat.add((ListView) rootview.findViewById(R.id.sem7));
         listLihat.add((ListView) rootview.findViewById(R.id.sem8));
+        listLihat.add((ListView) rootview.findViewById(R.id.sem9));
+        listLihat.add((ListView) rootview.findViewById(R.id.sem10));
+        listLihat.add((ListView) rootview.findViewById(R.id.sem11));
+        listLihat.add((ListView) rootview.findViewById(R.id.sem12));
 
         for (int i = 0; i < Integer.parseInt(MyActivity.semester) - 1; i++) {
             textLihat.get(i).setVisibility(View.VISIBLE);

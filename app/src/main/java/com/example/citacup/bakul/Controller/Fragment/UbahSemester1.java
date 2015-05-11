@@ -38,6 +38,10 @@ public class UbahSemester1 extends Fragment {
         lulus.add((Button) rootview.findViewById(R.id.s6));
         lulus.add((Button) rootview.findViewById(R.id.s7));
         lulus.add((Button) rootview.findViewById(R.id.s8));
+        lulus.add((Button) rootview.findViewById(R.id.s9));
+        lulus.add((Button) rootview.findViewById(R.id.s10));
+        lulus.add((Button) rootview.findViewById(R.id.s11));
+        lulus.add((Button) rootview.findViewById(R.id.s12));
 
         for (int i = 0; i < Integer.parseInt(MyActivity.semester) - 1; i++) {
             lulus.get(i).setVisibility(View.VISIBLE);
