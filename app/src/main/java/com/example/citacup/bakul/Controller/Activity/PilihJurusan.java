@@ -18,9 +18,11 @@ public class PilihJurusan extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.logo_kecil);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         setContentView(R.layout.pilihjurusan);
     }
 

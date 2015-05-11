@@ -48,10 +48,13 @@ public class LoginSso extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.logo_kecil);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         setContentView(R.layout.loginsso);
+
         username = (EditText) findViewById(R.id.username_SSO);
         password = (EditText) findViewById(R.id.password);
         submitButton = (ImageView) findViewById(R.id.email_sign_in_button);

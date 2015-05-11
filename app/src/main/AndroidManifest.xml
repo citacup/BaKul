@@ -35,16 +35,12 @@
             </intent-filter-->
         </activity>
 
-        <!-- Pilih Jurusan -->
+        <!-- Login SSO -->
         <activity
             android:name=".Controller.Activity.LoginSso"
             android:screenOrientation="portrait"
             android:label="Bantu Kuliah"
-            android:parentActivityName=".Controller.Activity.Login"
             android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Controller.Activity.Login" />
         </activity>
 
         <!-- Pilih Jurusan -->

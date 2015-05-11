@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 
 import com.example.citacup.bakul.Business.DatabaseHelper;
@@ -25,18 +27,19 @@ public class Login extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new DatabaseHelper(getBaseContext());
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.logo_kecil);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         setContentView(R.layout.login);
+
+        BackGroundTask background = new BackGroundTask(new ProgressDialog(this), Login.this);
+        background.execute();
     }
 
     public void mainMenu(View v) {
         //aktifkan efek klik dari button login
         v.startAnimation(buttonClick);
         if (v.getId() == R.id.labellogin) {
-            BackGroundTask background = new BackGroundTask(new ProgressDialog(this), Login.this);
-            background.execute();
+            startActivity(new Intent(getBaseContext(), LoginSso.class));
+            this.finish();
         }
     }
 
