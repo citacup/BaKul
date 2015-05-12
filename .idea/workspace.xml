@@ -244,16 +244,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PerancanganKuliah.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/citacup/bakul/Controller/Fragment/PerancanganKuliah.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PerancanganKuliah1.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/citacup/bakul/Controller/Fragment/PerancanganKuliah1.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -316,12 +306,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UbahIsian2.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="UbahIsian2.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/citacup/bakul/Controller/Fragment/UbahIsian2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49595687" vertical-offset="71" max-vertical-offset="442">
+            <state vertical-scroll-proportion="0.0" vertical-offset="71" max-vertical-offset="442">
               <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ubahisian2.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ubahisian2.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.69186044" vertical-offset="612" max-vertical-offset="2312">
+              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+              <folding>
+                <element signature="e#298#317#0" expanded="true" />
+                <element signature="e#694#714#0" expanded="true" />
+                <element signature="e#791#811#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1573,7 +1580,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/citacup/bakul/Controller/Fragment/MenuPengguna.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/citacup/bakul/Controller/Fragment/NewKomponen.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/ubahisian2.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ubahisian1.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ubahsemester1.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ubahsemester2.xml" />
@@ -1616,6 +1622,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/citacup/bakul/Controller/Fragment/PencarianKategori.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/citacup/bakul/Controller/Fragment/PencarianNama.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/citacup/bakul/Controller/Fragment/UbahIsian1.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/ubahisian2.xml" />
       </list>
     </option>
   </component>
@@ -1804,7 +1811,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="47900993d47bb03c" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="33302451120" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_21_x86" />
     <property name="FullScreen" value="false" />
     <property name="android.project.structure.last.selected" value="app" />
@@ -2041,13 +2048,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21558245" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21558245" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36456558" sideWeight="0.31770045" order="8" side_tool="true" content_ui="tabs" />
@@ -2094,17 +2101,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/informasidosen.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5925925" vertical-offset="651" max-vertical-offset="1309">
-          <caret line="44" column="40" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2542,9 +2538,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/citacup/bakul/Controller/Fragment/UbahIsian2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49595687" vertical-offset="71" max-vertical-offset="442">
+        <state vertical-scroll-proportion="0.0" vertical-offset="71" max-vertical-offset="442">
           <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ubahisian2.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69186044" vertical-offset="612" max-vertical-offset="2312">
+          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+          <folding>
+            <element signature="e#298#317#0" expanded="true" />
+            <element signature="e#694#714#0" expanded="true" />
+            <element signature="e#791#811#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
