@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -37,7 +36,6 @@ import com.example.citacup.bakul.Controller.Fragment.InformasiKuliah;
 import com.example.citacup.bakul.Controller.Fragment.KalkulatorNilai;
 import com.example.citacup.bakul.Controller.Fragment.KirimPesan;
 import com.example.citacup.bakul.Controller.Fragment.LaporReview;
-import com.example.citacup.bakul.Controller.Fragment.LihatMatkul;
 import com.example.citacup.bakul.Controller.Fragment.LihatRancangan;
 import com.example.citacup.bakul.Controller.Fragment.LihatRantai;
 import com.example.citacup.bakul.Controller.Fragment.LihatReview;
@@ -50,14 +48,12 @@ import com.example.citacup.bakul.Controller.Fragment.PencarianNama;
 import com.example.citacup.bakul.Controller.Fragment.PerancanganKuliah;
 import com.example.citacup.bakul.Controller.Fragment.PerancanganKuliah1;
 import com.example.citacup.bakul.Controller.Fragment.Perbarui;
-import com.example.citacup.bakul.Controller.Fragment.SuatuReview;
 import com.example.citacup.bakul.Controller.Fragment.TentangKami;
 import com.example.citacup.bakul.Controller.Fragment.Tutorial;
 import com.example.citacup.bakul.Controller.Fragment.UbahIsian1;
 import com.example.citacup.bakul.Controller.Fragment.UbahIsian2;
 import com.example.citacup.bakul.Controller.Fragment.UbahSemester1;
 import com.example.citacup.bakul.Controller.Fragment.UbahSemester2;
-import com.example.citacup.bakul.NavigationDrawer.DividerItemDecoration;
 import com.example.citacup.bakul.NavigationDrawer.MyAdapter;
 
 import org.apache.http.HttpResponse;
@@ -244,7 +240,7 @@ public class MyActivity extends ActionBarActivity {
     public void backHome() {
         FragmentManager fm = getFragmentManager();
         int count = fm.getBackStackEntryCount();
-        for(int i = 0; i < count; ++i) {
+        for (int i = 0; i < count; ++i) {
             fm.popBackStackImmediate();
         }
     }

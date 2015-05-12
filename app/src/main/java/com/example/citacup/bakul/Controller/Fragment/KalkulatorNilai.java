@@ -19,6 +19,7 @@ import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by CITACUP on PPL.
@@ -39,10 +40,13 @@ public class KalkulatorNilai extends Fragment {
         rootview = inflater.inflate(R.layout.kalkulatornilai, container, false);
 
         spinnermatkul = (Spinner) rootview.findViewById(R.id.spinnermatkul);
+        Collections.sort(spinnerkalkulator);
+
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_dropdown_item,
                 spinnerkalkulator);
         spinnermatkul.setAdapter(spinnerAdapter);
+
         spinnermatkul.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(
@@ -58,10 +62,13 @@ public class KalkulatorNilai extends Fragment {
             }
         });
 
+        ArrayList matkulKalkulator = MyActivity.databaseHelper.getAllMatkulKalkulator();
+        Collections.sort(matkulKalkulator);
+
         listKalkulator = (ListView) rootview.findViewById(R.id.listkalkulator);
         ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
-                MyActivity.databaseHelper.getAllMatkulKalkulator());
+                matkulKalkulator);
         listKalkulator.setAdapter(files);
 
         listKalkulator.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,7 +79,7 @@ public class KalkulatorNilai extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new KalkulatorHasil())
-                        .addToBackStack(null)
+                               .addToBackStack(null)
                                .commit();
             }
         });

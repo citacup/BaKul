@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 
+import java.util.Collections;
+
 /**
  * Created by CITACUP on PPL.
  */
@@ -36,6 +38,7 @@ public class LihatReview extends Fragment {
         listReview = (ListView) rootview.findViewById(R.id.listReview);
         Pencarian.selectedReview = MyActivity.databaseHelper
                 .getReviewFromNama(Pencarian.pilih.getNama());
+        Collections.sort(Pencarian.selectedReview);
         ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
                 Pencarian.selectedReview);
@@ -50,7 +53,7 @@ public class LihatReview extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new SuatuReview())
-                        .addToBackStack(null)
+                               .addToBackStack(null)
                                .commit();
             }
         });

@@ -20,6 +20,7 @@ import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by CITACUP on PPL.
@@ -27,10 +28,10 @@ import java.util.ArrayList;
 public class UbahIsian1 extends Fragment {
     public static String[] kategoriIlkom = {"Semua Mata Kuliah", "Wajib UI", "Wajib Rumpun Sains",
             "Wajib Fakultas", "Wajib Jurusan Ilmu Komputer", "Pilihan Bidang Minat Fakultas",
-            "Pilihan Bidang Minat Ilmu Komputer", "Pilihan Lain" };
+            "Pilihan Bidang Minat Ilmu Komputer", "Pilihan Lain"};
     public static String[] kategoriSi = {"Semua Mata Kuliah", "Wajib UI", "Wajib Rumpun Sains",
             "Wajib Fakultas", "Wajib Jurusan Sistem Informasi", "Pilihan Bidang Minat Fakultas",
-            "Pilihan Bidang Minat Sistem Informasi", "Pilihan Lain" };
+            "Pilihan Bidang Minat Sistem Informasi", "Pilihan Lain"};
     public static ListView listlulus;
     public static ArrayList<String> selectedPerancangan = MyActivity.namaMatakuliah;
     public static MataKuliah selectedSimpan;
@@ -74,6 +75,8 @@ public class UbahIsian1 extends Fragment {
                         selectedPerancangan = MyActivity.databaseHelper
                                 .getMatakuliahfromKategori(PencarianKategori.kategoriSi[position]);
                     }
+
+                    Collections.sort(selectedPerancangan);
                     ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_list_item_1,
                             selectedPerancangan);
@@ -108,6 +111,8 @@ public class UbahIsian1 extends Fragment {
                         selectedPerancangan = MyActivity.databaseHelper
                                 .getMatakuliahfromKategori(PencarianKategori.kategoriSi[position]);
                     }
+
+                    Collections.sort(selectedPerancangan);
                     ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_list_item_1,
                             selectedPerancangan);
@@ -124,6 +129,7 @@ public class UbahIsian1 extends Fragment {
         }
 
         listMatakuliah = (ListView) rootview.findViewById(R.id.listmatakuliah);
+        Collections.sort(selectedPerancangan);
         ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
                 selectedPerancangan);
@@ -139,6 +145,7 @@ public class UbahIsian1 extends Fragment {
             public void onClick(View v) {
                 selectedPerancangan = MyActivity.databaseHelper
                         .getMataKuliahFromNama2(matkulcari.getText().toString());
+                Collections.sort(selectedPerancangan);
                 ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_list_item_1,
                         selectedPerancangan);
@@ -163,10 +170,11 @@ public class UbahIsian1 extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 }
                 listlulus = (ListView) rootview.findViewById(R.id.listlulus);
+                ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus();
+                Collections.sort(matkulLulus);
                 ArrayAdapter<String> files2 = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_list_item_1,
-                        // MyActivity.databaseHelper.getAllRancangan());
-                        MyActivity.databaseHelper.getMatkulLulus());
+                        matkulLulus);
                 listlulus.setAdapter(files2);
 
             }
@@ -174,10 +182,11 @@ public class UbahIsian1 extends Fragment {
 ////////////////////////////////////////////////////////////////////////
 
         listlulus = (ListView) rootview.findViewById(R.id.listlulus);
+        ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus();
+        Collections.sort(matkulLulus);
         ArrayAdapter<String> files2 = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
-                // MyActivity.databaseHelper.getAllRancangan());
-                MyActivity.databaseHelper.getMatkulLulus());
+                matkulLulus);
         listlulus.setAdapter(files2);
 
         listlulus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -187,10 +196,11 @@ public class UbahIsian1 extends Fragment {
                 MyActivity.databaseHelper
                         .setTidakLulus(MyActivity.databaseHelper.getMatkulLulus().get(position));
 
+                ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus();
+                Collections.sort(matkulLulus);
                 ArrayAdapter<String> files2 = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_list_item_1,
-                        // MyActivity.databaseHelper.getAllRancangan());
-                        MyActivity.databaseHelper.getMatkulLulus());
+                        matkulLulus);
                 listlulus.setAdapter(files2);
             }
         });

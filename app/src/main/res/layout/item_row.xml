@@ -5,15 +5,15 @@
     android:background="@drawable/selector"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:paddingTop="10sp"
-    android:paddingBottom="10sp">
+    android:paddingTop="7sp"
+    android:paddingBottom="7sp">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:id="@+id/rowIcon"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="12dp"
         android:src="@mipmap/ic_launcher"/>
 
     <TextView
@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:paddingTop="4dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/background_dark"
         android:text="Medium Text"
         android:id="@+id/rowText" />
 

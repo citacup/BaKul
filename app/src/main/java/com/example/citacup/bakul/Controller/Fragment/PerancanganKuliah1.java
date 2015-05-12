@@ -19,7 +19,7 @@ import com.example.citacup.bakul.R;
 public class PerancanganKuliah1 extends Fragment {
     public static String semSelect;
     protected Spinner semester;
-    protected String[] sem = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
+    protected String[] sem = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
     View rootview;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.3F);
 

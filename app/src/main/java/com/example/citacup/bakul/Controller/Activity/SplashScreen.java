@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.citacup.bakul.Controller.Activity.Login;
 import com.example.citacup.bakul.R;
 
 /**

@@ -67,8 +67,8 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="80sp"
-                        android:layout_height="80sp"
+                        android:layout_width="70sp"
+                        android:layout_height="70sp"
                         android:id="@+id/satuimage"
                         android:src="@drawable/f1"
                         android:clickable="true"
@@ -100,8 +100,8 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="80sp"
-                        android:layout_height="80sp"
+                        android:layout_width="70sp"
+                        android:layout_height="70sp"
                         android:id="@+id/duaimage"
                         android:src="@drawable/f2"
                         android:clickable="true"
@@ -133,8 +133,8 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="80sp"
-                        android:layout_height="80sp"
+                        android:layout_width="70sp"
+                        android:layout_height="70sp"
                         android:id="@+id/tigaimage"
                         android:src="@drawable/f3"
                         android:clickable="true"

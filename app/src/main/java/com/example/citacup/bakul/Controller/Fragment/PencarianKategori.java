@@ -16,16 +16,18 @@ import android.widget.Spinner;
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 
+import java.util.Collections;
+
 /**
  * Created by CITACUP on PPL.
  */
 public class PencarianKategori extends Fragment {
     public static String[] kategoriIlkom = {"Semua Mata Kuliah", "Wajib UI", "Wajib Rumpun Sains",
             "Wajib Fakultas", "Wajib Jurusan Ilmu Komputer", "Pilihan Bidang Minat Fakultas",
-            "Pilihan Bidang Minat Ilmu Komputer", "Pilihan Lain" };
+            "Pilihan Bidang Minat Ilmu Komputer", "Pilihan Lain"};
     public static String[] kategoriSi = {"Semua Mata Kuliah", "Wajib UI", "Wajib Rumpun Sains",
             "Wajib Fakultas", "Wajib Jurusan Sistem Informasi", "Pilihan Bidang Minat Fakultas",
-            "Pilihan Bidang Minat Sistem Informasi", "Pilihan Lain" };
+            "Pilihan Bidang Minat Sistem Informasi", "Pilihan Lain"};
     protected ListView listMatakuliah;
     protected Spinner listKategori;
     View rootview;
@@ -63,6 +65,8 @@ public class PencarianKategori extends Fragment {
                         Pencarian.selected = MyActivity.databaseHelper.getMatakuliahfromKategori(
                                 PencarianKategori.kategoriIlkom[position]);
                     }
+
+                    Collections.sort(Pencarian.selected);
                     ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_list_item_1,
                             Pencarian.selected);
@@ -96,6 +100,8 @@ public class PencarianKategori extends Fragment {
                         Pencarian.selected = MyActivity.databaseHelper
                                 .getMatakuliahfromKategori(PencarianKategori.kategoriSi[position]);
                     }
+
+                    Collections.sort(Pencarian.selected);
                     ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_list_item_1,
                             Pencarian.selected);
@@ -110,6 +116,7 @@ public class PencarianKategori extends Fragment {
         }
 
         listMatakuliah = (ListView) rootview.findViewById(R.id.listNamaMatkul);
+        Collections.sort(Pencarian.selected);
         ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
                 Pencarian.selected);
@@ -123,7 +130,7 @@ public class PencarianKategori extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new LihatMatkul())
-                        .addToBackStack(null)
+                               .addToBackStack(null)
                                .commit();
             }
         });

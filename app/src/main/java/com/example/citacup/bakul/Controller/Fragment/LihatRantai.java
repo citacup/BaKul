@@ -31,7 +31,7 @@ public class LihatRantai extends Fragment {
 
         judulMatkul = (TextView) rootview.findViewById(R.id.judulMatkul);
 
-        judulMatkul.setText("Rantai "+Pencarian.pilih.getNama());
+        judulMatkul.setText("Rantai " + Pencarian.pilih.getNama());
         //       kode = Pencarian.pilih.getKodemk();
 
         ImageView rantaiimg = (ImageView) rootview.findViewById(R.id.rantaiimg);

@@ -19,8 +19,8 @@
         android:paddingBottom="30sp">
 
         <ImageView
-            android:layout_width="60sp"
-            android:layout_height="60sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
             android:src="@drawable/update"
             android:background="@drawable/circlelight"
             android:id="@+id/update"/>

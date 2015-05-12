@@ -16,6 +16,8 @@ import com.example.citacup.bakul.Entities.Dosen;
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 
+import java.util.Collections;
+
 /**
  * Created by CITACUP on PPL.
  */
@@ -31,6 +33,8 @@ public class InformasiDosen extends Fragment {
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.informasidosen, container, false);
         listDosen = (ListView) rootview.findViewById(R.id.listDosen);
+
+        Collections.sort(MyActivity.namaDosen);
         ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
                 MyActivity.namaDosen);

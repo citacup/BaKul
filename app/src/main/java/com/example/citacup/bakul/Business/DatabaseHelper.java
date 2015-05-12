@@ -13,7 +13,6 @@ import com.example.citacup.bakul.Entities.Kategori;
 import com.example.citacup.bakul.Entities.KomponenPenilaian;
 import com.example.citacup.bakul.Entities.MataKuliah;
 import com.example.citacup.bakul.Entities.Pengguna;
-import com.example.citacup.bakul.Entities.Rancangan;
 import com.example.citacup.bakul.Entities.Review;
 import com.example.citacup.bakul.MyActivity;
 

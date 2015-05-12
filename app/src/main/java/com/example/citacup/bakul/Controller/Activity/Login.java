@@ -3,17 +3,14 @@ package com.example.citacup.bakul.Controller.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 
 import com.example.citacup.bakul.Business.DatabaseHelper;
 import com.example.citacup.bakul.Entities.Pengguna;
-import com.example.citacup.bakul.Controller.Activity.LoginSso;
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 

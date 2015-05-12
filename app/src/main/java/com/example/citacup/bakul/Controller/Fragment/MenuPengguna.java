@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.citacup.bakul.R;
@@ -19,8 +18,8 @@ import com.example.citacup.bakul.R;
 public class MenuPengguna extends Fragment {
     protected Spinner listHuruf;
     protected Spinner listWarna;
-    protected String[] huruf = {"Besar", "Sedang", "Kecil" };
-    protected String[] warna = {"Biru", "Merah" };
+    protected String[] huruf = {"Besar", "Sedang", "Kecil"};
+    protected String[] warna = {"Biru", "Merah"};
     View rootview;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.3F);
 

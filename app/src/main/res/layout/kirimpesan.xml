@@ -19,12 +19,12 @@
         android:background="@android:color/white">
 
         <ImageView
-            android:layout_width="60sp"
-            android:layout_height="60sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
             android:src="@drawable/hubungi"
             android:id="@+id/labelimg"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20sp"/>
+            android:layout_marginTop="10sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
             android:id="@+id/labeljudul"
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/biru"
-            android:layout_marginTop="30sp" />
+            android:layout_marginTop="20sp" />
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="0sp"
@@ -65,8 +65,8 @@
             android:gravity="right">
 
             <ImageView
-                android:layout_width="60sp"
-                android:layout_height="60sp"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
                 android:src="@drawable/kirim"
                 android:background="@drawable/circle"
                 android:clickable="true"

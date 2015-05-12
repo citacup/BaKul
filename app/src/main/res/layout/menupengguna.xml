@@ -19,12 +19,12 @@
         android:background="@android:color/white">
 
         <ImageView
-            android:layout_width="60sp"
-            android:layout_height="60sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
             android:src="@drawable/pengaturan"
             android:id="@+id/labelimg"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20sp"/>
+            android:layout_marginTop="10sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,6 +59,8 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
                     android:id="@+id/avatar1"
                     android:padding="5dp"
                     android:src="@drawable/avatar1"
@@ -67,6 +69,8 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
                     android:id="@+id/avatar2"
                     android:padding="5dp"
                     android:src="@drawable/avatar2"
@@ -75,6 +79,8 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
                     android:id="@+id/avatar3"
                     android:padding="5dp"
                     android:src="@drawable/avatar3"
@@ -83,6 +89,8 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
                     android:id="@+id/avatar4"
                     android:padding="5dp"
                     android:src="@drawable/avatar4"
@@ -91,6 +99,8 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
                     android:id="@+id/avatar5"
                     android:padding="5dp"
                     android:src="@drawable/avatar5"
@@ -103,7 +113,7 @@
                 android:text="Tema Pengguna"
                 android:id="@+id/label2"
                 style="@style/sectionHeader"
-                android:layout_marginTop="30sp" />
+                android:layout_marginTop="10sp" />
 
             <TableLayout
                 android:layout_width="fill_parent"
@@ -181,8 +191,8 @@
             android:gravity="center_vertical|right">
 
             <ImageView
-                android:layout_width="60sp"
-                android:layout_height="60sp"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
                 android:src="@drawable/apply"
                 android:background="@drawable/circle"
                 android:id="@+id/simpan"

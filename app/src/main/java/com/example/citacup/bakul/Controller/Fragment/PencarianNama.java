@@ -1,6 +1,5 @@
 package com.example.citacup.bakul.Controller.Fragment;
 
-import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -11,13 +10,14 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
+
+import java.util.Collections;
 
 /**
  * Created by CITACUP on PPL.
@@ -37,6 +37,8 @@ public class PencarianNama extends Fragment {
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.pencariannama, container, false);
         listMatakuliah = (ListView) rootview.findViewById(R.id.listNamaMatkul);
+
+        Collections.sort(Pencarian.selected);
         ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
                 Pencarian.selected);
@@ -49,6 +51,7 @@ public class PencarianNama extends Fragment {
             public void onClick(View v) {
                 Pencarian.selected = MyActivity.databaseHelper
                         .getMataKuliahFromNama2(kolomcari.getText().toString());
+                Collections.sort(Pencarian.selected);
                 ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_list_item_1,
                         Pencarian.selected);
@@ -66,7 +69,7 @@ public class PencarianNama extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new LihatMatkul())
-                        .addToBackStack(null)
+                               .addToBackStack(null)
                                .commit();
             }
         });

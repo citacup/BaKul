@@ -19,6 +19,7 @@ import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by CITACUP on PPL.
@@ -51,6 +52,8 @@ public class KalkulatorHasil extends Fragment {
         }
 
         listkomponen = (ListView) rootview.findViewById(R.id.listkomponen);
+        Collections.sort(isiKomponen);
+
         ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, isiKomponen);
         listkomponen.setAdapter(files);
@@ -59,7 +62,6 @@ public class KalkulatorHasil extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Pencarian.pilih = MyActivity.databaseHelper.getMatakuliahFromNama(Pencarian.selected.get(position));
-
                 if (position == 0) {
                     dipilih = MyActivity.databaseHelper.getKomponenFromNama(isiKomponen.get(0));
                     FragmentManager fragmentManager = getFragmentManager();

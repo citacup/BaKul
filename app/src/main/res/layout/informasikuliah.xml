@@ -19,12 +19,12 @@
         android:padding="@dimen/margindalem">
 
         <ImageView
-            android:layout_width="60sp"
-            android:layout_height="60sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
             android:src="@drawable/informasikuliah"
             android:id="@+id/labelimg"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20sp"/>
+            android:layout_marginTop="10sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_marginTop="70sp">
+            android:layout_marginTop="30sp">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -61,8 +61,8 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="80sp"
-                        android:layout_height="80sp"
+                        android:layout_width="60sp"
+                        android:layout_height="60sp"
                         android:id="@+id/matkulimage"
                         android:src="@drawable/matkul"
                         android:clickable="true"
@@ -94,8 +94,8 @@
                     android:padding="5sp">
 
                     <ImageView
-                        android:layout_width="80sp"
-                        android:layout_height="80sp"
+                        android:layout_width="60sp"
+                        android:layout_height="60sp"
                         android:id="@+id/dosenimage"
                         android:src="@drawable/dosen"
                         android:clickable="true"

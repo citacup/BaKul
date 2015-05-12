@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
-import android.widget.ListView;
 
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;

@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,6 +16,7 @@ import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by CITACUP on PPL.
@@ -89,11 +89,14 @@ public class LihatRancangan extends Fragment {
             listLihat.get(i).setVisibility(View.VISIBLE);
         }
 
+        ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus();
+        Collections.sort(matkulLulus);
+
         ArrayAdapter<String> files2 = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
-                // MyActivity.databaseHelper.getAllRancangan());
-                MyActivity.databaseHelper.getMatkulLulus());
+                matkulLulus);
         listLihat.get(0).setAdapter(files2);
+
         setListViewHeightBasedOnChildren(listLihat.get(0));
         return rootview;
     }
