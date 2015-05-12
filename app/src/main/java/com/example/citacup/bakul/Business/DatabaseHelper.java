@@ -46,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         query
                 = "CREATE TABLE IF NOT EXISTS `Pengguna` (`username` TEXT PRIMARY KEY, " +
-                "`jurusan` INTEGER,`session` INTEGER)";
+                "`jurusan` INTEGER,`session` INTEGER, `avatar` INTEGER)";
         db.execSQL(query);
         query = "CREATE TABLE IF NOT EXISTS `Kalkulator` (`username` TEXT, `namamatkul` TEXT)";
         db.execSQL(query);
@@ -150,12 +150,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert("Review", null, values);
     }
 
-    public void insertPengguna(String username, int jurusan) {
+    public void insertPengguna(String username, int jurusan, int avatar) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("username", username);
         values.put("jurusan", jurusan);
         values.put("session", 0);
+        values.put("avatar", avatar);
         sqLiteDatabase.insert("Pengguna", null, values);
     }
 
@@ -173,7 +174,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.moveToFirst()) {
-            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2));
+            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3));
         }
         return res;
     }
@@ -188,13 +189,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void updateAvatar(String username, int avatar) {
+        Pengguna current = getPengguna(username);
+        String query;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        if (current != null) {
+            query = "UPDATE Pengguna SET avatar=" + avatar + " WHERE username='" + username + "'";
+            sqLiteDatabase.execSQL(query);
+        }
+    }
+
     public Pengguna whoHasSession() {
         Pengguna res = null;
         String query = "select * from Pengguna where session = 1";
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.moveToFirst()) {
-            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2));
+            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3));
         }
         return res;
     }

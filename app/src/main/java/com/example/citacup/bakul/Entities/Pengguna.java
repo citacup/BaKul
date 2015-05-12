@@ -7,11 +7,13 @@ public class Pengguna {
     String username;
     int jurusan;
     int session;
+    int avatar;
 
-    public Pengguna(String username, int jurusan, int session) {
+    public Pengguna(String username, int jurusan, int session, int avatar) {
         this.username = username;
         this.jurusan = jurusan;
         this.session = session;
+        this.avatar = avatar;
     }
 
     public String getUsername() {
@@ -24,6 +26,10 @@ public class Pengguna {
 
     public int getSession() {
         return session;
+    }
+
+    public int getAvatar() {
+        return avatar;
     }
 
     public void setSession(int session) {

@@ -64,6 +64,8 @@
                     android:id="@+id/avatar1"
                     android:padding="5dp"
                     android:src="@drawable/avatar1"
+                    android:clickable="true"
+                    android:onClick="menuPenggunaListener"
                     android:layout_weight="1" />
 
                 <ImageView
@@ -74,6 +76,8 @@
                     android:id="@+id/avatar2"
                     android:padding="5dp"
                     android:src="@drawable/avatar2"
+                    android:clickable="true"
+                    android:onClick="menuPenggunaListener"
                     android:layout_weight="1" />
 
                 <ImageView
@@ -84,6 +88,8 @@
                     android:id="@+id/avatar3"
                     android:padding="5dp"
                     android:src="@drawable/avatar3"
+                    android:clickable="true"
+                    android:onClick="menuPenggunaListener"
                     android:layout_weight="1" />
 
                 <ImageView
@@ -94,6 +100,8 @@
                     android:id="@+id/avatar4"
                     android:padding="5dp"
                     android:src="@drawable/avatar4"
+                    android:clickable="true"
+                    android:onClick="menuPenggunaListener"
                     android:layout_weight="1" />
 
                 <ImageView
@@ -104,6 +112,8 @@
                     android:id="@+id/avatar5"
                     android:padding="5dp"
                     android:src="@drawable/avatar5"
+                    android:clickable="true"
+                    android:onClick="menuPenggunaListener"
                     android:layout_weight="1" />
             </LinearLayout>
 
