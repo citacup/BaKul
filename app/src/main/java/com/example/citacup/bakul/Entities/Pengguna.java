@@ -28,11 +28,11 @@ public class Pengguna {
         return session;
     }
 
-    public int getAvatar() {
-        return avatar;
-    }
-
     public void setSession(int session) {
         this.session = session;
+    }
+
+    public int getAvatar() {
+        return avatar;
     }
 }

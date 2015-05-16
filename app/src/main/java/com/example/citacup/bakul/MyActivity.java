@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -28,7 +27,6 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.citacup.bakul.Business.DatabaseHelper;
@@ -125,7 +123,7 @@ public class MyActivity extends ActionBarActivity {
             R.drawable.tentang,
             R.drawable.logout
     };
-    int PROFILE ;
+    int PROFILE;
     RecyclerView mRecyclerView;
     // Declaring RecyclerView
     RecyclerView.Adapter mAdapter;
@@ -170,19 +168,19 @@ public class MyActivity extends ActionBarActivity {
 
         Pengguna user = databaseHelper.whoHasSession();
         switch (user.getAvatar()) {
-            case 1 :
+            case 1:
                 PROFILE = R.drawable.avatar1;
                 break;
-            case 2 :
+            case 2:
                 PROFILE = R.drawable.avatar2;
                 break;
-            case 3 :
+            case 3:
                 PROFILE = R.drawable.avatar3;
                 break;
-            case 4 :
+            case 4:
                 PROFILE = R.drawable.avatar4;
                 break;
-            case 5 :
+            case 5:
                 PROFILE = R.drawable.avatar5;
                 break;
         }
@@ -1325,46 +1323,6 @@ public class MyActivity extends ActionBarActivity {
         }
     }
 
-    private class ShowDialogAsyncTask  extends AsyncTask<String, Void, Boolean> {
-        private ProgressDialog dialog;
-
-        private MyActivity activity;
-
-        public ShowDialogAsyncTask (MyActivity activity) {
-            this.activity = activity;
-            context = activity;
-            dialog = new ProgressDialog(context);
-        }
-
-        protected void onPreExecute() {
-            this.dialog.setMessage("Mengecek pembaruan...");
-            this.dialog.show();
-            this.dialog.setCancelable(false);
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            if (dialog.isShowing()) {
-                dialog.dismiss();
-            }
-            new AlertDialog.Builder(activity)
-                    .setMessage("Anda telah menggunakan sistem terbaru.")
-                    .setCancelable(false)
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // whatever...
-                        }
-                    }).create().show();
-        }
-
-        @Override
-        protected Boolean doInBackground(String... arg0) {
-            SystemClock.sleep(3000);
-            return null;
-        }
-    }
-
     /**
      * for kirimPesan listener page
      *
@@ -1548,31 +1506,31 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.avatar1:
                 //simpan menu pengguna
-                databaseHelper.updateAvatar(currentUser,1);
+                databaseHelper.updateAvatar(currentUser, 1);
                 PROFILE = R.drawable.avatar1;
                 Toast.makeText(this, "Avatar Berhasil diubah!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.avatar2:
                 //simpan menu pengguna
-                databaseHelper.updateAvatar(currentUser,2);
+                databaseHelper.updateAvatar(currentUser, 2);
                 PROFILE = R.drawable.avatar2;
                 Toast.makeText(this, "Avatar Berhasil diubah!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.avatar3:
                 //simpan menu pengguna
-                databaseHelper.updateAvatar(currentUser,3);
+                databaseHelper.updateAvatar(currentUser, 3);
                 PROFILE = R.drawable.avatar3;
                 Toast.makeText(this, "Avatar Berhasil diubah!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.avatar4:
                 //simpan menu pengguna
-                databaseHelper.updateAvatar(currentUser,4);
+                databaseHelper.updateAvatar(currentUser, 4);
                 PROFILE = R.drawable.avatar4;
                 Toast.makeText(this, "Avatar Berhasil diubah!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.avatar5:
                 //simpan menu pengguna
-                databaseHelper.updateAvatar(currentUser,5);
+                databaseHelper.updateAvatar(currentUser, 5);
                 PROFILE = R.drawable.avatar5;
                 Toast.makeText(this, "Avatar Berhasil diubah!", Toast.LENGTH_SHORT).show();
                 break;
@@ -1583,7 +1541,47 @@ public class MyActivity extends ActionBarActivity {
                 return;
         }
 
-        ((ImageView)findViewById(R.id.circleView)).setImageResource(PROFILE);
+        ((ImageView) findViewById(R.id.circleView)).setImageResource(PROFILE);
+    }
+
+    private class ShowDialogAsyncTask extends AsyncTask<String, Void, Boolean> {
+        private ProgressDialog dialog;
+
+        private MyActivity activity;
+
+        public ShowDialogAsyncTask(MyActivity activity) {
+            this.activity = activity;
+            context = activity;
+            dialog = new ProgressDialog(context);
+        }
+
+        protected void onPreExecute() {
+            this.dialog.setMessage("Mengecek pembaruan...");
+            this.dialog.show();
+            this.dialog.setCancelable(false);
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            new AlertDialog.Builder(activity)
+                    .setMessage("Anda telah menggunakan sistem terbaru.")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // whatever...
+                        }
+                    }).create().show();
+        }
+
+        @Override
+        protected Boolean doInBackground(String... arg0) {
+            SystemClock.sleep(3000);
+            return null;
+        }
     }
 
     /**

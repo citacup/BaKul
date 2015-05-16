@@ -174,7 +174,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.moveToFirst()) {
-            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3));
+            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2),
+                    cursor.getInt(3));
         }
         return res;
     }
@@ -205,7 +206,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.moveToFirst()) {
-            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3));
+            res = new Pengguna(cursor.getString(0), cursor.getInt(1), cursor.getInt(2),
+                    cursor.getInt(3));
         }
         return res;
     }
