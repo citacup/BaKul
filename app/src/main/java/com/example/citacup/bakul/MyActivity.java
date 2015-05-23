@@ -1636,25 +1636,54 @@ public class MyActivity extends ActionBarActivity {
 
         @Override
         protected Boolean doInBackground(String... arg0) {
-            String urlDosen = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/dosen.json";
+            //String urlDosen = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/dosen.json";
             String urlMatakuliah = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/matakuliah.json";
             String urlKategori = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/kategori.json";
             String urlReview = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/review.json";
-            JSONtoDBDosen(urlDosen);
+            //JSONtoDBDosen(urlDosen);
             JSONtoDBMatakuliah(urlMatakuliah);
             JSONtoDBKategori(urlKategori);
             JSONtoDBReview(urlReview);
 
+            httpclient = new DefaultHttpClient();
+            //url post web
+            httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/getdosen.php");
+            //execute - means sending
+            try {
+                response = httpclient.execute(httppost);
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+                String json = reader.readLine();
+                Log.d("http response", json + "");
+                jobject = new JSONObject(json);
+                Log.d("state response", jobject.getString("success"));
+                if (jobject.getString("success").equals("1")) {
+                    JSONtoDBDosen(jobject.getString("product"));
+                }
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (Exception e) {
+                Log.e("Get Data", "Exception caught: ", e);
+            }
+
             return null;
         }
 
-        private void JSONtoDBDosen(String url) {
+        private void JSONtoDBDosen(String json) {
             databaseHelper = new DatabaseHelper(getApplicationContext());
             databaseHelper.getWritableDatabase();
 
-            JSONParser jParser = new JSONParser();
-            JSONArray json = jParser.getJSONFromUrl(url);
-            generateDatabaseDosen(json);
+            // Parse String to JSON object
+            try {
+                JSONArray jarray = new JSONArray(json);
+                generateDatabaseDosen(jarray);
+            } catch (JSONException e) {
+                Log.e("JSON Parser", "Error parsing data " + e.toString());
+            }
         }
 
         private void generateDatabaseDosen(JSONArray data) {
