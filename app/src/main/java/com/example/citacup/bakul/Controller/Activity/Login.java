@@ -82,6 +82,7 @@ public class Login extends ActionBarActivity {
                 Log.d("Session", current.getUsername() + " " + current.getSession());
                 if (current != null) {
                     MyActivity.currentUser = current.getUsername();
+                    MyActivity.currentName = current.getName();
                     hasSession = true;
                 }
             } catch (Exception e) {

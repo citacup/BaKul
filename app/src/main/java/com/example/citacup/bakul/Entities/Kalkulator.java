@@ -11,7 +11,6 @@ public class Kalkulator {
         this.username = username;
         this.namamatkul = namamatkul;
     }
-
     public String getUsername() {
         return username;
     }

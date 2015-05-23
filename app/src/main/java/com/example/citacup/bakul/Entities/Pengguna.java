@@ -5,12 +5,14 @@ package com.example.citacup.bakul.Entities;
  */
 public class Pengguna {
     String username;
+    String name;
     int jurusan;
     int session;
     int avatar;
 
-    public Pengguna(String username, int jurusan, int session, int avatar) {
+    public Pengguna(String username, String name, int jurusan, int session, int avatar) {
         this.username = username;
+        this.name = name;
         this.jurusan = jurusan;
         this.session = session;
         this.avatar = avatar;
@@ -18,6 +20,10 @@ public class Pengguna {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getJurusan() {

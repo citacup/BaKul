@@ -44,39 +44,44 @@ public class EditKomponen extends Fragment {
         hapus = (ImageView) rootview.findViewById(R.id.hapus);
 
         nama.setText(KalkulatorHasil.dipilih.getNama());
-        nilai.setText(KalkulatorHasil.dipilih.getNilai());
-        persentase.setText(KalkulatorHasil.dipilih.getBobot());
+        nilai.setText(Integer.toString(KalkulatorHasil.dipilih.getNilai()));
+        persentase.setText(Integer.toString(KalkulatorHasil.dipilih.getBobot()));
         //MyActivity.databaseHelper.insertKomponen();
 
 
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 nama1 = nama.getText().toString();
                 nilai1 = nilai.getText().toString();
                 persentase1 = persentase.getText().toString();
-
-                if (nama1.length() == 0 || nilai1.length() == 0 || persentase1.length() == 0) {
-                    Toast.makeText(getActivity().getBaseContext(), "Periksa Masukan",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    MyActivity.databaseHelper.updateKomponen(nama1, nilai1, persentase1);
-                }
+                MyActivity.databaseHelper.updateKomponen(nama1,nilai1,persentase1);
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.popBackStack();
+                fragmentManager.beginTransaction()
+                               .replace(R.id.container, new KalkulatorHasil())
+                               .commit();
+
+                // persentase1 = persentase.getText().toString()
+
+                ;
             }
         });
 
         hapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 nama1 = nama.getText().toString();
                 MyActivity.databaseHelper.deleteKomponen(nama1);
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.popBackStack();
+                fragmentManager.beginTransaction()
+                               .replace(R.id.container, new KalkulatorHasil())
+                               .commit();
+
+                ;
             }
         });
-
         return rootview;
     }
 }

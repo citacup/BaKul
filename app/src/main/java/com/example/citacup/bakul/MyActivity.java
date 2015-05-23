@@ -88,9 +88,10 @@ public class MyActivity extends ActionBarActivity {
     public static ArrayList<String> listReview = new ArrayList<String>();
     //ini untuk settingan setiap user
     public static String currentUser = "";
+    public static String currentName = "";
     //Similarly we Create a String Resource for the name and email in the header view
     //And we also create a int resource for profile picture in the header view
-    String NAME = currentUser;
+    String NAME = currentName;
     String EMAIL = currentUser + "@ui.ac.id";
     public static int jurusan = 0;
     public static String semester;
@@ -153,6 +154,7 @@ public class MyActivity extends ActionBarActivity {
     // Declaring Action Bar Drawer Toggle
     private HttpClient httpclient;
     private HttpResponse response;
+    private JSONObject jobject;
     private Toolbar toolbar;
 
     /**
@@ -966,6 +968,16 @@ public class MyActivity extends ActionBarActivity {
      */
     public void suatuReviewHelper(boolean success) {
         if (success) {
+            try {
+                String suka = jobject.getString("suka");
+                String tdksuka = jobject.getString("tdksuka");
+                EditText jumlahsuka = (EditText) findViewById(R.id.jumlahsuka);
+                EditText jumlahtdksuka = (EditText) findViewById(R.id.jumlahtidaksuka);
+                jumlahsuka.setText(suka);
+                jumlahtdksuka.setText(tdksuka);
+            } catch (JSONException e) {
+                Log.e("Like/Dislike", "Exception caught: ", e);
+            }
             Toast.makeText(getBaseContext(), "Like/Dislike Telah di Tambah", Toast.LENGTH_SHORT)
                  .show();
         } else {
@@ -1023,47 +1035,25 @@ public class MyActivity extends ActionBarActivity {
 
         FragmentManager fragmentManager = getFragmentManager();
 
-        switch (v.getId()) {
-            case R.id.simpan:
+        switch(v.getId()) {
+            case R.id.simpan :
                 //simpan
                 //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
-                fragmentManager.popBackStack();
+                fragmentManager.beginTransaction()
+                               .replace(R.id.container, new KalkulatorNilai())
+                               .commit();
                 Toast.makeText(this, "Kalkulator nilai disimpan", Toast.LENGTH_SHORT).show();
                 break;
-
-            case R.id.hitung:
-                //kalkulasi
-                EditText total = (EditText) findViewById(R.id.total3);
-                EditText a3 = (EditText) findViewById(R.id.A3);
-                EditText am3 = (EditText) findViewById(R.id.Am3);
-                EditText bp3 = (EditText) findViewById(R.id.Bp3);
-                EditText b3 = (EditText) findViewById(R.id.B3);
-                EditText bm3 = (EditText) findViewById(R.id.Bm3);
-                EditText cp3 = (EditText) findViewById(R.id.Cp3);
-                EditText c3 = (EditText) findViewById(R.id.C3);
-
-                total.setText("0");
-                a3.setText("0");
-                am3.setText("0");
-                bp3.setText("0");
-                b3.setText("0");
-                bm3.setText("0");
-                cp3.setText("0");
-                c3.setText("0");
-                break;
-
-            case R.id.delete:
+            case R.id.delete :
                 KalkulatorNilai.spinnerkalkulator.add(KalkulatorNilai.selected.getNama());
-                if (databaseHelper
-                        .deleteKalkulator(currentUser, KalkulatorNilai.selected.getNama())) {
-                    fragmentManager.popBackStack();
-                    Toast.makeText(getBaseContext(), "Kalkulator berhasil dihapus",
-                            Toast.LENGTH_SHORT).show();
+                if (databaseHelper.deleteKalkulator(currentUser, KalkulatorNilai.selected.getNama())) {
+                    fragmentManager.beginTransaction()
+                                   .replace(R.id.container, new KalkulatorNilai())
+                                   .commit();
+                    Toast.makeText(getBaseContext(), "Kalkulator berhasil dihapus", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getBaseContext(), "Kalkulator gagal dihapus", Toast.LENGTH_SHORT)
-                         .show();
+                    Toast.makeText(getBaseContext(), "Kalkulator gagal dihapus", Toast.LENGTH_SHORT).show();
                 }
-                break;
         }
     }
 
@@ -1544,6 +1534,28 @@ public class MyActivity extends ActionBarActivity {
         ((ImageView) findViewById(R.id.circleView)).setImageResource(PROFILE);
     }
 
+    /**
+     * for tema listener page
+     *
+     * @param v
+     */
+    public void temaListener(View v) {
+        //aktifkan efek klik dari button login
+        v.startAnimation(buttonClick);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        switch (v.getId()) {
+            case R.id.warna1:
+                //simpan menu pengguna
+                Toast.makeText(this, "Tema Berhasil diubah!", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.warna2:
+                //simpan menu pengguna
+                Toast.makeText(this, "Tema Berhasil diubah!", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
     private class ShowDialogAsyncTask extends AsyncTask<String, Void, Boolean> {
         private ProgressDialog dialog;
 
@@ -1849,7 +1861,9 @@ public class MyActivity extends ActionBarActivity {
                         new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
                 String json = reader.readLine();
                 Log.d("http response", json + "");
-                if (json.equals("Success")) {
+                jobject = new JSONObject(json);
+                Log.d("state response", jobject.getString("success"));
+                if (jobject.getString("success").equals("1")) {
                     success = true;
                 }
             } catch (ClientProtocolException e) {

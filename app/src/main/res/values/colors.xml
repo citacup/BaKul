@@ -2,4 +2,6 @@
 <resources>
     <color name="biru">#0071BC</color>
     <color name="birumuda">#cae9fd</color>
+    <color name="merah">#e74c3c</color>
+    <color name="merahmuda">#e67e22</color>
 </resources>

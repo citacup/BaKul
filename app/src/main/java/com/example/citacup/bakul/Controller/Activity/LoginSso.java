@@ -106,6 +106,7 @@ public class LoginSso extends ActionBarActivity {
     public void doSomething() {
         try {
             MyActivity.currentUser = jobject.getString("username");
+            MyActivity.currentName = jobject.getString("nama");
             String uname = jobject.getString("username");
             // cek database mobile
             DatabaseHelper db = new DatabaseHelper(getApplicationContext());

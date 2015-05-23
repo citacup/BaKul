@@ -20,16 +20,18 @@ import com.example.citacup.bakul.R;
  * Created by CITACUP on PPL.
  */
 public class NewKomponen extends Fragment {
-    public static String nama1 = "";
-    public static String nilai1 = "";
-    public static String persentase1 = "";
-    protected ImageView simpan;
     View rootview;
     private EditText nama;
     private EditText nilai;
     private EditText persentase;
     private TextView isi;
-    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.3F);
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F,0.3F);
+
+    public static String nama1="";
+    public static int nilai1=0;
+    public static int persentase1=0;
+    public static String matkul="";
+    protected ImageView simpan;
 
     @Nullable
     @Override
@@ -41,23 +43,45 @@ public class NewKomponen extends Fragment {
         persentase = (EditText) rootview.findViewById(R.id.persentase);
         simpan = (ImageView) rootview.findViewById(R.id.simpan);
 
+/**
+ nama.setText(MyActivity.databaseHelper.getKomponenFromNama(KalkulatorNilai.selected.getNama()).getNama().toString());
+ nilai.setText(Integer.toString(MyActivity.databaseHelper.getKomponenFromNama(KalkulatorNilai.selected.getNama()).getNilai()));
+ persentase.setText(Integer.toString(MyActivity.databaseHelper.getKomponenFromNama(KalkulatorNilai.selected.getNama()).getBobot()));
+ */
+        //MyActivity.databaseHelper.insertKomponen();
+
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nama1 = nama.getText().toString();
-                nilai1 = nilai.getText().toString();
-                persentase1 = persentase.getText().toString();
 
-                if (nama1.length() == 0 || nilai1.length() == 0 || persentase1.length() == 0) {
-                    Toast.makeText(getActivity().getBaseContext(), "Periksa Masukan",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    MyActivity.databaseHelper.insertKomponen(nama1, persentase1, nilai1);
+
+                matkul = KalkulatorNilai.selected.getNama();
+                nama1 = nama.getText().toString();
+                nilai1 =Integer.parseInt(nilai.getText().toString());
+                persentase1 = Integer.parseInt(persentase.getText().toString());
+
+                if(nama1.length()==0|| isEmpty(nilai.getText().toString()) || isEmpty(persentase.getText().toString())){
+
                 }
+                {
+                    MyActivity.databaseHelper.insertKomponen(matkul,nama1,persentase1,nilai1);
+                }
+
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.popBackStack();
+                fragmentManager.beginTransaction()
+                               .replace(R.id.container, new KalkulatorHasil())
+                               .commit();
+
+                ;
             }
         });
         return rootview;
+    }
+
+    public boolean isEmpty(String a) {
+        if (nama.length() == 0) {
+            return true;
+        }
+        return false;
     }
 }

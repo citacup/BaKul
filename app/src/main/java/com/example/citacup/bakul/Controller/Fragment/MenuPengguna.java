@@ -16,10 +16,6 @@ import com.example.citacup.bakul.R;
  * Created by CITACUP on PPL.
  */
 public class MenuPengguna extends Fragment {
-    protected Spinner listHuruf;
-    protected Spinner listWarna;
-    protected String[] huruf = {"Besar", "Sedang", "Kecil"};
-    protected String[] warna = {"Biru", "Merah"};
     View rootview;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.3F);
 
@@ -28,19 +24,6 @@ public class MenuPengguna extends Fragment {
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.menupengguna, container, false);
-
-        listHuruf = (Spinner) rootview.findViewById(R.id.spinnerHuruf);
-        listWarna = (Spinner) rootview.findViewById(R.id.spinnerWarna);
-
-        ArrayAdapter<String> spinnerAdapter1 = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item,
-                huruf);
-        ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item,
-                warna);
-
-        listHuruf.setAdapter(spinnerAdapter1);
-        listWarna.setAdapter(spinnerAdapter2);
         return rootview;
     }
 }

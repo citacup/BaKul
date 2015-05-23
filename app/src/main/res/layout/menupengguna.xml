@@ -125,71 +125,65 @@
                 style="@style/sectionHeader"
                 android:layout_marginTop="10sp" />
 
-            <TableLayout
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
-                <TableRow
-                    android:layout_width="fill_parent"
+                <ImageView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical|center_horizontal">
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/warna1"
+                    android:padding="5dp"
+                    android:src="@drawable/circle"
+                    android:clickable="true"
+                    android:onClick="temaListener"
+                    android:layout_weight="1" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Ukuran Huruf"
-                        android:id="@+id/tema1"
-                        android:layout_weight="0.6"
-                        android:paddingLeft="5sp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text=":"
-                        android:id="@+id/dua1"
-                        android:padding="5dp"
-                        android:layout_weight="0.1" />
-
-                    <Spinner
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/spinnerHuruf"
-                        android:layout_weight="0.3" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="fill_parent"
+                <ImageView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical|center_horizontal">
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/warna2"
+                    android:padding="5dp"
+                    android:src="@drawable/circlered"
+                    android:clickable="true"
+                    android:onClick="temaListener"
+                    android:layout_weight="1" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Warna Latar Belakang"
-                        android:id="@+id/tema2"
-                        android:layout_weight="0.6"
-                        android:paddingLeft="5sp" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/warna3"
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:visibility="invisible"/>
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text=":"
-                        android:id="@+id/dua2"
-                        android:padding="5dp"
-                        android:layout_weight="0.1" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/warna4"
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:visibility="invisible"/>
 
-                    <Spinner
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/spinnerWarna"
-                        android:layout_weight="0.3" />
-                </TableRow>
-
-            </TableLayout>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/warna5"
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:visibility="invisible"/>
+            </LinearLayout>
 
         </LinearLayout>
 
