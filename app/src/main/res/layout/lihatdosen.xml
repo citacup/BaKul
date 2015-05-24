@@ -1,97 +1,99 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
+<RelativeLayout
     android:id="@+id/relativeLayout"
-    android:padding="@dimen/marginluar">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/marginluar"
+    tools:context=".MainActivity">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/linearLayout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:weightSum="1"
-        android:id="@+id/linearLayout"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:padding="@dimen/margindalem"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white"
         android:elevation="@dimen/margindalem"
-        android:background="@android:color/white">
+        android:orientation="vertical"
+        android:padding="@dimen/margindalem"
+        android:weightSum="1">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Deskripsi Dosen"
             android:id="@+id/label"
             style="@style/sectionHeader"
-            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
             android:layout_marginTop="5sp"
-            android:layout_marginBottom="10sp"/>
+            android:gravity="center_horizontal"
+            android:text="Deskripsi Dosen"/>
 
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:id="@+id/scrollView"
             android:layout_weight="0.80">
 
             <LinearLayout
-                android:orientation="vertical"
+                android:id="@+id/rincianlayout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rincianlayout"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="50sp"
-                    android:layout_height="50sp"
-                    android:src="@drawable/dosen"
-                    android:background="@drawable/circlestroke"
                     android:id="@+id/dosenimg"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama : Cita Audia Ahlunaza"
-                    android:id="@+id/rinciannama"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="5dp" />
-
-                <ImageView
                     android:layout_width="50sp"
                     android:layout_height="50sp"
-                    android:src="@drawable/email"
-                    android:background="@drawable/circlestroke"
-                    android:id="@+id/emailimg"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20sp"/>
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/circlestroke"
+                    android:src="@drawable/dosen"/>
 
                 <TextView
+                    android:id="@+id/rinciannama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Email : cita.audia@ui.ac.id"
+                    android:padding="5dp"
+                    android:text="Nama : Cita Audia Ahlunaza"/>
+
+                <ImageView
+                    android:id="@+id/emailimg"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/circlestroke"
+                    android:src="@drawable/email"/>
+
+                <TextView
                     android:id="@+id/rincianemail"
-                    android:padding="5dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="Email : cita.audia@ui.ac.id"/>
             </LinearLayout>
         </ScrollView>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.2"
-            android:gravity="center_vertical|right">
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/email"
                 android:layout_width="50sp"
                 android:layout_height="50sp"
-                android:src="@drawable/send"
                 android:background="@drawable/circle"
-                android:id="@+id/email"
-                android:onClick="lihatDosenListener"/>
+                android:onClick="lihatDosenListener"
+                android:src="@drawable/send"/>
 
         </LinearLayout>
 

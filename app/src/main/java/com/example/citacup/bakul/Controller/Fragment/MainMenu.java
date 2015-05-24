@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.widget.LinearLayout;
 
+import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 
 /**
@@ -22,6 +24,34 @@ public class MainMenu extends Fragment {
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.mainmenu, container, false);
+
+        switch (MyActivity.user.getTema()) {
+            case 1:
+                ((LinearLayout) rootview.findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.birumuda);
+                break;
+            case 2:
+                ((LinearLayout) rootview.findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.merahmuda);
+                break;
+            case 3:
+                ((LinearLayout) rootview.findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.kuningmuda);
+                break;
+            case 4:
+                ((LinearLayout) rootview.findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.orenmuda);
+                break;
+            case 5:
+                ((LinearLayout) rootview.findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.hijaumuda);
+                break;
+            case 6:
+                ((LinearLayout) rootview.findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.ungumuda);
+                break;
+        }
+
         return rootview;
     }
 }

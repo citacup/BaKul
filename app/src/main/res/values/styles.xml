@@ -13,11 +13,11 @@
     <!-- ActionBar styles -->
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <!--parent="android:style/Widget.Holo.Light.ActionBar.Solid.Inverse"-->
-        <item name="android:background">@color/biru</item>
+        <item name="android:background">@color/sangatgelap</item>
         <item name="android:actionButtonStyle">@style/ActionButton</item>
 
         <!-- Support library compatibility -->
-        <item name="background">@color/biru</item>
+        <item name="background">@color/sangatgelap</item>
         <item name="actionButtonStyle">@style/ActionButton</item>
     </style>
 
@@ -37,11 +37,11 @@
     <!-- ActionBar styles -->
     <style name="MyActionBar1"
         parent="android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/biru</item>
+        <item name="android:background">@color/sangatgelap</item>
         <item name="android:icon">@drawable/logo_kecil</item>
 
         <!-- Support library compatibility -->
-        <item name="background">@color/biru</item>
+        <item name="background">@color/sangatgelap</item>
         <item name="icon">@drawable/logo_kecil</item>
     </style>
 

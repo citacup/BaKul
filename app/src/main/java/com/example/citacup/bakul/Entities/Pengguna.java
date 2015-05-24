@@ -9,13 +9,15 @@ public class Pengguna {
     int jurusan;
     int session;
     int avatar;
+    int tema;
 
-    public Pengguna(String username, String name, int jurusan, int session, int avatar) {
+    public Pengguna(String username, String name, int jurusan, int session, int avatar, int tema) {
         this.username = username;
         this.name = name;
         this.jurusan = jurusan;
         this.session = session;
         this.avatar = avatar;
+        this.tema = tema;
     }
 
     public String getUsername() {
@@ -40,5 +42,9 @@ public class Pengguna {
 
     public int getAvatar() {
         return avatar;
+    }
+
+    public int getTema() {
+        return tema;
     }
 }

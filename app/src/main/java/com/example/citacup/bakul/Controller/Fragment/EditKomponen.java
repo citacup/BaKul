@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
@@ -20,15 +20,14 @@ import com.example.citacup.bakul.R;
  */
 public class EditKomponen extends Fragment {
     public static String nama1 = "";
-    public static String nilai1 = "";
-    public static String persentase1 = "";
+    public static int nilai1 = 0;
+    public static int persentase1 = 0;
     protected ImageView simpan;
     protected ImageView hapus;
     View rootview;
     private EditText nama;
     private EditText nilai;
     private EditText persentase;
-    private TextView isi;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.3F);
 
     @Nullable
@@ -45,40 +44,55 @@ public class EditKomponen extends Fragment {
         nama.setText(KalkulatorHasil.dipilih.getNama());
         nilai.setText(Integer.toString(KalkulatorHasil.dipilih.getNilai()));
         persentase.setText(Integer.toString(KalkulatorHasil.dipilih.getBobot()));
-        //MyActivity.databaseHelper.insertKomponen();
-
 
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                nama1 = nama.getText().toString();
-                nilai1 = nilai.getText().toString();
-                persentase1 = persentase.getText().toString();
-                MyActivity.databaseHelper.updateKomponen(nama1, nilai1, persentase1);
+                try {
+                    nama1 = nama.getText().toString().trim();
+                    nilai1 = Integer.parseInt(nilai.getText().toString());
+                    persentase1 = Integer.parseInt(persentase.getText().toString());
+                } catch (Exception e) {
+                    Toast.makeText(getActivity().getBaseContext(), "Isian salah!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (nama1.isEmpty() || nilai.getText().toString().isEmpty() ||
+                        persentase.getText().toString().isEmpty()) {
+                    Toast.makeText(getActivity().getBaseContext(), "Isian salah!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    MyActivity.databaseHelper.updateKomponen(nama1, "" + nilai1, "" + persentase1);
+                }
                 FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.popBackStack();
+                fragmentManager.popBackStack();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorHasil())
+                               .add(R.id.container, new KalkulatorHasil())
+                               .addToBackStack(null)
                                .commit();
-
-                // persentase1 = persentase.getText().toString()
-
-                ;
+                Toast.makeText(getActivity().getBaseContext(), "Isian disimpan!",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
         hapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 nama1 = nama.getText().toString();
                 MyActivity.databaseHelper.deleteKomponen(nama1);
                 FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.popBackStack();
+                fragmentManager.popBackStack();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorHasil())
+                               .add(R.id.container, new KalkulatorHasil())
+                               .addToBackStack(null)
                                .commit();
-
-                ;
+                Toast.makeText(getActivity().getBaseContext(), "Isian dihapus!",
+                        Toast.LENGTH_SHORT).show();
             }
         });
         return rootview;

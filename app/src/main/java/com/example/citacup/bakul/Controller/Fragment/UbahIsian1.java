@@ -49,7 +49,7 @@ public class UbahIsian1 extends Fragment {
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.ubahisian1, container, false);
 
-/////////////////////////UNTUK SEARCH KATEGORI
+/////////////////////////UNTUK SEARCH KATEGORI///////////////////////////////////////////////
         spinnerKategori = (Spinner) rootview.findViewById(R.id.spinnerKategori);
         ArrayAdapter<String> spinnerAdapter = null;
 
@@ -135,7 +135,7 @@ public class UbahIsian1 extends Fragment {
                 selectedPerancangan);
         listMatakuliah.setAdapter(files);
 
-///////////////////////////////// UNTUK SEARCH NAMA ////////////////
+///////////////////////////////// UNTUK SEARCH NAMA ////////////////////////////////////////////
 
         cari = (ImageView) rootview.findViewById(R.id.cari);
         matkulcari = (EditText) rootview.findViewById(R.id.matkulcari);
@@ -179,7 +179,7 @@ public class UbahIsian1 extends Fragment {
 
             }
         });
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
         listlulus = (ListView) rootview.findViewById(R.id.listlulus);
         ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus();

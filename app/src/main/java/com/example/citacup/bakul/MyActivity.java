@@ -27,6 +27,8 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.citacup.bakul.Business.DatabaseHelper;
@@ -36,7 +38,6 @@ import com.example.citacup.bakul.Controller.Fragment.InformasiDosen;
 import com.example.citacup.bakul.Controller.Fragment.InformasiKuliah;
 import com.example.citacup.bakul.Controller.Fragment.KalkulatorNilai;
 import com.example.citacup.bakul.Controller.Fragment.KirimPesan;
-import com.example.citacup.bakul.Controller.Fragment.LaporReview;
 import com.example.citacup.bakul.Controller.Fragment.LihatRancangan;
 import com.example.citacup.bakul.Controller.Fragment.LihatRantai;
 import com.example.citacup.bakul.Controller.Fragment.LihatReview;
@@ -86,6 +87,7 @@ public class MyActivity extends ActionBarActivity {
     public static ArrayList<String> namaMatakuliah = new ArrayList<String>();
     public static ArrayList<String> listReview = new ArrayList<String>();
     //ini untuk settingan setiap user
+    public static Pengguna user;
     public static String currentUser = "";
     String EMAIL = currentUser + "@ui.ac.id";
     public static String currentName = "";
@@ -167,7 +169,7 @@ public class MyActivity extends ActionBarActivity {
         DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
         databaseHelper.getWritableDatabase();
 
-        Pengguna user = databaseHelper.whoHasSession();
+        user = databaseHelper.whoHasSession();
         switch (user.getAvatar()) {
             case 1:
                 PROFILE = R.drawable.avatar1;
@@ -192,6 +194,34 @@ public class MyActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setLogo(R.drawable.logo_kecil);
+
+        switch (user.getTema()) {
+            case 1:
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.biru));
+                //((RelativeLayout) findViewById(R.id.headerimage)).setBackgroundResource(R.drawable.headermerah);
+                break;
+            case 2:
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.merah));
+                break;
+            case 3:
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.kuning));
+                break;
+            case 4:
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.oren));
+                break;
+            case 5:
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.hijau));
+                break;
+            case 6:
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.ungu));
+                break;
+        }
 
         // Assigning the RecyclerView Object to the xml View
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
@@ -240,6 +270,7 @@ public class MyActivity extends ActionBarActivity {
         Drawer.setDrawerListener(mDrawerToggle);
         // Finally we set the drawer toggle sync State
         mDrawerToggle.syncState();
+
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
@@ -914,8 +945,9 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.suka:
                 //suka = 1 , tidak = 0
-                if (databaseHelper.getMenyukai(currentUser, Pencarian.pilihReview.getIdrev(),1)) {
-                    Toast.makeText(getBaseContext(), "Anda sudah pernah memberi Like!", Toast.LENGTH_SHORT)
+                if (databaseHelper.getMenyukai(currentUser, Pencarian.pilihReview.getIdrev(), 1)) {
+                    Toast.makeText(getBaseContext(), "Anda sudah pernah memberi Like!",
+                            Toast.LENGTH_SHORT)
                          .show();
                 } else {
                     httpclient = new DefaultHttpClient();
@@ -931,7 +963,8 @@ public class MyActivity extends ActionBarActivity {
                                 new ProgressDialog(this),
                                 MyActivity.this);
                         doItInBackGround.execute();
-                        databaseHelper.insertMenyukai(currentUser,Pencarian.pilihReview.getIdrev(),1);
+                        databaseHelper
+                                .insertMenyukai(currentUser, Pencarian.pilihReview.getIdrev(), 1);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -940,8 +973,9 @@ public class MyActivity extends ActionBarActivity {
 
             case R.id.tidaksuka:
                 //suka = 1 , tidak = 0
-                if (databaseHelper.getMenyukai(currentUser, Pencarian.pilihReview.getIdrev(),0)) {
-                    Toast.makeText(getBaseContext(), "Anda sudah pernah memberi Dislike!", Toast.LENGTH_SHORT)
+                if (databaseHelper.getMenyukai(currentUser, Pencarian.pilihReview.getIdrev(), 0)) {
+                    Toast.makeText(getBaseContext(), "Anda sudah pernah memberi Dislike!",
+                            Toast.LENGTH_SHORT)
                          .show();
                 } else {
                     httpclient = new DefaultHttpClient();
@@ -957,18 +991,12 @@ public class MyActivity extends ActionBarActivity {
                                 new ProgressDialog(this),
                                 MyActivity.this);
                         doItInBackGround.execute();
-                        databaseHelper.insertMenyukai(currentUser,Pencarian.pilihReview.getIdrev(),0);
+                        databaseHelper
+                                .insertMenyukai(currentUser, Pencarian.pilihReview.getIdrev(), 0);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                break;
-
-            case R.id.lapor:
-                fragmentManager.beginTransaction()
-                               .add(R.id.container, new LaporReview())
-                               .addToBackStack(null)
-                               .commit();
                 break;
             case R.id.ok:
                 fragmentManager.popBackStack();
@@ -1544,8 +1572,11 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case R.id.simpan:
                 //simpan menu pengguna
-                fragmentManager.popBackStack();
                 Toast.makeText(this, "Menu pengguna disimpan", Toast.LENGTH_SHORT).show();
+                this.backHome();
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new MainMenu())
+                               .commit();
                 return;
         }
 
@@ -1564,14 +1595,76 @@ public class MyActivity extends ActionBarActivity {
         FragmentManager fragmentManager = getFragmentManager();
         switch (v.getId()) {
             case R.id.warna1:
-                //simpan menu pengguna
-                Toast.makeText(this, "Tema Berhasil diubah!", Toast.LENGTH_SHORT).show();
+                databaseHelper.updateTema(currentUser, 1);
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.biru));
+                ((LinearLayout) findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.birumuda);
                 break;
             case R.id.warna2:
-                //simpan menu pengguna
-                Toast.makeText(this, "Tema Berhasil diubah!", Toast.LENGTH_SHORT).show();
+                databaseHelper.updateTema(currentUser, 2);
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.merah));
+                ((LinearLayout) findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.merahmuda);
+                break;
+            case R.id.warna3:
+                databaseHelper.updateTema(currentUser, 3);
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.kuning));
+                ((LinearLayout) findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.kuningmuda);
+                break;
+            case R.id.warna4:
+                databaseHelper.updateTema(currentUser, 4);
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.oren));
+                ((LinearLayout) findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.orenmuda);
+                break;
+            case R.id.warna5:
+                databaseHelper.updateTema(currentUser, 5);
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.hijau));
+                ((LinearLayout) findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.hijaumuda);
+                break;
+            case R.id.warna6:
+                databaseHelper.updateTema(currentUser, 6);
+                getSupportActionBar()
+                        .setBackgroundDrawable(getResources().getDrawable(R.color.ungu));
+                ((LinearLayout) findViewById(R.id.mainlayout)).setBackgroundResource(
+                        R.color.ungumuda);
                 break;
         }
+        user = databaseHelper.getPengguna(currentUser);
+        switch (user.getTema()) {
+            case 1:
+                ((RelativeLayout) findViewById(R.id.headerimage))
+                        .setBackgroundResource(R.drawable.headerbiru);
+                break;
+            case 2:
+                ((RelativeLayout) findViewById(R.id.headerimage))
+                        .setBackgroundResource(R.drawable.headermerah);
+                break;
+            case 3:
+                ((RelativeLayout) findViewById(R.id.headerimage))
+                        .setBackgroundResource(R.drawable.headerkuning);
+                break;
+            case 4:
+                ((RelativeLayout) findViewById(R.id.headerimage))
+                        .setBackgroundResource(R.drawable.headeroren);
+                break;
+            case 5:
+                ((RelativeLayout) findViewById(R.id.headerimage))
+                        .setBackgroundResource(R.drawable.headerhijau);
+                break;
+            case 6:
+                ((RelativeLayout) findViewById(R.id.headerimage))
+                        .setBackgroundResource(R.drawable.headerungu);
+                break;
+        }
+        Toast.makeText(this, "Tema Berhasil diubah!", Toast.LENGTH_SHORT).show();
     }
 
     private class ShowDialogAsyncTask extends AsyncTask<String, Void, Boolean> {
@@ -1650,6 +1743,34 @@ public class MyActivity extends ActionBarActivity {
             listReview = databaseHelper.getAllKategori();
 
             databaseHelper.close();
+
+            switch (user.getTema()) {
+                case 1:
+                    ((RelativeLayout) findViewById(R.id.headerimage))
+                            .setBackgroundResource(R.drawable.headerbiru);
+                    break;
+                case 2:
+                    ((RelativeLayout) findViewById(R.id.headerimage))
+                            .setBackgroundResource(R.drawable.headermerah);
+                    break;
+                case 3:
+                    ((RelativeLayout) findViewById(R.id.headerimage))
+                            .setBackgroundResource(R.drawable.headerkuning);
+                    break;
+                case 4:
+                    ((RelativeLayout) findViewById(R.id.headerimage))
+                            .setBackgroundResource(R.drawable.headeroren);
+                    break;
+                case 5:
+                    ((RelativeLayout) findViewById(R.id.headerimage))
+                            .setBackgroundResource(R.drawable.headerhijau);
+                    break;
+                case 6:
+                    ((RelativeLayout) findViewById(R.id.headerimage))
+                            .setBackgroundResource(R.drawable.headerungu);
+                    break;
+            }
+
         }
 
         @Override

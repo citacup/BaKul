@@ -1,54 +1,56 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    tools:context=".MainActivity">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/belakang"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@color/biru"
-        android:gravity="center_vertical|center_horizontal">
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="450sp"
-            android:paddingTop="50sp"
+            android:gravity="center_horizontal|bottom"
+            android:orientation="vertical"
             android:paddingBottom="50sp"
-            android:gravity="center_horizontal|bottom">
+            android:paddingTop="50sp">
 
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="fitStart"
                 android:adjustViewBounds="true"
-                android:id="@+id/imageView"
-                android:src="@drawable/layar_startup" />
+                android:scaleType="fitStart"
+                android:src="@drawable/layar_startup"/>
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/labellogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:id="@+id/labellogin"
             android:layout_marginTop="-80sp"
             android:clickable="true"
-            android:onClick="mainMenu">
+            android:gravity="center_vertical|center_horizontal"
+            android:onClick="mainMenu"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Anda berhasil log out..."
-                android:id="@+id/textView"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@android:color/white"
                 android:paddingLeft="50sp"
-                android:paddingRight="50sp" />
+                android:paddingRight="50sp"
+                android:text="Anda berhasil log out..."
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white"/>
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -56,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"/>
         </LinearLayout>
 
     </LinearLayout>

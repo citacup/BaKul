@@ -23,7 +23,6 @@ public class Logout extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.logout);
 
         new Handler().postDelayed(new Runnable() {
@@ -44,7 +43,4 @@ public class Logout extends Activity {
         }, splashInterval);
 
     }
-
-    ;
-
 }

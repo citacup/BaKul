@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:gravity="center_vertical|center_horizontal">
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        android:paddingBottom="30sp"
         android:paddingLeft="60sp"
-        android:paddingTop="30sp"
         android:paddingRight="60sp"
-        android:paddingBottom="30sp">
+        android:paddingTop="30sp">
 
         <ImageView
+            android:id="@+id/update"
             android:layout_width="50sp"
             android:layout_height="50sp"
-            android:src="@drawable/update"
             android:background="@drawable/circle"
             android:clickable="true"
             android:onClick="perbaruiListener"
-            android:id="@+id/update"/>
+            android:src="@drawable/update"/>
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Klik untuk memperbarui"
-            android:id="@+id/textView"
-            android:layout_marginTop="10sp"
             android:layout_marginBottom="10sp"
-            android:textColor="@color/biru"/>
+            android:layout_marginTop="10sp"
+            android:text="Klik untuk memperbarui"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/tua"/>
 
         <ProgressBar
+            android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
             android:visibility="gone"/>
 
     </LinearLayout>

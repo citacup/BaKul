@@ -15,11 +15,41 @@ import com.example.citacup.bakul.R;
 public class SplashScreen extends Activity {
 
     //Set waktu lama splashscreen
-    private static int splashInterval = 3000;
+    private static int splashInterval = 4000;
+    //DatabaseHelper db = new DatabaseHelper(getApplicationContext());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*Pengguna user = db.whoHasSession();
+        if (user != null) {
+            switch (user.getTema()) {
+                case 1:
+                    (findViewById(R.id.depan))
+                            .setBackgroundColor(R.color.biru);
+                    break;
+                case 2:
+                    (findViewById(R.id.depan))
+                            .setBackgroundColor(R.color.merah);
+                    break;
+                case 3:
+                    (findViewById(R.id.depan))
+                            .setBackgroundColor(R.color.kuning);
+                    break;
+                case 4:
+                    (findViewById(R.id.depan))
+                            .setBackgroundColor(R.color.oren);
+                    break;
+                case 5:
+                    (findViewById(R.id.depan))
+                            .setBackgroundColor(R.color.hijau);
+                    break;
+                case 6:
+                    (findViewById(R.id.depan))
+                            .setBackgroundColor(R.color.ungu);
+                    break;
+            }
+        }*/
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

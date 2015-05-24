@@ -34,9 +34,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 = "CREATE TABLE IF NOT EXISTS `Dosen` (`iddosen` TEXT PRIMARY KEY, `nama` TEXT, `email` TEXT); ";
         db.execSQL(query);
         query
-                = "CREATE TABLE IF NOT EXISTS `Matakuliah` (`kodemk` TEXT PRIMARY KEY, `nama` TEXT, " +
-                "`sks` INTEGER, `semester` TEXT, `islulus` TEXT,`deskripsi` TEXT,`referensi` TEXT, " +
-                "`objektif` TEXT,`kategori` TEXT); ";
+                =
+                "CREATE TABLE IF NOT EXISTS `Matakuliah` (`kodemk` TEXT PRIMARY KEY, `nama` TEXT, " +
+                        "`sks` INTEGER, `semester` TEXT, `islulus` TEXT,`deskripsi` TEXT,`referensi` TEXT, " +
+                        "`objektif` TEXT,`kategori` TEXT); ";
         db.execSQL(query);
         query = "CREATE TABLE IF NOT EXISTS `Kategori` (`kategori` TEXT PRIMARY KEY); ";
         db.execSQL(query);
@@ -47,7 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         query
                 =
                 "CREATE TABLE IF NOT EXISTS `Pengguna` (`username` TEXT PRIMARY KEY,`name` TEXT, " +
-                        "`jurusan` INTEGER,`session` INTEGER, `avatar` INTEGER)";
+                        "`jurusan` INTEGER,`session` INTEGER, `avatar` INTEGER, `tema` INTEGER)";
         db.execSQL(query);
         query = "CREATE TABLE IF NOT EXISTS `Kalkulator` (`username` TEXT, `namamatkul` TEXT)";
         db.execSQL(query);
@@ -155,7 +156,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert("Review", null, values);
     }
 
-    public void insertPengguna(String username, String name, int jurusan, int avatar) {
+    public void insertPengguna(String username, String name, int jurusan, int avatar, int tema) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("username", username);
@@ -163,6 +164,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("jurusan", jurusan);
         values.put("session", 0);
         values.put("avatar", avatar);
+        values.put("tema", tema);
         sqLiteDatabase.insert("Pengguna", null, values);
     }
 
@@ -182,7 +184,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             res = new Pengguna(cursor.getString(0), cursor.getString(1), cursor.getInt(2),
                     cursor.getInt(3),
-                    cursor.getInt(4));
+                    cursor.getInt(4), cursor.getInt(5));
         }
         return res;
     }
@@ -207,6 +209,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void updateTema(String username, int tema) {
+        Pengguna current = getPengguna(username);
+        String query;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        if (current != null) {
+            query = "UPDATE Pengguna SET tema=" + tema + " WHERE username='" + username + "'";
+            sqLiteDatabase.execSQL(query);
+        }
+    }
+
     public Pengguna whoHasSession() {
         Pengguna res = null;
         String query = "select * from Pengguna where session = 1";
@@ -215,7 +227,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             res = new Pengguna(cursor.getString(0), cursor.getString(1), cursor.getInt(2),
                     cursor.getInt(3),
-                    cursor.getInt(4));
+                    cursor.getInt(4), cursor.getInt(5));
         }
         return res;
     }
@@ -799,12 +811,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean deleteMenyukai(String username, String idrev, int sukaortidak) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         sqLiteDatabase.delete("Menyukai",
-                "username = '" + username + "' and idrev = '" + idrev + "' and sukaortidak = '" + sukaortidak + "'", null);
+                "username = '" + username + "' and idrev = '" + idrev + "' and sukaortidak = '" +
+                        sukaortidak + "'", null);
         return !getMenyukai(username, idrev, sukaortidak);
     }
 
     public boolean getMenyukai(String username, String idrev, int sukaortidak) {
-        String query = "SELECT * from Menyukai where username = '" + username + "' and idrev = '" + idrev + "' and sukaortidak = '" + sukaortidak + "'";
+        String query = "SELECT * from Menyukai where username = '" + username + "' and idrev = '" +
+                idrev + "' and sukaortidak = '" + sukaortidak + "'";
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         boolean menyukai = false;

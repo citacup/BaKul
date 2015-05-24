@@ -1,37 +1,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:padding="@dimen/marginluar">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/marginluar"
+                tools:context=".MainActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:elevation="@dimen/margindalem"
         android:gravity="center_vertical|center_horizontal"
-        android:padding="@dimen/margindalem"
-        android:elevation="@dimen/margindalem">
+        android:orientation="vertical"
+        android:padding="@dimen/margindalem">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:gravity="center_horizontal|center_vertical">
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="300sp"
                 android:layout_height="300sp"
-                android:id="@+id/imageView"
-                android:src="@drawable/layar_startup" />
+                android:src="@drawable/layar_startup"/>
+
             <ImageView
+                android:id="@+id/labellogin"
                 android:layout_width="50sp"
                 android:layout_height="50sp"
                 android:layout_marginTop="-30sp"
-                android:src="@drawable/lanjut"
                 android:background="@drawable/circlelight"
-                android:id="@+id/labellogin"
                 android:clickable="true"
-                android:onClick="mainMenu"/>
+                android:onClick="mainMenu"
+                android:src="@drawable/lanjut"/>
         </LinearLayout>
 
     </LinearLayout>

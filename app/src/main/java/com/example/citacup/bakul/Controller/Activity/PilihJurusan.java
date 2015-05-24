@@ -33,37 +33,37 @@ public class PilihJurusan extends ActionBarActivity {
         switch (v.getId()) {
             case (R.id.ilkomlayout):
                 //pilih jurusan ilkom
-                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 0, 1);
+                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 0, 1, 1);
                 startActivity(new Intent(getBaseContext(), MyActivity.class));
                 this.finish();
                 break;
             case (R.id.ilkomimage):
                 //pilih jurusan ilkom
-                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 0, 1);
+                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 0, 1, 1);
                 startActivity(new Intent(getBaseContext(), MyActivity.class));
                 this.finish();
                 break;
             case (R.id.ilkomtext):
                 //pilih jurusan ilkom
-                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 0, 1);
+                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 0, 1, 1);
                 startActivity(new Intent(getBaseContext(), MyActivity.class));
                 this.finish();
                 break;
             case (R.id.silayout):
                 //pilih jurusan si
-                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 1, 1);
+                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 1, 1, 1);
                 startActivity(new Intent(getBaseContext(), MyActivity.class));
                 this.finish();
                 break;
             case (R.id.siimage):
                 //pilih jurusan si
-                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 1, 1);
+                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 1, 1, 1);
                 startActivity(new Intent(getBaseContext(), MyActivity.class));
                 this.finish();
                 break;
             case (R.id.sitext):
                 //pilih jurusan si
-                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 1, 1);
+                db.insertPengguna(MyActivity.currentUser, MyActivity.currentName, 1, 1, 1);
                 startActivity(new Intent(getBaseContext(), MyActivity.class));
                 this.finish();
                 break;

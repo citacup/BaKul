@@ -4,5 +4,5 @@
     android:shape="rectangle">
     <size android:width="2000dp" android:height="1dp" />
     <solid
-        android:color="@color/biru"/>
+        android:color="@color/tua"/>
 </shape>

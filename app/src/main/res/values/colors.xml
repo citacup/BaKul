@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="biru">#0071BC</color>
-    <color name="birumuda">#cae9fd</color>
     <color name="merah">#e74c3c</color>
-    <color name="merahmuda">#e67e22</color>
+    <color name="oren">#e67e22</color>
+    <color name="kuning">#f2ca27</color>
+    <color name="hijau">#2ecc71</color>
+    <color name="ungu">#9b59b6</color>
+
+    <color name="birumuda">#cae9fd</color>
+    <color name="merahmuda">#F27C6F</color>
+    <color name="orenmuda">#F7C165</color>
+    <color name="kuningmuda">#FFF15C</color>
+    <color name="hijaumuda">#8AF2B6</color>
+    <color name="ungumuda">#D69FED</color>
+
+    <color name="tua">#34495e</color>
+    <color name="gelap">#bdc3c7</color>
+    <color name="muda">#ecf0f1</color>
+    <color name="sangatgelap">#7f8c8d</color>
 </resources>

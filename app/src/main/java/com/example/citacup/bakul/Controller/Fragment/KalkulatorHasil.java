@@ -25,18 +25,9 @@ import java.util.ArrayList;
  * Created by CITACUP on PPL.
  */
 public class KalkulatorHasil extends Fragment {
-    public static ListView listkomponen;
     public static ArrayList<String> isiKomponen = new ArrayList<String>();
     public static KomponenPenilaian dipilih;
     public static ImageView hitung;
-    public static EditText menujuA;
-    public static EditText total;
-    public static EditText menujuAm;
-    public static EditText menujuBp;
-    public static EditText menujuB;
-    public static EditText menujuBm;
-    public static EditText menujuCp;
-    public static EditText menujuC;
     public static int test;
     View rootview;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.3F);
@@ -48,7 +39,6 @@ public class KalkulatorHasil extends Fragment {
         rootview = inflater.inflate(R.layout.kalkulatorhasil, container, false);
 
         TextView judul = (TextView) rootview.findViewById(R.id.namamatkul);
-        ListView listkomponen = (ListView) rootview.findViewById(R.id.listkomponen);
         judul.setText(KalkulatorNilai.selected.getNama());
         hitung = (ImageView) rootview.findViewById(R.id.hitung);
         final EditText total = (EditText) rootview.findViewById(R.id.total3);
@@ -68,11 +58,9 @@ public class KalkulatorHasil extends Fragment {
                                          .size(); i++) {
             isiKomponen.add(MyActivity.databaseHelper
                     .getKomponenFromMatkul2(KalkulatorNilai.selected.getNama()).get(i));
-            //isiKomponen.add("Tambah Komponen...");
-            //Log.d("MASUK SINI", "A");
         }
 
-        listkomponen = (ListView) rootview.findViewById(R.id.listkomponen);
+        ListView listkomponen = (ListView) rootview.findViewById(R.id.listkomponen);
         final ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, isiKomponen);
         listkomponen.setAdapter(files);
@@ -80,23 +68,22 @@ public class KalkulatorHasil extends Fragment {
         listkomponen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Pencarian.pilih = MyActivity.databaseHelper.getMatakuliahFromNama(Pencarian.selected.get(position));
-
                 if (position == 0) {
                     dipilih = MyActivity.databaseHelper.getKomponenFromNama(isiKomponen.get(0));
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new NewKomponen())
+                                   .add(R.id.container, new NewKomponen())
+                                   .addToBackStack(null)
                                    .commit();
                 } else {
                     dipilih = MyActivity.databaseHelper
                             .getKomponenFromNama(isiKomponen.get(position));
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
-                                   .replace(R.id.container, new EditKomponen())
+                                   .add(R.id.container, new EditKomponen())
+                                   .addToBackStack(null)
                                    .commit();
                 }
-
             }
         });
 
@@ -104,28 +91,19 @@ public class KalkulatorHasil extends Fragment {
             @Override
             public void onClick(View v) {
                 double nilai = 0;
-                //nilai=0;
                 String matkul = KalkulatorNilai.selected.getNama();
                 for (int i = 0;
                      i < MyActivity.databaseHelper.getBobotKomponenFromMatkul(matkul).size(); i++) {
                     double bobot =
                             MyActivity.databaseHelper.getNilaiKomponenFromMatkul(matkul).get(i) /
                                     100.0;
-                    //MyActivity.databaseHelper.getKomponenFromMatkul(KalkulatorNilai.selectedTambah.getNama());
                     test = MyActivity.databaseHelper.getBobotKomponenFromMatkul(matkul).get(0);
                     nilai += MyActivity.databaseHelper.getBobotKomponenFromMatkul(matkul).get(i) *
                             bobot;
-
-                    // nilai =MyActivity.databaseHelper.getBobotKomponenFromMatkul(matkul).get(0)/100;
-
                 }
 
-
-                //menujuA.setText(Integer.toString(MyActivity.databaseHelper.getBobotKomponenFromMatkul(matkul).get(0)));
+                //set nilai yang dibutuhkan
                 total.setText(String.valueOf(nilai));
-                //menujuA.setText(String.valueOf(MyActivity.databaseHelper.getBobotKomponenFromMatkul(matkul).size()));
-                //menujuAm.setText(String.valueOf(MyActivity.databaseHelper.getBobotKomponenFromMatkul(matkul).get(0)/100.0));
-                //menujuBp.setText(String.valueOf(MyActivity.databaseHelper.getNilaiKomponenFromMatkul(matkul).get(0)));
                 menujuA.setText(String.valueOf(85 - nilai));
                 menujuAm.setText(String.valueOf(80 - nilai));
                 menujuBp.setText(String.valueOf(75 - nilai));
@@ -133,7 +111,6 @@ public class KalkulatorHasil extends Fragment {
                 menujuBm.setText(String.valueOf((65 - nilai)));
                 menujuCp.setText(String.valueOf((60 - nilai)));
                 menujuC.setText(String.valueOf((55 - nilai)));
-
             }
         });
 

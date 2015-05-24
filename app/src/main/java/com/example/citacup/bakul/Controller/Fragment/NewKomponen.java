@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
@@ -28,7 +28,6 @@ public class NewKomponen extends Fragment {
     private EditText nama;
     private EditText nilai;
     private EditText persentase;
-    private TextView isi;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.3F);
 
     @Nullable
@@ -41,46 +40,40 @@ public class NewKomponen extends Fragment {
         persentase = (EditText) rootview.findViewById(R.id.persentase);
         simpan = (ImageView) rootview.findViewById(R.id.simpan);
 
-/**
- nama.setText(MyActivity.databaseHelper.getKomponenFromNama(KalkulatorNilai.selected.getNama()).getNama().toString());
- nilai.setText(Integer.toString(MyActivity.databaseHelper.getKomponenFromNama(KalkulatorNilai.selected.getNama()).getNilai()));
- persentase.setText(Integer.toString(MyActivity.databaseHelper.getKomponenFromNama(KalkulatorNilai.selected.getNama()).getBobot()));
- */
-        //MyActivity.databaseHelper.insertKomponen();
-
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 matkul = KalkulatorNilai.selected.getNama();
-                nama1 = nama.getText().toString();
-                nilai1 = Integer.parseInt(nilai.getText().toString());
-                persentase1 = Integer.parseInt(persentase.getText().toString());
-
-                if (nama1.length() == 0 || isEmpty(nilai.getText().toString()) ||
-                        isEmpty(persentase.getText().toString())) {
-
+                try {
+                    nama1 = nama.getText().toString().trim();
+                    nilai1 = Integer.parseInt(nilai.getText().toString());
+                    persentase1 = Integer.parseInt(persentase.getText().toString());
+                } catch (Exception e) {
+                    Toast.makeText(getActivity().getBaseContext(), "Isian salah!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                {
+
+                if (nama1.isEmpty() || nilai.getText().toString().isEmpty() ||
+                        persentase.getText().toString().isEmpty()) {
+                    Toast.makeText(getActivity().getBaseContext(), "Isian salah!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
                     MyActivity.databaseHelper.insertKomponen(matkul, nama1, persentase1, nilai1);
                 }
 
                 FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.popBackStack();
+                fragmentManager.popBackStack();
                 fragmentManager.beginTransaction()
-                               .replace(R.id.container, new KalkulatorHasil())
+                               .add(R.id.container, new KalkulatorHasil())
+                               .addToBackStack(null)
                                .commit();
-
-                ;
+                Toast.makeText(getActivity().getBaseContext(), "Isian disimpan!",
+                        Toast.LENGTH_SHORT).show();
             }
         });
         return rootview;
-    }
-
-    public boolean isEmpty(String a) {
-        if (nama.length() == 0) {
-            return true;
-        }
-        return false;
     }
 }
