@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.citacup.bakul.R;
@@ -67,7 +66,8 @@ public class SuatuReview extends Fragment {
             nameValuePairs.add(new BasicNameValuePair("idreview",
                     Pencarian.pilihReview.getIdrev()));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            GetLikeDislikeTask doItInBackGround = new GetLikeDislikeTask(new ProgressDialog(getActivity()),
+            GetLikeDislikeTask doItInBackGround = new GetLikeDislikeTask(
+                    new ProgressDialog(getActivity()),
                     getActivity());
             doItInBackGround.execute();
         } catch (IOException e) {

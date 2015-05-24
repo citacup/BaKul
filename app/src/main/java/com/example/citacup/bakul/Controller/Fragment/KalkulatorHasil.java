@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,13 +20,11 @@ import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by CITACUP on PPL.
  */
 public class KalkulatorHasil extends Fragment {
-    View rootview;
     public static ListView listkomponen;
     public static ArrayList<String> isiKomponen = new ArrayList<String>();
     public static KomponenPenilaian dipilih;
@@ -41,6 +38,7 @@ public class KalkulatorHasil extends Fragment {
     public static EditText menujuCp;
     public static EditText menujuC;
     public static int test;
+    View rootview;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.3F);
 
     @Nullable
@@ -53,27 +51,30 @@ public class KalkulatorHasil extends Fragment {
         ListView listkomponen = (ListView) rootview.findViewById(R.id.listkomponen);
         judul.setText(KalkulatorNilai.selected.getNama());
         hitung = (ImageView) rootview.findViewById(R.id.hitung);
-        final EditText total =(EditText) rootview.findViewById(R.id.total3);
-        final EditText menujuA =(EditText) rootview.findViewById(R.id.A3);
-        final EditText menujuAm =(EditText) rootview.findViewById(R.id.Am3);
-        final EditText menujuBp =(EditText) rootview.findViewById(R.id.Bp3);
-        final EditText menujuB =(EditText) rootview.findViewById(R.id.B3);
-        final EditText menujuBm =(EditText) rootview.findViewById(R.id.Bm3);
-        final EditText menujuCp =(EditText) rootview.findViewById(R.id.Cp3);
-        final EditText menujuC =(EditText) rootview.findViewById(R.id.C3);
+        final EditText total = (EditText) rootview.findViewById(R.id.total3);
+        final EditText menujuA = (EditText) rootview.findViewById(R.id.A3);
+        final EditText menujuAm = (EditText) rootview.findViewById(R.id.Am3);
+        final EditText menujuBp = (EditText) rootview.findViewById(R.id.Bp3);
+        final EditText menujuB = (EditText) rootview.findViewById(R.id.B3);
+        final EditText menujuBm = (EditText) rootview.findViewById(R.id.Bm3);
+        final EditText menujuCp = (EditText) rootview.findViewById(R.id.Cp3);
+        final EditText menujuC = (EditText) rootview.findViewById(R.id.C3);
         isiKomponen = new ArrayList<String>();
         isiKomponen.add("+ Tambah Komponen...");
 
 
-
-        for(int i = 0;i<MyActivity.databaseHelper.getKomponenFromMatkul2(KalkulatorNilai.selected.getNama()).size();i++){
-            isiKomponen.add(MyActivity.databaseHelper.getKomponenFromMatkul2(KalkulatorNilai.selected.getNama()).get(i));
+        for (int i = 0; i <
+                MyActivity.databaseHelper.getKomponenFromMatkul2(KalkulatorNilai.selected.getNama())
+                                         .size(); i++) {
+            isiKomponen.add(MyActivity.databaseHelper
+                    .getKomponenFromMatkul2(KalkulatorNilai.selected.getNama()).get(i));
             //isiKomponen.add("Tambah Komponen...");
             //Log.d("MASUK SINI", "A");
         }
 
         listkomponen = (ListView) rootview.findViewById(R.id.listkomponen);
-        final ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, isiKomponen);
+        final ArrayAdapter<String> files = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, isiKomponen);
         listkomponen.setAdapter(files);
 
         listkomponen.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -5,7 +5,6 @@ package com.example.citacup.bakul.Entities;
  */
 public class Review {
     String idrev;
-    String username;
     String nama;
     String komentar;
     String app_flag;
@@ -14,10 +13,9 @@ public class Review {
 
 
     public Review(
-            String idrev, String username, String nama, String komentar, String app_flag,
+            String idrev, String nama, String komentar, String app_flag,
             String like, String dislike) {
         this.idrev = idrev;
-        this.username = username;
         this.nama = nama;
         this.komentar = komentar;
         this.app_flag = app_flag;
@@ -27,10 +25,6 @@ public class Review {
 
     public String getIdrev() {
         return idrev;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public String getNama() {

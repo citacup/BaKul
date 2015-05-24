@@ -11,7 +11,6 @@ import android.view.animation.AlphaAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.citacup.bakul.MyActivity;
 import com.example.citacup.bakul.R;
@@ -56,7 +55,7 @@ public class EditKomponen extends Fragment {
                 nama1 = nama.getText().toString();
                 nilai1 = nilai.getText().toString();
                 persentase1 = persentase.getText().toString();
-                MyActivity.databaseHelper.updateKomponen(nama1,nilai1,persentase1);
+                MyActivity.databaseHelper.updateKomponen(nama1, nilai1, persentase1);
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                                .replace(R.id.container, new KalkulatorHasil())

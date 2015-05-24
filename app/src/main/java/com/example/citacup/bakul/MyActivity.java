@@ -30,7 +30,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.citacup.bakul.Business.DatabaseHelper;
-import com.example.citacup.bakul.Business.JSONParser;
 import com.example.citacup.bakul.Controller.Activity.Logout;
 import com.example.citacup.bakul.Controller.Fragment.Faq;
 import com.example.citacup.bakul.Controller.Fragment.InformasiDosen;
@@ -88,11 +87,11 @@ public class MyActivity extends ActionBarActivity {
     public static ArrayList<String> listReview = new ArrayList<String>();
     //ini untuk settingan setiap user
     public static String currentUser = "";
+    String EMAIL = currentUser + "@ui.ac.id";
     public static String currentName = "";
     //Similarly we Create a String Resource for the name and email in the header view
     //And we also create a int resource for profile picture in the header view
     String NAME = currentName;
-    String EMAIL = currentUser + "@ui.ac.id";
     public static int jurusan = 0;
     public static String semester;
     /**
@@ -914,38 +913,54 @@ public class MyActivity extends ActionBarActivity {
 
         switch (v.getId()) {
             case R.id.suka:
-                httpclient = new DefaultHttpClient();
-                //url post web
-                httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/likeReview.php");
+                //suka = 1 , tidak = 0
+                if (databaseHelper.getMenyukai(currentUser, Pencarian.pilihReview.getIdrev(),1)) {
+                    Toast.makeText(getBaseContext(), "Anda sudah pernah memberi Like!", Toast.LENGTH_SHORT)
+                         .show();
+                } else {
+                    httpclient = new DefaultHttpClient();
+                    //url post web
+                    httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/likeReview.php");
 
-                try {
-                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-                    nameValuePairs.add(new BasicNameValuePair("idreview",
-                            Pencarian.pilihReview.getIdrev()));
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                    SuatuReviewTask doItInBackGround = new SuatuReviewTask(new ProgressDialog(this),
-                            MyActivity.this);
-                    doItInBackGround.execute();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    try {
+                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                        nameValuePairs.add(new BasicNameValuePair("idreview",
+                                Pencarian.pilihReview.getIdrev()));
+                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                        SuatuReviewTask doItInBackGround = new SuatuReviewTask(
+                                new ProgressDialog(this),
+                                MyActivity.this);
+                        doItInBackGround.execute();
+                        databaseHelper.insertMenyukai(currentUser,Pencarian.pilihReview.getIdrev(),1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
 
             case R.id.tidaksuka:
-                httpclient = new DefaultHttpClient();
-                //url post web
-                httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/dislikeReview.php");
+                //suka = 1 , tidak = 0
+                if (databaseHelper.getMenyukai(currentUser, Pencarian.pilihReview.getIdrev(),0)) {
+                    Toast.makeText(getBaseContext(), "Anda sudah pernah memberi Dislike!", Toast.LENGTH_SHORT)
+                         .show();
+                } else {
+                    httpclient = new DefaultHttpClient();
+                    //url post web
+                    httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/dislikeReview.php");
 
-                try {
-                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-                    nameValuePairs.add(new BasicNameValuePair("idreview",
-                            Pencarian.pilihReview.getIdrev()));
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                    SuatuReviewTask doItInBackGround = new SuatuReviewTask(new ProgressDialog(this),
-                            MyActivity.this);
-                    doItInBackGround.execute();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    try {
+                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                        nameValuePairs.add(new BasicNameValuePair("idreview",
+                                Pencarian.pilihReview.getIdrev()));
+                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                        SuatuReviewTask doItInBackGround = new SuatuReviewTask(
+                                new ProgressDialog(this),
+                                MyActivity.this);
+                        doItInBackGround.execute();
+                        databaseHelper.insertMenyukai(currentUser,Pencarian.pilihReview.getIdrev(),0);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
 
@@ -1035,8 +1050,8 @@ public class MyActivity extends ActionBarActivity {
 
         FragmentManager fragmentManager = getFragmentManager();
 
-        switch(v.getId()) {
-            case R.id.simpan :
+        switch (v.getId()) {
+            case R.id.simpan:
                 //simpan
                 //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
                 fragmentManager.beginTransaction()
@@ -1044,15 +1059,18 @@ public class MyActivity extends ActionBarActivity {
                                .commit();
                 Toast.makeText(this, "Kalkulator nilai disimpan", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.delete :
+            case R.id.delete:
                 KalkulatorNilai.spinnerkalkulator.add(KalkulatorNilai.selected.getNama());
-                if (databaseHelper.deleteKalkulator(currentUser, KalkulatorNilai.selected.getNama())) {
+                if (databaseHelper
+                        .deleteKalkulator(currentUser, KalkulatorNilai.selected.getNama())) {
                     fragmentManager.beginTransaction()
                                    .replace(R.id.container, new KalkulatorNilai())
                                    .commit();
-                    Toast.makeText(getBaseContext(), "Kalkulator berhasil dihapus", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Kalkulator berhasil dihapus",
+                            Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getBaseContext(), "Kalkulator gagal dihapus", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Kalkulator gagal dihapus", Toast.LENGTH_SHORT)
+                         .show();
                 }
         }
     }
@@ -1636,15 +1654,6 @@ public class MyActivity extends ActionBarActivity {
 
         @Override
         protected Boolean doInBackground(String... arg0) {
-            //String urlDosen = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/dosen.json";
-            String urlMatakuliah = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/matakuliah.json";
-            String urlKategori = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/kategori.json";
-            String urlReview = "http://mahasiswa.cs.ui.ac.id/~tondhy.eko/ppl/review.json";
-            //JSONtoDBDosen(urlDosen);
-            JSONtoDBMatakuliah(urlMatakuliah);
-            JSONtoDBKategori(urlKategori);
-            JSONtoDBReview(urlReview);
-
             httpclient = new DefaultHttpClient();
             //url post web
             httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/getdosen.php");
@@ -1659,6 +1668,81 @@ public class MyActivity extends ActionBarActivity {
                 Log.d("state response", jobject.getString("success"));
                 if (jobject.getString("success").equals("1")) {
                     JSONtoDBDosen(jobject.getString("product"));
+                }
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (Exception e) {
+                Log.e("Get Data", "Exception caught: ", e);
+            }
+
+            httpclient = new DefaultHttpClient();
+            //url post web
+            httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/getkategori.php");
+            //execute - means sending
+            try {
+                response = httpclient.execute(httppost);
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+                String json = reader.readLine();
+                Log.d("http response", json + "");
+                jobject = new JSONObject(json);
+                Log.d("state response", jobject.getString("success"));
+                if (jobject.getString("success").equals("1")) {
+                    JSONtoDBKategori(jobject.getString("product"));
+                }
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (Exception e) {
+                Log.e("Get Data", "Exception caught: ", e);
+            }
+
+            httpclient = new DefaultHttpClient();
+            //url post web
+            httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/getreview.php");
+            //execute - means sending
+            try {
+                response = httpclient.execute(httppost);
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+                String json = reader.readLine();
+                Log.d("http response", json + "");
+                jobject = new JSONObject(json);
+                Log.d("state response", jobject.getString("success"));
+                if (jobject.getString("success").equals("1")) {
+                    JSONtoDBReview(jobject.getString("product"));
+                }
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (Exception e) {
+                Log.e("Get Data", "Exception caught: ", e);
+            }
+
+            httpclient = new DefaultHttpClient();
+            //url post web
+            httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/getmatkul.php");
+            //execute - means sending
+            try {
+                response = httpclient.execute(httppost);
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+                String json = reader.readLine();
+                Log.d("http response", json + "");
+                jobject = new JSONObject(json);
+                Log.d("state response", jobject.getString("success"));
+                if (jobject.getString("success").equals("1")) {
+                    JSONtoDBMatakuliah(jobject.getString("product"));
                 }
             } catch (ClientProtocolException e) {
                 // TODO Auto-generated catch block
@@ -1705,13 +1789,17 @@ public class MyActivity extends ActionBarActivity {
             }
         }
 
-        private void JSONtoDBMatakuliah(String url) {
+        private void JSONtoDBMatakuliah(String json) {
             databaseHelper = new DatabaseHelper(getApplicationContext());
             databaseHelper.getWritableDatabase();
 
-            JSONParser jParser = new JSONParser();
-            JSONArray json = jParser.getJSONFromUrl(url);
-            generateDatabaseMatakuliah(json);
+            // Parse String to JSON object
+            try {
+                JSONArray jarray = new JSONArray(json);
+                generateDatabaseMatakuliah(jarray);
+            } catch (JSONException e) {
+                Log.e("JSON Parser", "Error parsing data " + e.toString());
+            }
         }
 
         private void generateDatabaseMatakuliah(JSONArray data) {
@@ -1742,14 +1830,17 @@ public class MyActivity extends ActionBarActivity {
             }
         }
 
-        private void JSONtoDBKategori(String url) {
+        private void JSONtoDBKategori(String json) {
             databaseHelper = new DatabaseHelper(getApplicationContext());
             databaseHelper.getWritableDatabase();
 
-            JSONParser jParser = new JSONParser();
-            JSONArray json = jParser.getJSONFromUrl(url);
-            generateDatabaseKategori(json);
-
+            // Parse String to JSON object
+            try {
+                JSONArray jarray = new JSONArray(json);
+                generateDatabaseKategori(jarray);
+            } catch (JSONException e) {
+                Log.e("JSON Parser", "Error parsing data " + e.toString());
+            }
         }
 
         private void generateDatabaseKategori(JSONArray data) {
@@ -1769,13 +1860,18 @@ public class MyActivity extends ActionBarActivity {
             }
         }
 
-        private void JSONtoDBReview(String url) {
+        private void JSONtoDBReview(String json) {
             databaseHelper = new DatabaseHelper(getApplicationContext());
             databaseHelper.getWritableDatabase();
 
-            JSONParser jParser = new JSONParser();
-            JSONArray json = jParser.getJSONFromUrl(url);
-            generateDatabaseReview(json);
+            // Parse String to JSON object
+            try {
+                JSONArray jarray = new JSONArray(json);
+                generateDatabaseReview(jarray);
+            } catch (JSONException e) {
+                Log.e("JSON Parser", "Error parsing data " + e.toString());
+            }
+            ;
         }
 
         private void generateDatabaseReview(JSONArray data) {
@@ -1784,13 +1880,12 @@ public class MyActivity extends ActionBarActivity {
                     try {
                         JSONObject obj = data.getJSONObject(i);
                         String idrev = obj.getString("idrev");
-                        String username = obj.getString("username");
                         String nama = obj.getString("nama");
                         String komentar = obj.getString("komentar");
                         String app_flag = obj.getString("app_flag");
                         String like = obj.getString("like");
                         String dislike = obj.getString("dislike");
-                        databaseHelper.insertReview(idrev, username, nama, komentar, app_flag, like,
+                        databaseHelper.insertReview(idrev, nama, komentar, app_flag, like,
                                 dislike);
 
                     } catch (JSONException e) {

@@ -9,24 +9,25 @@ public class KomponenPenilaian {
     int bobot;
     int nilai;
 
-    public KomponenPenilaian( String matkul, String nama, int bobot, int nilai){
+    public KomponenPenilaian(String matkul, String nama, int bobot, int nilai) {
         this.nama = nama;
         this.bobot = bobot;
         this.nilai = nilai;
     }
 
-    public String getMatkul(){
+    public String getMatkul() {
         return matkul;
     }
-    public String getNama(){
+
+    public String getNama() {
         return nama;
     }
 
-    public int getBobot(){
+    public int getBobot() {
         return bobot;
     }
 
-    public int getNilai (){
+    public int getNilai() {
         return nilai;
     }
 }
