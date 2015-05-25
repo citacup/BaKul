@@ -103,14 +103,44 @@ public class KalkulatorHasil extends Fragment {
                 }
 
                 //set nilai yang dibutuhkan
+
+                if (85 - nilai < 0) {
+                    menujuA.setText(String.valueOf(0));
+                } else {
+                    menujuA.setText(String.valueOf(85 - nilai));
+                }
                 total.setText(String.valueOf(nilai));
-                menujuA.setText(String.valueOf(85 - nilai));
-                menujuAm.setText(String.valueOf(80 - nilai));
-                menujuBp.setText(String.valueOf(75 - nilai));
-                menujuB.setText(String.valueOf((70 - nilai)));
-                menujuBm.setText(String.valueOf((65 - nilai)));
-                menujuCp.setText(String.valueOf((60 - nilai)));
-                menujuC.setText(String.valueOf((55 - nilai)));
+                if (80 - nilai < 0) {
+                    menujuAm.setText(String.valueOf(0));
+                } else {
+                    menujuAm.setText(String.valueOf(80 - nilai));
+                }
+                if (75 - nilai < 0) {
+                    menujuBp.setText(String.valueOf(0));
+                } else {
+
+                    menujuBp.setText(String.valueOf(75 - nilai));
+                }
+                if (70 - nilai < 0) {
+                    menujuB.setText(String.valueOf(0));
+                } else {
+                    menujuB.setText(String.valueOf((70 - nilai)));
+                }
+                if (65 - nilai < 0) {
+                    menujuBm.setText(String.valueOf(0));
+                } else {
+                    menujuBm.setText(String.valueOf((65 - nilai)));
+                }
+                if (60 - nilai < 0) {
+                    menujuCp.setText(String.valueOf(0));
+                } else {
+                    menujuCp.setText(String.valueOf((60 - nilai)));
+                }
+                if (55 - nilai < 0) {
+                    menujuC.setText(String.valueOf(0));
+                } else {
+                    menujuC.setText(String.valueOf((55 - nilai)));
+                }
             }
         });
 

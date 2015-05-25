@@ -68,12 +68,15 @@ public class UbahIsian1 extends Fragment {
                         selectedPerancangan = MyActivity.databaseHelper.getAllMatakuliah();
                     } else if (position == 7) {
                         selectedPerancangan = MyActivity.databaseHelper
-                                .getMatakuliahfromKategori("Wajib Jurusan Ilmu Komputer");
+                                .getMatakuliahfromKategori("Wajib Jurusan Sistem Informasi");
+
                         selectedPerancangan.addAll(MyActivity.databaseHelper
-                                .getMatakuliahfromKategori("Pilihan Bidang Minat Ilmu Komputer"));
+                                .getMatakuliahfromKategori(
+                                        "Pilihan Bidang Minat Sistem Informasi"));
                     } else {
                         selectedPerancangan = MyActivity.databaseHelper
-                                .getMatakuliahfromKategori(PencarianKategori.kategoriSi[position]);
+                                .getMatakuliahfromKategori(
+                                        PencarianKategori.kategoriIlkom[position]);
                     }
 
                     Collections.sort(selectedPerancangan);
@@ -103,10 +106,10 @@ public class UbahIsian1 extends Fragment {
                         selectedPerancangan = MyActivity.databaseHelper.getAllMatakuliah();
                     } else if (position == 7) {
                         selectedPerancangan = MyActivity.databaseHelper
-                                .getMatakuliahfromKategori("Wajib Jurusan Sistem Informasi");
+                                .getMatakuliahfromKategori("Wajib Jurusan Ilmu Komputer");
                         selectedPerancangan.addAll(MyActivity.databaseHelper
                                 .getMatakuliahfromKategori(
-                                        "Pilihan Bidang Minat Sistem Informasi"));
+                                        "Pilihan Bidang Minat Ilmu Komputer"));
                     } else {
                         selectedPerancangan = MyActivity.databaseHelper
                                 .getMatakuliahfromKategori(PencarianKategori.kategoriSi[position]);
@@ -135,7 +138,7 @@ public class UbahIsian1 extends Fragment {
                 selectedPerancangan);
         listMatakuliah.setAdapter(files);
 
-///////////////////////////////// UNTUK SEARCH NAMA ////////////////////////////////////////////
+///////////////////////////////// UNTUK SEARCH NAMA ////////////////
 
         cari = (ImageView) rootview.findViewById(R.id.cari);
         matkulcari = (EditText) rootview.findViewById(R.id.matkulcari);
@@ -161,8 +164,11 @@ public class UbahIsian1 extends Fragment {
                 selectedSimpan = MyActivity.databaseHelper
                         .getMatakuliahFromNama(selectedPerancangan.get(position));
 
-                if (MyActivity.databaseHelper.cekValidLulus(selectedSimpan.getSks())) {
+                if (MyActivity.databaseHelper
+                        .cekValidLulus(selectedSimpan.getSks(), MyActivity.semesterOlah)) {
                     MyActivity.databaseHelper.setLulus(selectedSimpan.getNama());
+                    MyActivity.databaseHelper
+                            .setSemLulus(selectedSimpan.getNama(), MyActivity.semesterOlah);
                     Toast.makeText(rootview.getContext(), "Mata kuliah berhasil ditambahkan",
                             Toast.LENGTH_SHORT).show();
                 } else {
@@ -170,7 +176,9 @@ public class UbahIsian1 extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 }
                 listlulus = (ListView) rootview.findViewById(R.id.listlulus);
-                ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus();
+                ArrayList matkulLulus = MyActivity.databaseHelper
+                        .getMatkulLulus2(MyActivity.semesterOlah);
+
                 Collections.sort(matkulLulus);
                 ArrayAdapter<String> files2 = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_list_item_1,
@@ -179,10 +187,10 @@ public class UbahIsian1 extends Fragment {
 
             }
         });
-//////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////UNTUK NGAPUS////////////////////////////////////////
 
         listlulus = (ListView) rootview.findViewById(R.id.listlulus);
-        ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus();
+        ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus2(MyActivity.semesterOlah);
         Collections.sort(matkulLulus);
         ArrayAdapter<String> files2 = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -192,11 +200,13 @@ public class UbahIsian1 extends Fragment {
         listlulus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //selectedSimpan = MyActivity.databaseHelper.getMatakuliahFromNama(Pencarian.selectedPerancangan.get(position));
                 MyActivity.databaseHelper
-                        .setTidakLulus(MyActivity.databaseHelper.getMatkulLulus().get(position));
+                        .setTidakLulus(
+                                MyActivity.databaseHelper.getMatkulLulus2(MyActivity.semesterOlah)
+                                                         .get(position));
 
-                ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus();
+                ArrayList matkulLulus = MyActivity.databaseHelper
+                        .getMatkulLulus2(MyActivity.semesterOlah);
                 Collections.sort(matkulLulus);
                 ArrayAdapter<String> files2 = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_list_item_1,

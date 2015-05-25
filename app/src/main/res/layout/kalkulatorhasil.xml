@@ -83,9 +83,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.6"
+                            android:gravity="center_horizontal"
                             android:text="Total Nilai"
-                            android:textStyle="bold"
-                            android:gravity="center_horizontal"/>
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/total2"
@@ -102,8 +102,8 @@
                             android:editable="false"
                             android:ems="10"
                             android:focusable="false"
-                            android:inputType="number"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:inputType="number"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -118,9 +118,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.6"
+                            android:gravity="center_horizontal"
                             android:text="Menuju Nilai A"
-                            android:textStyle="bold"
-                            android:gravity="center_horizontal"/>
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/A2"
@@ -137,8 +137,8 @@
                             android:editable="false"
                             android:ems="10"
                             android:focusable="false"
-                            android:inputType="number"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:inputType="number"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -153,8 +153,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.6"
-                            android:text="Menuju Nilai A-"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:text="Menuju Nilai A-"/>
 
                         <TextView
                             android:id="@+id/Am2"
@@ -171,8 +171,8 @@
                             android:editable="false"
                             android:ems="10"
                             android:focusable="false"
-                            android:inputType="number"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:inputType="number"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -187,8 +187,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.6"
-                            android:text="Menuju Nilai B+"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:text="Menuju Nilai B+"/>
 
                         <TextView
                             android:id="@+id/Bp2"
@@ -205,8 +205,8 @@
                             android:editable="false"
                             android:ems="10"
                             android:focusable="false"
-                            android:inputType="number"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:inputType="number"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -221,8 +221,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.6"
-                            android:text="Menuju Nilai B"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:text="Menuju Nilai B"/>
 
                         <TextView
                             android:id="@+id/B2"
@@ -239,8 +239,8 @@
                             android:editable="false"
                             android:ems="10"
                             android:focusable="false"
-                            android:inputType="number"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:inputType="number"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -255,8 +255,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.6"
-                            android:text="Menuju Nilai B-"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:text="Menuju Nilai B-"/>
 
                         <TextView
                             android:id="@+id/Bm2"
@@ -273,8 +273,8 @@
                             android:editable="false"
                             android:ems="10"
                             android:focusable="false"
-                            android:inputType="number"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:inputType="number"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -289,8 +289,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.6"
-                            android:text="Menuju Nilai C+"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:text="Menuju Nilai C+"/>
 
                         <TextView
                             android:id="@+id/Cp2"
@@ -307,8 +307,8 @@
                             android:editable="false"
                             android:ems="10"
                             android:focusable="false"
-                            android:inputType="number"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:inputType="number"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -323,9 +323,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.6"
+                            android:gravity="center_horizontal"
                             android:text="Menuju Nilai C"
-                            android:textStyle="bold"
-                            android:gravity="center_horizontal"/>
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/C2"
@@ -342,8 +342,8 @@
                             android:editable="false"
                             android:ems="10"
                             android:focusable="false"
-                            android:inputType="number"
-                            android:gravity="center_horizontal"/>
+                            android:gravity="center_horizontal"
+                            android:inputType="number"/>
                     </LinearLayout>
 
                 </LinearLayout>

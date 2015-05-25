@@ -24,6 +24,16 @@ import java.util.Collections;
 public class LihatRancangan extends Fragment {
     public static ArrayList<TextView> textLihat;
     public static ArrayList<ListView> listLihat;
+
+    public static String[] kategoriIlkom = {"Semua Mata Kuliah", "Wajib UI", "Wajib Rumpun Sains",
+            "Wajib Fakultas", "Wajib Jurusan Ilmu Komputer", "Pilihan Bidang Minat Fakultas",
+            "Pilihan Bidang Minat Ilmu Komputer", "Pilihan Lain"};
+    public static String[] kategoriSi = {"Semua Mata Kuliah", "Wajib UI", "Wajib Rumpun Sains",
+            "Wajib Fakultas", "Wajib Jurusan Sistem Informasi", "Pilihan Bidang Minat Fakultas",
+            "Pilihan Bidang Minat Sistem Informasi", "Pilihan Lain"};
+    int[] hasil = new int[kategoriIlkom.length];
+
+
     View rootview;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.3F);
 
@@ -52,6 +62,54 @@ public class LihatRancangan extends Fragment {
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.lihatrancangan, container, false);
+
+        TextView skslulus = (TextView) rootview.findViewById(R.id.skslulus);
+        int total = 0;
+
+        for (int i = 0; i < MyActivity.databaseHelper.getSKSMatkulLulus().size(); i++) {
+            total = total + MyActivity.databaseHelper.getSKSMatkulLulus().get(i);
+        }
+        skslulus.setText(Integer.toString(total));
+
+        if (MyActivity.jurusan == 0) {
+            for (int i = 0; i < kategoriIlkom.length; i++) {
+                int tot = 0;
+                for (int j = 0; j <
+                        MyActivity.databaseHelper.getSKSMatkulLulusKategori(kategoriIlkom[i])
+                                                 .size(); j++) {
+                    tot = tot +
+                            MyActivity.databaseHelper.getSKSMatkulLulusKategori(kategoriIlkom[i])
+                                                     .get(j);
+                }
+                hasil[i] = tot;
+            }
+        } else {
+            for (int i = 0; i < kategoriSi.length; i++) {
+                int tot = 0;
+                for (int j = 0;
+                     j < MyActivity.databaseHelper.getSKSMatkulLulusKategori(kategoriSi[i]).size();
+                     j++) {
+                    tot = tot + MyActivity.databaseHelper.getSKSMatkulLulusKategori(kategoriSi[i])
+                                                         .get(j);
+                }
+                hasil[i] = tot;
+            }
+        }
+
+        TextView wajibui = (TextView) rootview.findViewById(R.id.wajibui);
+        wajibui.setText(Integer.toString(hasil[1]));
+        TextView wajibsains = (TextView) rootview.findViewById(R.id.wajibsains);
+        wajibsains.setText(Integer.toString(hasil[2]));
+        TextView wajibfakultas = (TextView) rootview.findViewById(R.id.wajibfakultas);
+        wajibfakultas.setText(Integer.toString(hasil[3]));
+        TextView wajibprodi = (TextView) rootview.findViewById(R.id.wajibprodi);
+        wajibprodi.setText(Integer.toString(hasil[4]));
+        TextView pilihanbidangminat = (TextView) rootview.findViewById(R.id.pilihanbidangminat);
+        pilihanbidangminat.setText(Integer.toString(hasil[5]));
+        TextView sisa = (TextView) rootview.findViewById(R.id.sisa);
+        sisa.setText(Integer.toString(144 - total));
+        TextView pilihanlain = (TextView) rootview.findViewById(R.id.pilihanlain);
+        pilihanlain.setText(Integer.toString(hasil[6]));
 
         textLihat = new ArrayList<>();
         textLihat.add((TextView) rootview.findViewById(R.id.s1));
@@ -89,15 +147,18 @@ public class LihatRancangan extends Fragment {
             listLihat.get(i).setVisibility(View.VISIBLE);
         }
 
-        ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus();
-        Collections.sort(matkulLulus);
+        for (int i = 1; i < Integer.parseInt(MyActivity.semester); i++) {
+            ArrayList matkulLulus = MyActivity.databaseHelper.getMatkulLulus2(Integer.toString(i));
+            Collections.sort(matkulLulus);
 
-        ArrayAdapter<String> files2 = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1,
-                matkulLulus);
-        listLihat.get(0).setAdapter(files2);
+            ArrayAdapter<String> files2 = new ArrayAdapter<String>(getActivity(),
+                    android.R.layout.simple_list_item_1,
+                    matkulLulus);
 
-        setListViewHeightBasedOnChildren(listLihat.get(0));
+            listLihat.get(i - 1).setAdapter(files2);
+            setListViewHeightBasedOnChildren(listLihat.get(i - 1));
+
+        }
         return rootview;
     }
 

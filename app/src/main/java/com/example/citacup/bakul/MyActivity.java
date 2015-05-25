@@ -96,6 +96,9 @@ public class MyActivity extends ActionBarActivity {
     String NAME = currentName;
     public static int jurusan = 0;
     public static String semester;
+
+    public static String semesterOlah;
+    public static String semesterOlah2;
     /**
      * Used to store for navdrawer
      */
@@ -199,7 +202,6 @@ public class MyActivity extends ActionBarActivity {
             case 1:
                 getSupportActionBar()
                         .setBackgroundDrawable(getResources().getDrawable(R.color.biru));
-                //((RelativeLayout) findViewById(R.id.headerimage)).setBackgroundResource(R.drawable.headermerah);
                 break;
             case 2:
                 getSupportActionBar()
@@ -529,15 +531,13 @@ public class MyActivity extends ActionBarActivity {
             case (R.id.satutext):
                 //fitur 1
                 fragmentManager.beginTransaction()
-                        .add(R.id.container, new InformasiKuliah())
-                                // Add this transaction to the back stack
-                        .addToBackStack(null)
-                        .commit();
+                               .add(R.id.container, new InformasiKuliah())
+                               .addToBackStack(null)
+                               .commit();
 
                 break;
             case (R.id.dualayout):
                 //fitur 2
-                //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
                 if (semester == null) {
                     fragmentManager.beginTransaction()
                                    .add(R.id.container, new PerancanganKuliah1())
@@ -552,7 +552,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.duaimage):
                 //fitur 2
-                //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
                 if (semester == null) {
                     fragmentManager.beginTransaction()
                                    .add(R.id.container, new PerancanganKuliah1())
@@ -567,7 +566,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.duatext):
                 //fitur 2
-                //startActivity(new Intent(getBaseContext(), PerancanganKuliah.class));
                 if (semester == null) {
                     fragmentManager.beginTransaction()
                                    .add(R.id.container, new PerancanganKuliah1())
@@ -582,7 +580,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.tigalayout):
                 //fitur 3
-                //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new KalkulatorNilai())
                                .addToBackStack(null)
@@ -590,7 +587,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.tigaimage):
                 //fitur 3
-                //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new KalkulatorNilai())
                                .addToBackStack(null)
@@ -598,7 +594,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.tigatext):
                 //fitur 3
-                //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new KalkulatorNilai())
                                .addToBackStack(null)
@@ -622,7 +617,6 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case (R.id.matkullayout):
                 //informasi matkul
-                //startActivity(new Intent(getBaseContext(), Pencarian.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new Pencarian())
                                .addToBackStack(null)
@@ -630,7 +624,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.matkulimage):
                 //informasi matkul
-                //startActivity(new Intent(getBaseContext(), Pencarian.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new Pencarian())
                                .addToBackStack(null)
@@ -638,7 +631,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.matkultext):
                 //informasi matkul
-                //startActivity(new Intent(getBaseContext(), Pencarian.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new Pencarian())
                                .addToBackStack(null)
@@ -646,7 +638,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.dosenlayout):
                 //informasi dosen
-                //startActivity(new Intent(getBaseContext(), InformasiDosen.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new InformasiDosen())
                                .addToBackStack(null)
@@ -654,7 +645,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.dosenimage):
                 //informasi dosen
-                //startActivity(new Intent(getBaseContext(), InformasiDosen.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new InformasiDosen())
                                .addToBackStack(null)
@@ -662,7 +652,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.dosentext):
                 //informasi dosen
-                //startActivity(new Intent(getBaseContext(), InformasiDosen.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new InformasiDosen())
                                .addToBackStack(null)
@@ -685,7 +674,6 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case (R.id.namalayout):
                 //pencarian berdasar nama
-                //startActivity(new Intent(getBaseContext(), PencarianNama.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new PencarianNama())
                                .addToBackStack(null)
@@ -693,7 +681,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.namaimage):
                 //pencarian berdasar nama
-                //startActivity(new Intent(getBaseContext(), PencarianNama.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new PencarianNama())
                                .addToBackStack(null)
@@ -701,7 +688,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.namatext):
                 //pencarian berdasar nama
-                //startActivity(new Intent(getBaseContext(), PencarianNama.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new PencarianNama())
                                .addToBackStack(null)
@@ -709,7 +695,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.kategorilayout):
                 //pencarian berdasar kategori
-                //startActivity(new Intent(getBaseContext(), PencarianKategori.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new PencarianKategori())
                                .addToBackStack(null)
@@ -717,7 +702,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.kategoriimage):
                 //pencarian berdasar kategori
-                //startActivity(new Intent(getBaseContext(), PencarianKategori.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new PencarianKategori())
                                .addToBackStack(null)
@@ -725,7 +709,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case (R.id.kategoritext):
                 //pencarian berdasar kategori
-                //startActivity(new Intent(getBaseContext(), PencarianKategori.class));
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new PencarianKategori())
                                .addToBackStack(null)
@@ -748,44 +731,6 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.ok:
                 fragmentManager.popBackStack();
-                break;
-        }
-    }
-
-    /**
-     * for pencarianNama listener page
-     *
-     * @param v
-     */
-    public void pencarianNamaListener(View v) {
-        //aktifkan efek klik dari button login
-        v.startAnimation(buttonClick);
-
-        FragmentManager fragmentManager = getFragmentManager();
-
-        switch (v.getId()) {
-            case R.id.satulayout:
-                //fitur 1
-                //startActivity(new Intent(getBaseContext(), InformasiMatkul.class));
-                break;
-        }
-    }
-
-    /**
-     * for pencarianKategori listener page
-     *
-     * @param v
-     */
-    public void pencarianKategoriListener(View v) {
-        //aktifkan efek klik dari button login
-        v.startAnimation(buttonClick);
-
-        FragmentManager fragmentManager = getFragmentManager();
-
-        switch (v.getId()) {
-            case R.id.satulayout:
-                //pencarian kategori
-                //startActivity(new Intent(getBaseContext(), InformasiMatkul.class));
                 break;
         }
     }
@@ -835,18 +780,12 @@ public class MyActivity extends ActionBarActivity {
 
         switch (v.getId()) {
             case R.id.rantai:
-                //fitur 1
-                //startActivity(new Intent(getBaseContext(), LihatRantai.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new LihatRantai())
                                .addToBackStack(null)
                                .commit();
                 break;
             case R.id.review:
-                //fitur 1
-                //startActivity(new Intent(getBaseContext(), LihatRantai.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new LihatReview())
                                .addToBackStack(null)
@@ -891,7 +830,7 @@ public class MyActivity extends ActionBarActivity {
                 String pesan = reviewText.getText().toString();
 
                 //check whether the msg empty or not
-                if (pesan.length() > 0) {
+                if (pesan.trim().length() > 0) {
                     httpclient = new DefaultHttpClient();
                     //url post web
                     httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/submitReview.php");
@@ -1042,8 +981,6 @@ public class MyActivity extends ActionBarActivity {
 
         switch (v.getId()) {
             case R.id.tambah:
-                //fitur 1
-                //startActivity(new Intent(getBaseContext(), KalkulatorHasil.class));
                 if (databaseHelper
                         .insertKalkulator(currentUser, KalkulatorNilai.selectedTambah.getNama())) {
                     ArrayAdapter<String> files = new ArrayAdapter<String>(this,
@@ -1081,7 +1018,6 @@ public class MyActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.simpan:
                 //simpan
-                //startActivity(new Intent(getBaseContext(), KalkulatorNilai.class));
                 fragmentManager.beginTransaction()
                                .replace(R.id.container, new KalkulatorNilai())
                                .commit();
@@ -1228,9 +1164,84 @@ public class MyActivity extends ActionBarActivity {
 
         switch (v.getId()) {
             case R.id.s1:
-                //semester
-                //startActivity(new Intent(getBaseContext(), UbahIsian1.class));
-                //this.finish();
+                semesterOlah = "1";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s2:
+                semesterOlah = "2";
+                fragmentManager.beginTransaction()
+
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s3:
+                semesterOlah = "3";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s4:
+                semesterOlah = "4";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s5:
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s6:
+                semesterOlah = "6";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s7:
+                semesterOlah = "7";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s8:
+                semesterOlah = "8";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s9:
+                semesterOlah = "9";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s10:
+                semesterOlah = "10";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s11:
+                semesterOlah = "11";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian1())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s12:
+                semesterOlah = "12";
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new UbahIsian1())
                                .addToBackStack(null)
@@ -1238,8 +1249,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case R.id.lanjut:
                 //lanjut
-                //startActivity(new Intent(getBaseContext(), UbahSemester2.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new OlahRancangan())
                                .addToBackStack(null)
@@ -1302,10 +1311,85 @@ public class MyActivity extends ActionBarActivity {
         FragmentManager fragmentManager = getFragmentManager();
 
         switch (v.getId()) {
+            case R.id.s1:
+                semesterOlah2 = "1";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s2:
+                semesterOlah2 = "2";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s3:
+                semesterOlah2 = "3";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s4:
+                semesterOlah2 = "4";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s5:
+                semesterOlah2 = "5";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s6:
+                semesterOlah2 = "6";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s7:
+                semesterOlah2 = "7";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s8:
+                semesterOlah2 = "8";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s9:
+                semesterOlah2 = "9";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s10:
+                semesterOlah2 = "10";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
+            case R.id.s11:
+                semesterOlah2 = "11";
+                fragmentManager.beginTransaction()
+                               .add(R.id.container, new UbahIsian2())
+                               .addToBackStack(null)
+                               .commit();
+                break;
             case R.id.s12:
-                //semester
-                //startActivity(new Intent(getBaseContext(), UbahIsian2.class));
-                //this.finish();
+                semesterOlah2 = "12";
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new UbahIsian2())
                                .addToBackStack(null)
@@ -1313,8 +1397,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             case R.id.lanjut:
                 //lihat
-                //startActivity(new Intent(getBaseContext(), LihatRancangan.class));
-                //this.finish();
                 fragmentManager.beginTransaction()
                                .add(R.id.container, new LihatRancangan())
                                .addToBackStack(null)
@@ -1377,7 +1459,7 @@ public class MyActivity extends ActionBarActivity {
                 String pesan = pesanAdmin.getText().toString();
 
                 //check whether the msg empty or not
-                if (pesan.length() > 0) {
+                if (pesan.trim().length() > 0) {
                     httpclient = new DefaultHttpClient();
                     //url post web
                     httppost = new HttpPost(
@@ -1429,7 +1511,7 @@ public class MyActivity extends ActionBarActivity {
         String pesan = reportMessage.getText().toString();
 
         //check whether the msg empty or not
-        if (pesan.length() > 0) {
+        if (pesan.trim().length() > 0) {
             httpclient = new DefaultHttpClient();
             //url post web
             httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/submitReport.php");
@@ -1739,7 +1821,6 @@ public class MyActivity extends ActionBarActivity {
 
             namaDosen = databaseHelper.getAllDosen();
             namaMatakuliah = databaseHelper.getAllMatakuliah();
-            //namaKategori = databaseHelper.getAllKategori();
             listReview = databaseHelper.getAllKategori();
 
             databaseHelper.close();
@@ -1941,6 +2022,10 @@ public class MyActivity extends ActionBarActivity {
 
                         databaseHelper
                                 .insertMatakuliah(kodemk, nama, sks, semester, islulus, deskripsi,
+                                        referensi, objektif, kategori);
+                        databaseHelper
+                                .insertMatakuliahOlah(kodemk, nama, sks, semester, islulus,
+                                        deskripsi,
                                         referensi, objektif, kategori);
 
                     } catch (JSONException e) {

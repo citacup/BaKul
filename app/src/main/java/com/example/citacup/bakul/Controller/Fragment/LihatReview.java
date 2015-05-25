@@ -134,7 +134,6 @@ public class LihatReview extends Fragment {
             listReview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //String a =MyActivity.databaseHelper.getReviewFromNama(Pencarian.pilih.getNama());
                     Pencarian.pilihReview = MyActivity.databaseHelper
                             .getReviewFromKomentar(Pencarian.selectedReview.get(position));
                     FragmentManager fragmentManager = getFragmentManager();
@@ -148,6 +147,10 @@ public class LihatReview extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
+            DatabaseHelper db = MyActivity.databaseHelper;
+            db.getWritableDatabase();
+            db.deleteReview();
+
             httpclient = new DefaultHttpClient();
             //url post web
             httppost = new HttpPost("http://ppl-a07.cs.ui.ac.id/test/getreview.php");

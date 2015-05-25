@@ -92,9 +92,7 @@ public class LoginSso extends ActionBarActivity {
                 if (loginSuccess) {
                     doSomething();
                 }
-            } /*catch (ClientProtocolException e) {
-                e.printStackTrace();
-            }*/ catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {

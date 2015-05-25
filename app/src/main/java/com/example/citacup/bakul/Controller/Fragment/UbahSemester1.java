@@ -44,6 +44,7 @@ public class UbahSemester1 extends Fragment {
 
         for (int i = 0; i < Integer.parseInt(MyActivity.semester) - 1; i++) {
             lulus.get(i).setVisibility(View.VISIBLE);
+
         }
 
         return rootview;
